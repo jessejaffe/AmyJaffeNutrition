@@ -27,6 +27,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Request an appointment/);
   assert.match(html, /Care that sees the/);
   assert.match(html, /poster="\/images\/amy-video-poster\.jpg"/);
+  assert.match(html, /src="\/video\/nutritioncounselingflorida\.mp4"/);
   assert.match(html, /src="\/video\/client-testimonial\.mp4"/);
   assert.match(html, /Nutrition assessment/);
   assert.match(html, /Let&#x27;s make peace/);
@@ -39,7 +40,7 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/images/meadow.avif", import.meta.url)),
     access(new URL("../public/images/amy-video-poster.jpg", import.meta.url)),
     access(new URL("../public/images/client-testimonial-poster.jpg", import.meta.url)),
-    access(new URL("../public/video/amy-introduction.mp4", import.meta.url)),
+    access(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url)),
     access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);

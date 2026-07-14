@@ -86,7 +86,7 @@ export default function Home() {
         <div className="about-image-wrap">
           <div className="about-video-frame">
             <video controls playsInline preload="metadata" poster="/images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
-              <source src="/video/amy-introduction.mp4" type="video/mp4" />
+              <source src="/video/nutritioncounselingflorida.mp4" type="video/mp4" />
             </video>
           </div>
           <div className="experience-badge"><strong>25+</strong><span>years of<br />experience</span></div>
