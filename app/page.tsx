@@ -112,7 +112,7 @@ export default function Home() {
 
       <section className="services section" id="services">
         <div className="section-heading-row">
-          <div><p className="eyebrow">Ways to work together</p><h2>Support that meets<br /><em>you where you are.</em></h2></div>
+          <div><p className="eyebrow">Ways to work together</p><h2>Nutrition support that meets<br /><em>you where you are.</em></h2></div>
           <p className="section-intro">There is no one-size-fits-all path to feeling at home in your body. We&apos;ll start with your story and build from there.</p>
         </div>
         <div className="service-list">
