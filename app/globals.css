@@ -43,7 +43,7 @@ button, input, textarea { font: inherit; }
 .header-cta span { color: #e2bd7d; font-size: 17px; }
 .mobile-menu { display: none; }
 
-.hero { background: #4a203b url('/images/meadow.avif') center/cover no-repeat; color: white; min-height: 800px; overflow: hidden; position: relative; }
+.hero { background: #4a203b url('../images/meadow.avif') center/cover no-repeat; color: white; min-height: 800px; overflow: hidden; position: relative; }
 .hero-wash { background: linear-gradient(90deg, rgba(55,18,43,.94) 0%, rgba(72,22,54,.8) 39%, rgba(82,32,60,.22) 70%, rgba(82,32,60,.03) 100%); inset: 0; position: absolute; }
 .hero-content { left: 8vw; max-width: 710px; position: absolute; top: 51%; transform: translateY(-44%); z-index: 2; }
 .eyebrow { color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .22em; margin: 0 0 27px; text-transform: uppercase; }

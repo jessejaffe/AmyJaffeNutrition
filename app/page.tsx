@@ -85,8 +85,8 @@ export default function Home() {
       <section className="about section" id="about">
         <div className="about-image-wrap">
           <div className="about-video-frame">
-            <video controls playsInline preload="metadata" poster="/images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
-              <source src="/video/nutritioncounselingflorida.mp4" type="video/mp4" />
+            <video controls playsInline preload="metadata" poster="images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
+              <source src="video/nutritioncounselingflorida.mp4" type="video/mp4" />
             </video>
           </div>
           <div className="experience-badge"><strong>25+</strong><span>years of<br />experience</span></div>
@@ -128,8 +128,8 @@ export default function Home() {
 
       <section className="testimonial section" id="testimonials">
         <div className="testimonial-video-wrap">
-          <video controls playsInline preload="metadata" poster="/images/client-testimonial-poster.jpg" aria-label="Client testimonial">
-            <source src="/video/client-testimonial.mp4" type="video/mp4" />
+          <video controls playsInline preload="metadata" poster="images/client-testimonial-poster.jpg" aria-label="Client testimonial">
+            <source src="video/client-testimonial.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="testimonial-copy">
@@ -182,7 +182,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="footer-brand" href="#home"><img src="/images/amy-jaffe-logo.avif" alt="Amy Jaffe Nutrition" /></a>
+        <a className="footer-brand" href="#home"><img src="images/amy-jaffe-logo.avif" alt="Amy Jaffe Nutrition" /></a>
         <div><p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p><small>© {new Date().getFullYear()} Amy Jaffe Nutrition</small></div>
         <div className="social-links"><a href="https://www.instagram.com/stickynotesnutritiontherapist/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.facebook.com/nutritionstickynotesAmyJaffe" target="_blank" rel="noreferrer">Facebook ↗</a></div>
       </footer>
