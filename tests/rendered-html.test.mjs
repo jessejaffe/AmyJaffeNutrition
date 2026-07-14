@@ -26,17 +26,21 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Food can feel/);
   assert.match(html, /Request an appointment/);
   assert.match(html, /Care that sees the/);
+  assert.match(html, /poster="\/images\/amy-video-poster\.jpg"/);
+  assert.match(html, /src="\/video\/client-testimonial\.mp4"/);
   assert.match(html, /Nutrition assessment/);
   assert.match(html, /Let&#x27;s make peace/);
   assert.match(html, /property="og:image" content="https:\/\/www\.amyjaffenutrition\.com\/og\.png"/i);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton|A note from Amy/i);
 });
 
 test("ships the owned visual assets and no starter preview", async () => {
   await Promise.all([
     access(new URL("../public/images/meadow.avif", import.meta.url)),
-    access(new URL("../public/images/amy-jaffe.avif", import.meta.url)),
+    access(new URL("../public/images/amy-video-poster.jpg", import.meta.url)),
+    access(new URL("../public/images/client-testimonial-poster.jpg", import.meta.url)),
     access(new URL("../public/video/amy-introduction.mp4", import.meta.url)),
+    access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));

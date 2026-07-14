@@ -44,7 +44,6 @@ export default function Home() {
           <a href="#services">Services</a>
           <a href="#testimonials">Testimonials</a>
           <a href="#resources">Resources</a>
-          <a href="#media">Media</a>
         </nav>
 
         <a className="header-cta" href="#contact">Let&apos;s talk <span aria-hidden="true">↗</span></a>
@@ -54,7 +53,7 @@ export default function Home() {
           <nav aria-label="Mobile navigation">
             <a href="#about">About</a><a href="#services">Services</a>
             <a href="#testimonials">Testimonials</a><a href="#resources">Resources</a>
-            <a href="#media">Media</a><a href="#contact">Contact</a>
+            <a href="#contact">Contact</a>
           </nav>
         </details>
       </header>
@@ -85,8 +84,10 @@ export default function Home() {
 
       <section className="about section" id="about">
         <div className="about-image-wrap">
-          <div className="about-image-frame">
-            <img src="/images/amy-jaffe.avif" alt="Amy Jaffe, registered dietitian nutritionist" />
+          <div className="about-video-frame">
+            <video controls playsInline preload="metadata" poster="/images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
+              <source src="/video/amy-introduction.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="experience-badge"><strong>25+</strong><span>years of<br />experience</span></div>
         </div>
@@ -126,9 +127,10 @@ export default function Home() {
       </section>
 
       <section className="testimonial section" id="testimonials">
-        <div className="testimonial-art">
-          <img src="/images/watermelon-hearts.png" alt="Watermelon and berries arranged in heart shapes" />
-          <span className="art-label">Nourishment can include joy.</span>
+        <div className="testimonial-video-wrap">
+          <video controls playsInline preload="metadata" poster="/images/client-testimonial-poster.jpg" aria-label="Client testimonial">
+            <source src="/video/client-testimonial.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className="testimonial-copy">
           <p className="eyebrow light">Client story</p>
@@ -147,20 +149,6 @@ export default function Home() {
               <span>0{index + 1}</span><div><h3>{title}</h3><p>{body}</p></div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="media section" id="media">
-        <div className="media-copy">
-          <p className="eyebrow">A note from Amy</p>
-          <h2>You&apos;re more than<br /><em>what you eat.</em></h2>
-          <p>Change begins with curiosity, not criticism. Hear Amy share a more compassionate approach to nutrition and self-care.</p>
-          <a className="text-link" href="#contact">Ask a question <span>→</span></a>
-        </div>
-        <div className="video-shell">
-          <video controls preload="metadata" poster="/images/amy-jaffe.avif">
-            <source src="/video/amy-introduction.mp4" type="video/mp4" />
-          </video>
         </div>
       </section>
 

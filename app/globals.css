@@ -69,10 +69,10 @@ button, input, textarea { font: inherit; }
 .section { padding: 120px 8vw; }
 .about { align-items: center; display: grid; gap: clamp(60px, 9vw, 145px); grid-template-columns: minmax(320px, .82fr) 1fr; }
 .about-image-wrap { position: relative; }
-.about-image-frame { aspect-ratio: .88; background: var(--cream); overflow: hidden; position: relative; }
-.about-image-frame::before { border: 1px solid rgba(255,255,255,.75); content: ""; inset: 16px; position: absolute; z-index: 1; }
-.about-image-frame img { height: 100%; object-fit: cover; object-position: center 34%; width: 100%; }
-.experience-badge { align-items: center; background: var(--green); border-radius: 50%; bottom: -42px; color: white; display: flex; flex-direction: column; height: 142px; justify-content: center; position: absolute; right: -42px; text-align: center; width: 142px; }
+.about-video-frame { aspect-ratio: 3/4; background: var(--cream); overflow: hidden; position: relative; }
+.about-video-frame::before { border: 1px solid rgba(255,255,255,.75); content: ""; inset: 16px; pointer-events: none; position: absolute; z-index: 2; }
+.about-video-frame video { height: 100%; object-fit: cover; object-position: center; width: 100%; }
+.experience-badge { align-items: center; background: var(--green); border: 5px solid var(--paper); border-radius: 50%; bottom: -42px; color: white; display: flex; flex-direction: column; height: 142px; justify-content: center; position: absolute; right: -42px; text-align: center; width: 142px; z-index: 3; }
 .experience-badge strong { font-family: Georgia, serif; font-size: 37px; font-weight: 400; line-height: 1; }
 .experience-badge span { font-size: 9px; letter-spacing: .13em; line-height: 1.45; margin-top: 8px; text-transform: uppercase; }
 h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; }
@@ -99,10 +99,8 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .service-card > a { align-items: center; border: 1px solid #cfc4bf; border-radius: 50%; display: flex; font-size: 18px; height: 48px; justify-content: center; width: 48px; }
 
 .testimonial { background: var(--green); color: white; display: grid; gap: 9vw; grid-template-columns: .85fr 1fr; padding-bottom: 0; padding-top: 0; }
-.testimonial-art { align-self: stretch; margin-left: -8vw; min-height: 670px; overflow: hidden; position: relative; }
-.testimonial-art::after { background: linear-gradient(0deg, rgba(34,82,59,.65), transparent 45%); content: ""; inset: 0; position: absolute; }
-.testimonial-art img { height: 100%; object-fit: cover; width: 100%; }
-.art-label { bottom: 38px; color: white; font-family: Georgia, serif; font-size: 18px; font-style: italic; left: 8vw; position: absolute; z-index: 1; }
+.testimonial-video-wrap { align-self: stretch; background: #1e4935; margin-left: -8vw; min-height: 670px; overflow: hidden; position: relative; }
+.testimonial-video-wrap video { height: 100%; object-fit: cover; object-position: center; width: 100%; }
 .testimonial-copy { align-self: center; padding: 90px 0; }
 .stars { color: #e8c27d; font-size: 13px; letter-spacing: .45em; margin-bottom: 32px; }
 .testimonial-copy blockquote { font-family: Georgia, serif; font-size: clamp(26px, 2.8vw, 42px); font-style: italic; line-height: 1.42; margin: 0 0 30px; max-width: 720px; }
@@ -116,10 +114,6 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .resource-list h3 { color: var(--plum); font-family: Georgia, serif; font-size: 28px; font-weight: 400; margin: 0 0 12px; }
 .resource-list p { color: #685d61; font-size: 14px; line-height: 1.7; margin: 0; }
 
-.media { align-items: center; background: var(--cream); display: grid; gap: 8vw; grid-template-columns: .75fr 1fr; }
-.media-copy > p:not(.eyebrow) { color: #65595e; line-height: 1.75; margin: 32px 0; }
-.video-shell { background: var(--plum); box-shadow: 24px 24px 0 #d9bd84; padding: 10px; }
-.video-shell video { aspect-ratio: 16/10; background: #2b1724; object-fit: cover; width: 100%; }
 .insurance { align-items: start; background: var(--paper); border-bottom: 1px solid #ded5cf; display: grid; gap: 7vw; grid-template-columns: .35fr 1fr; padding-bottom: 80px; padding-top: 80px; }
 .insurance h2 { font-size: clamp(35px, 4vw, 54px); }
 .insurance div p { color: #65595e; line-height: 1.7; margin: 20px 0 0; max-width: 800px; }
@@ -160,7 +154,7 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .mobile-menu nav a { color: var(--plum); font-family: Georgia, serif; font-size: 22px; }
   .about { gap: 70px; }
   .testimonial { gap: 6vw; }
-  .testimonial-art { min-height: 590px; }
+  .testimonial-video-wrap { min-height: 590px; }
 }
 
 @media (max-width: 760px) {
@@ -178,7 +172,7 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .belief-strip { flex-wrap: wrap; gap: 12px 0; padding: 23px 14px; }
   .belief-strip p { margin: 0 11px; }
   .section { padding: 85px 24px; }
-  .about, .section-heading-row, .testimonial, .resources, .media, .insurance, .contact { grid-template-columns: 1fr; }
+  .about, .section-heading-row, .testimonial, .resources, .insurance, .contact { grid-template-columns: 1fr; }
   .about { gap: 75px; }
   .experience-badge { bottom: -48px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
@@ -187,13 +181,10 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .service-card { align-items: start; gap: 14px; grid-template-columns: 42px 1fr; padding: 28px 0; }
   .service-card > a { display: none; }
   .testimonial { padding: 0; }
-  .testimonial-art { margin: 0; min-height: 430px; }
-  .art-label { left: 24px; }
+  .testimonial-video-wrap { aspect-ratio: 3/4; margin: 0; min-height: 0; }
   .testimonial-copy { padding: 70px 24px 85px; }
   .resource-title { position: static; }
   .resources { gap: 50px; }
-  .media { gap: 50px; }
-  .video-shell { box-shadow: 12px 12px 0 #d9bd84; }
   .insurance { gap: 15px; padding-bottom: 65px; padding-top: 65px; }
   .contact { gap: 55px; padding: 85px 24px; }
   .contact-form { grid-template-columns: 1fr; }
