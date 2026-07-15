@@ -1,5 +1,11 @@
 const appointmentHref = "mailto:amysjaffe@gmail.com?subject=Appointment%20request";
 
+const socialLinks = [
+  { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "images/social-facebook.svg" },
+  { name: "Instagram", href: "https://www.instagram.com/stickynotesnutritiontherapist/", icon: "images/social-instagram.svg" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/amysjaffe/", icon: "images/social-linkedin.svg" },
+];
+
 const services = [
   {
     number: "01",
@@ -44,6 +50,13 @@ export default function Home() {
           <a href="#services">Services</a>
           <a href="#testimonials">Testimonials</a>
           <a href="#resources">Resources</a>
+          <div className="header-social-links" aria-label="Social media">
+            {socialLinks.map((social) => (
+              <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>
+                <img src={social.icon} alt="" />
+              </a>
+            ))}
+          </div>
         </nav>
 
         <a className="header-cta" href="#contact">Let&apos;s talk <span aria-hidden="true">↗</span></a>
@@ -54,6 +67,13 @@ export default function Home() {
             <a href="#about">About</a><a href="#services">Services</a>
             <a href="#testimonials">Testimonials</a><a href="#resources">Resources</a>
             <a href="#contact">Contact</a>
+            <div className="mobile-social-links" aria-label="Social media">
+              {socialLinks.map((social) => (
+                <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>
+                  <img src={social.icon} alt="" />
+                </a>
+              ))}
+            </div>
           </nav>
         </details>
       </header>
@@ -187,7 +207,13 @@ export default function Home() {
       <footer>
         <a className="footer-brand" href="#home"><img src="images/amy-jaffe-logo.avif" alt="Amy Jaffe Nutrition" /></a>
         <div><p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p><small>© {new Date().getFullYear()} Amy Jaffe Nutrition</small></div>
-        <div className="social-links"><a href="https://www.instagram.com/stickynotesnutritiontherapist/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.facebook.com/nutritionstickynotesAmyJaffe" target="_blank" rel="noreferrer">Facebook ↗</a></div>
+        <div className="social-links" aria-label="Social media">
+          {socialLinks.map((social) => (
+            <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>
+              <img src={social.icon} alt="" />
+            </a>
+          ))}
+        </div>
       </footer>
     </main>
   );
