@@ -44,6 +44,7 @@ button, input, textarea { font: inherit; }
 .mobile-menu { display: none; }
 
 .hero { background: #4a203b url('../images/meadow.avif') center/cover no-repeat; color: white; min-height: 800px; overflow: hidden; position: relative; }
+.hero-video { height: 100%; inset: 0; object-fit: cover; object-position: center; position: absolute; width: 100%; }
 .hero-wash { background: linear-gradient(90deg, rgba(55,18,43,.94) 0%, rgba(72,22,54,.8) 39%, rgba(82,32,60,.22) 70%, rgba(82,32,60,.03) 100%); inset: 0; position: absolute; }
 .hero-content { left: 8vw; max-width: 710px; position: absolute; top: 51%; transform: translateY(-44%); z-index: 2; }
 .eyebrow { color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .22em; margin: 0 0 27px; text-transform: uppercase; }
@@ -200,4 +201,4 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .footer-brand { width: 95px; }
 }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-video { display: none; } * { transition: none !important; } }
