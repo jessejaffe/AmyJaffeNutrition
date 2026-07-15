@@ -1,3 +1,5 @@
+import HeroVideo from "./HeroVideo";
+
 const appointmentHref = "mailto:amysjaffe@gmail.com?subject=Appointment%20request";
 
 const services = [
@@ -59,9 +61,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="home">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="images/meadow.avif" aria-hidden="true">
-          <source src="video/dandelion-breeze.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
         <div className="hero-wash" />
         <div className="hero-content">
           <p className="eyebrow light">Nutrition counseling · Miami &amp; telehealth</p>
