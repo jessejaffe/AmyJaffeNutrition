@@ -1,16 +1,18 @@
 const playbackScript = `(() => {
-  const video = document.getElementById("hero-video");
-  if (!(video instanceof HTMLVideoElement)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    video.pause();
-    return;
-  }
   const setBreezeSpeed = () => {
+    const video = document.getElementById("hero-video");
+    if (!(video instanceof HTMLVideoElement)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
     video.defaultPlaybackRate = 1.35;
     video.playbackRate = 1.35;
   };
   setBreezeSpeed();
-  video.addEventListener("loadedmetadata", setBreezeSpeed, { once: true });
+  document.addEventListener("DOMContentLoaded", setBreezeSpeed, { once: true });
+  window.addEventListener("load", setBreezeSpeed, { once: true });
+  window.setTimeout(setBreezeSpeed, 1000);
 })();`;
 
 export default function HeroVideo() {
