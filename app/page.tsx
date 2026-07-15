@@ -60,7 +60,7 @@ export default function Home() {
 
       <section className="hero" id="home">
         <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="images/meadow.avif" aria-hidden="true">
-          <source src="video/dandelion-breeze.mp4" type="video/mp4" />
+          <source src="video/dandelion-breeze-v2.mp4" type="video/mp4" />
         </video>
         <div className="hero-wash" />
         <div className="hero-content">
