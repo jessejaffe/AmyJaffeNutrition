@@ -31,6 +31,11 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /src="video\/client-testimonial\.mp4"/);
   assert.match(html, /Nutrition assessment/);
   assert.match(html, /Let&#x27;s make peace/);
+  assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Initial%20Nutrition%20Assessment"/i);
+  assert.match(html, /method="post"/i);
+  assert.match(html, /enctype="text\/plain"/i);
+  assert.match(html, /name="Reply-to email"/i);
+  assert.match(html, /name="Support requested"[^>]*required/i);
   assert.match(html, /property="og:image" content="https:\/\/www\.amyjaffenutrition\.com\/og\.png"/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton|A note from Amy/i);
 });

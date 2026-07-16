@@ -1,4 +1,4 @@
-const appointmentHref = "mailto:amysjaffe@gmail.com?subject=Appointment%20request";
+const appointmentHref = "mailto:amysjaffe@gmail.com?subject=Initial%20Nutrition%20Assessment";
 
 const socialLinks = [
   { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "images/social-facebook.svg" },
@@ -194,11 +194,11 @@ export default function Home() {
             <p>1801 NE 123rd Street, Suite 303<br />Miami, FL 33181</p>
           </div>
         </div>
-        <form className="contact-form" action={appointmentHref} method="get">
-          <label>First name<input type="text" name="first-name" required /></label>
-          <label>Last name<input type="text" name="last-name" required /></label>
-          <label className="full">Email<input type="email" name="email" required /></label>
-          <label className="full">What would you like support with?<textarea name="message" rows={3} /></label>
+        <form className="contact-form" action={appointmentHref} method="post" encType="text/plain">
+          <label>First name<input type="text" name="First name" autoComplete="given-name" required /></label>
+          <label>Last name<input type="text" name="Last name" autoComplete="family-name" required /></label>
+          <label className="full">Email<input type="email" name="Reply-to email" autoComplete="email" required /></label>
+          <label className="full">What would you like support with?<textarea name="Support requested" rows={3} required /></label>
           <button type="submit">Request an appointment <span>↗</span></button>
           <small>Submitting opens your email app so you can send your request privately.</small>
         </form>
