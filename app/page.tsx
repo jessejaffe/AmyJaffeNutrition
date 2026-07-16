@@ -95,7 +95,7 @@ export default function Home() {
 
         <div className="hero-note" aria-label="Practice details">
           <span className="note-dot" />
-          <p><strong>Accepting new clients</strong><br />In-person in Miami and via secure telehealth</p>
+          <p><strong>Currently accepting new clients</strong><br />In-person in Miami and via secure telehealth</p>
         </div>
 
         <div className="hero-stamp" aria-hidden="true">INTUITIVE EATING<br />NON-DIET CARE · HAES</div>
