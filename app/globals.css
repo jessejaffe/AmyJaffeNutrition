@@ -76,9 +76,9 @@ h2 em { color: var(--green); font-weight: 400; }
 .hero-note strong { color: var(--plum); font-size: 18px; }
 .note-dot { background: var(--status-green); border: 4px solid #d2eadc; border-radius: 50%; flex: 0 0 auto; height: 16px; width: 16px; }
 
-.belief-strip { align-items: center; background: var(--cream); color: var(--plum); display: flex; font-family: Georgia, serif; font-size: clamp(19px, 2vw, 29px); font-style: italic; justify-content: center; padding: 30px 5vw; }
+.belief-strip { align-items: center; background: var(--cream); color: var(--mulberry); display: flex; font-family: Georgia, serif; font-size: clamp(19px, 2vw, 29px); font-style: italic; justify-content: center; padding: 30px 5vw; }
 .belief-strip p { margin: 0 clamp(18px, 4vw, 65px); }
-.belief-strip span { color: var(--green); font-size: 13px; }
+.belief-strip span { color: var(--mulberry); font-size: 13px; }
 .section { padding: 120px 8vw; }
 .about { align-items: center; display: grid; gap: clamp(60px, 9vw, 145px); grid-template-columns: minmax(320px, .82fr) 1fr; }
 .about-image-wrap { position: relative; }
