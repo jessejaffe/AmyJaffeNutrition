@@ -2,9 +2,10 @@
 
 :root {
   --plum: #5b2148;
-  --mulberry: #8a285f;
-  --green: #34775a;
+  --mulberry: #b51675;
+  --green: #287e4d;
   --green-soft: #b7d6c2;
+  --status-green: #56a77b;
   --cream: #f7f0e7;
   --paper: #fffdf8;
   --ink: #241d20;
@@ -58,7 +59,7 @@ button, input, textarea { font: inherit; }
 .eyebrow.light { color: var(--green-soft); }
 .hero h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.045em; margin: 0; }
 .hero h1 { font-size: clamp(62px, 7.2vw, 112px); line-height: .88; }
-.hero h1 em { color: var(--green-soft); font-weight: 400; }
+.hero h1 em { color: var(--status-green); font-weight: 400; }
 h2 em { color: var(--green); font-weight: 400; }
 .hero-lede { font-family: Georgia, serif; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.55; margin: 38px 0; max-width: 585px; }
 .hero-actions { align-items: center; display: flex; gap: 34px; }
@@ -67,9 +68,10 @@ h2 em { color: var(--green); font-weight: 400; }
 .button span, .text-link span { font-size: 17px; }
 .text-link { align-items: center; border-bottom: 1px solid rgba(36,29,32,.35); display: inline-flex; font-size: 11px; font-weight: 700; gap: 25px; letter-spacing: .12em; padding-bottom: 7px; text-transform: uppercase; }
 .text-link.light { border-color: rgba(255,255,255,.45); color: white; }
-.hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 15px; padding: 20px 32px; position: absolute; right: 0; width: 355px; z-index: 2; }
-.hero-note p { font-size: 12px; line-height: 1.55; margin: 0; }
-.note-dot { background: #56a77b; border: 4px solid #d2eadc; border-radius: 50%; height: 14px; width: 14px; }
+.hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 18px; padding: 22px 32px; position: absolute; right: 0; width: 390px; z-index: 2; }
+.hero-note p { font-size: 14px; line-height: 1.55; margin: 0; }
+.hero-note strong { color: var(--plum); font-size: 15px; }
+.note-dot { background: var(--status-green); border: 4px solid #d2eadc; border-radius: 50%; flex: 0 0 auto; height: 14px; width: 14px; }
 
 .belief-strip { align-items: center; background: var(--cream); color: var(--plum); display: flex; font-family: Georgia, serif; font-size: clamp(19px, 2vw, 29px); font-style: italic; justify-content: center; padding: 30px 5vw; }
 .belief-strip p { margin: 0 clamp(18px, 4vw, 65px); }
@@ -188,7 +190,7 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .hero h1 { font-size: clamp(60px, 18vw, 82px); }
   .hero-lede { font-size: 17px; line-height: 1.5; margin: 28px 0; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 24px; }
-  .hero-note { width: 310px; }
+  .hero-note { width: min(340px, calc(100% - 24px)); }
   .belief-strip { flex-wrap: wrap; gap: 12px 0; padding: 23px 14px; }
   .belief-strip p { margin: 0 11px; }
   .section { padding: 85px 24px; }
