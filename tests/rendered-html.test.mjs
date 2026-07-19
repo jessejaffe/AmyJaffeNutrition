@@ -31,6 +31,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /src="video\/client-testimonial\.mp4"/);
   assert.match(html, /Nutrition assessment/);
   assert.match(html, /Let&#x27;s make peace/);
+  assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
   assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Initial%20Nutrition%20Assessment"/i);
   assert.match(html, /method="post"/i);
   assert.match(html, /enctype="text\/plain"/i);

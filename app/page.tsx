@@ -98,7 +98,6 @@ export default function Home() {
           <p><strong>Currently accepting new clients</strong><br />In-person in Miami and via secure telehealth</p>
         </div>
 
-        <div className="hero-stamp" aria-hidden="true">INTUITIVE EATING<br />NON-DIET CARE · HAES</div>
       </section>
 
       <section className="belief-strip" aria-label="Amy's approach">
