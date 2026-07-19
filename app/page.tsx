@@ -86,7 +86,7 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow light">Nutrition counseling · Miami &amp; telehealth</p>
           <h1>Food can feel<br /><em>good again.</em></h1>
-          <p className="hero-lede">Find freedom from diets, food rules, and body stress with care that listens to you—not just the numbers.</p>
+          <p className="hero-lede">Find freedom from eating disorders, diets, food rules, and body struggles delivered with care that listens to you—not the numbers.</p>
           <div className="hero-actions">
             <a className="button button-cream" href="#contact">Request an appointment <span>↗</span></a>
             <a className="text-link light" href="#about">Meet Amy <span>↓</span></a>

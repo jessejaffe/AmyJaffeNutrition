@@ -24,6 +24,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   const html = await response.text();
   assert.match(html, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(html, /Food can feel/);
+  assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles delivered with care that listens to you—not the numbers\./);
   assert.match(html, /Request an appointment/);
   assert.match(html, /Care that sees the/);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);

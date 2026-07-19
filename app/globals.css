@@ -57,6 +57,7 @@ button, input, textarea { font: inherit; }
 .hero-content { left: 8vw; max-width: 710px; position: absolute; top: 51%; transform: translateY(-44%); z-index: 2; }
 .eyebrow { color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .22em; margin: 0 0 27px; text-transform: uppercase; }
 .eyebrow.light { color: var(--green-soft); }
+.hero .eyebrow { font-size: 14px; letter-spacing: .18em; }
 .hero h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.045em; margin: 0; }
 .hero h1 { font-size: clamp(62px, 7.2vw, 112px); line-height: .88; }
 .hero h1 em { color: var(--status-green); font-weight: 400; }
@@ -68,10 +69,12 @@ h2 em { color: var(--green); font-weight: 400; }
 .button span, .text-link span { font-size: 17px; }
 .text-link { align-items: center; border-bottom: 1px solid rgba(36,29,32,.35); display: inline-flex; font-size: 11px; font-weight: 700; gap: 25px; letter-spacing: .12em; padding-bottom: 7px; text-transform: uppercase; }
 .text-link.light { border-color: rgba(255,255,255,.45); color: white; }
-.hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 18px; padding: 22px 32px; position: absolute; right: 0; width: 390px; z-index: 2; }
-.hero-note p { font-size: 14px; line-height: 1.55; margin: 0; }
-.hero-note strong { color: var(--plum); font-size: 15px; }
-.note-dot { background: var(--status-green); border: 4px solid #d2eadc; border-radius: 50%; flex: 0 0 auto; height: 14px; width: 14px; }
+.hero-actions .button, .hero-actions .text-link { font-size: 14px; }
+.hero-actions .button { padding: 22px 25px; }
+.hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 18px; padding: 24px 34px; position: absolute; right: 0; width: 440px; z-index: 2; }
+.hero-note p { font-size: 16px; line-height: 1.55; margin: 0; }
+.hero-note strong { color: var(--plum); font-size: 18px; }
+.note-dot { background: var(--status-green); border: 4px solid #d2eadc; border-radius: 50%; flex: 0 0 auto; height: 16px; width: 16px; }
 
 .belief-strip { align-items: center; background: var(--cream); color: var(--plum); display: flex; font-family: Georgia, serif; font-size: clamp(19px, 2vw, 29px); font-style: italic; justify-content: center; padding: 30px 5vw; }
 .belief-strip p { margin: 0 clamp(18px, 4vw, 65px); }
@@ -184,13 +187,14 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .brand strong { font-size: 20px; }
   .brand small { font-size: 9px; }
   .brand-mark { transform: scale(.84); transform-origin: left; width: 28px; }
-  .hero { min-height: 760px; }
+  .hero { min-height: 900px; }
   .hero-wash { background: linear-gradient(90deg, rgba(57,19,45,.95) 0%, rgba(70,25,53,.78) 58%, rgba(70,25,53,.22) 100%); }
   .hero-content { left: 24px; right: 24px; top: 47%; transform: translateY(-44%); }
   .hero h1 { font-size: clamp(60px, 18vw, 82px); }
   .hero-lede { font-size: 17px; line-height: 1.5; margin: 28px 0; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 24px; }
-  .hero-note { width: min(340px, calc(100% - 24px)); }
+  .hero .eyebrow { font-size: 13px; line-height: 1.45; }
+  .hero-note { padding: 24px 28px; width: min(370px, calc(100% - 20px)); }
   .belief-strip { flex-wrap: wrap; gap: 12px 0; padding: 23px 14px; }
   .belief-strip p { margin: 0 11px; }
   .section { padding: 85px 24px; }
