@@ -25,6 +25,8 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(html, /Food can feel/);
   assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles delivered with care that listens to you—not the numbers\./);
+  assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
+  assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
   assert.match(html, /Request an appointment/);
   assert.match(html, /Care that sees the/);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
@@ -58,10 +60,12 @@ test("exports a GitHub Pages-ready static site", async () => {
 test("ships the owned visual assets and no starter preview", async () => {
   await Promise.all([
     access(new URL("../public/images/meadow.avif", import.meta.url)),
+    access(new URL("../public/images/purple-flowers-breeze-poster.jpg", import.meta.url)),
     access(new URL("../public/images/amy-video-poster.jpg", import.meta.url)),
     access(new URL("../public/images/client-testimonial-poster.jpg", import.meta.url)),
     access(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url)),
     access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
+    access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
