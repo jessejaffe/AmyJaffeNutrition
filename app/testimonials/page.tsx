@@ -273,7 +273,7 @@ export default function TestimonialsPage() {
       <section className="google-reviews-section" aria-labelledby="google-reviews-title">
         <div className="google-reviews-heading">
           <div>
-            <p className="eyebrow">Google reviews</p>
+            <p className="eyebrow">Google Reviews</p>
             <h2 id="google-reviews-title">Kind words,<br /><em>answered with care.</em></h2>
           </div>
           <a className="google-rating" href={googleReviewsUrl} target="_blank" rel="noreferrer" aria-label="Read all 26 Google reviews for Amy Jaffe Nutrition">
