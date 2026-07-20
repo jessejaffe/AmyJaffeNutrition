@@ -28,7 +28,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
   assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
   assert.match(html, /Request an appointment/);
-  assert.match(html, /Care that sees the/);
+  assert.match(html, /<h2 class="about-title">Meet Amy Jaffe,<br\/>.*MS, RD, LD.*<\/h2>/i);
+  assert.match(html, /<p class="about-subheadline">Care that sees the/i);
+  assert.doesNotMatch(html, /RDN, LDN/i);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
