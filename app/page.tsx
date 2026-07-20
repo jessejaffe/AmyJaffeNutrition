@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       <section className="belief-strip" aria-label="Amy's approach">
-        <p>Less food fear.</p><span>✦</span><p>More body trust.</p><span>✦</span><p>A life beyond diets.</p>
+        <p>Eating disorder recovery.</p><span>✦</span><p>Less food fear.</p><span>✦</span><p>More body trust.</p><span>✦</span><p>A life beyond diets.</p>
       </section>
 
       <section className="about section" id="about">
