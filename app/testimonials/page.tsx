@@ -262,10 +262,15 @@ export default function TestimonialsPage() {
         <div className="testimonials-hero-note"><span>✦</span><p>Every story is shared with permission and presented in the client&apos;s own voice.</p></div>
       </section>
 
-      <section className="google-reviews-section" aria-labelledby="google-reviews-title">
+      <section className="google-reviews-section" id="google-reviews" aria-labelledby="google-reviews-title">
         <div className="google-reviews-heading">
           <div>
-            <p className="eyebrow">Google Reviews</p>
+            <p className="google-brand-heading" aria-label="Google Reviews">
+              <span className="google-word" aria-hidden="true">
+                <span className="google-blue">G</span><span className="google-red">o</span><span className="google-yellow">o</span><span className="google-blue">g</span><span className="google-green">l</span><span className="google-red">e</span>
+              </span>
+              <span className="google-reviews-label" aria-hidden="true">Reviews</span>
+            </p>
             <h2 id="google-reviews-title">Kind words,<br /><em>answered with care.</em></h2>
           </div>
           <a className="google-rating" href={googleReviewsUrl} target="_blank" rel="noreferrer" aria-label="Read all 26 Google reviews for Amy Jaffe Nutrition">

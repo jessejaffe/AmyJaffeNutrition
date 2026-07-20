@@ -77,6 +77,10 @@ test("server-renders the complete testimonials page", async () => {
   assert.match(html, /Carlos C\./);
   assert.match(html, /She helped me get my life back/i);
   assert.match(html, /Kind words,[\s\S]*?answered with care/i);
+  assert.match(html, /class="google-brand-heading" aria-label="Google Reviews"/i);
+  assert.match(html, /google-blue">G<\/span><span class="google-red">o<\/span><span class="google-yellow">o<\/span><span class="google-blue">g<\/span><span class="google-green">l<\/span><span class="google-red">e<\/span>/i);
+  assert.match(html, /class="google-reviews-label"[^>]*>Reviews<\/span>/i);
+  assert.doesNotMatch(html, /Google(?:™|®)|Google Reviews<\/p>/i);
   assert.match(html, /26 Google reviews/i);
   assert.match(html, /Amy Jaffe Nutrition replied/i);
   assert.match(html, /Amy was such a light and joy to work with/i);
