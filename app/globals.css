@@ -103,7 +103,7 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .about-awards-heading .eyebrow { margin: 0; }
 .about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(28px, 3vw, 43px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; margin: 0; }
 .award-grid { display: grid; gap: 15px; grid-template-columns: repeat(3, 1fr); }
-.award-card { align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: grid; gap: 18px; grid-template-columns: 106px 1fr; margin: 0; min-height: 142px; padding: 14px 18px 14px 14px; }
+.award-card { align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: grid; gap: 18px; grid-template-columns: 159px 1fr; margin: 0; min-height: 187px; padding: 14px 18px 14px 14px; }
 .award-image { align-items: center; aspect-ratio: 1; background: rgba(255,255,255,.72); display: flex; justify-content: center; overflow: hidden; }
 .award-image img { height: 100%; object-fit: contain; width: 100%; }
 .award-card figcaption { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 0; }
@@ -280,6 +280,11 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .testimonial-page-cta h2 em { color: var(--green-soft); }
 .testimonial-page-cta .button { margin-top: 42px; }
 
+@media (max-width: 1200px) {
+  .award-grid { grid-template-columns: 1fr; }
+  .award-card { grid-template-columns: 165px 1fr; max-width: 640px; min-height: 193px; }
+}
+
 @media (max-width: 1000px) {
   .site-header { grid-template-columns: 1fr auto; }
   .desktop-nav, .header-cta { display: none; }
@@ -296,7 +301,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .mobile-social-links img { height: 20px; max-width: 21px; width: auto; }
   .about { gap: 70px; }
   .award-grid { grid-template-columns: 1fr; }
-  .award-card { grid-template-columns: 110px 1fr; max-width: 600px; }
+  .award-card { grid-template-columns: 165px 1fr; max-width: 600px; min-height: 193px; }
   .testimonial { gap: 6vw; }
   .testimonial-video-wrap { min-height: 590px; }
   .footer-grid { grid-template-columns: 160px minmax(300px, 1fr); }
@@ -333,7 +338,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .about-awards { padding-top: 40px; }
   .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 25px; }
   .award-grid { grid-template-columns: 1fr; }
-  .award-card { grid-template-columns: 96px 1fr; margin: 0; max-width: 430px; min-height: 126px; width: 100%; }
+  .award-card { grid-template-columns: 144px 1fr; margin: 0; max-width: 430px; min-height: 172px; width: 100%; }
   .quote-section { padding: 80px 24px; }
   .section-heading-row { gap: 28px; margin-bottom: 50px; }
   .service-list { grid-template-columns: 1fr; }
