@@ -66,6 +66,9 @@ test("server-renders the complete testimonials page", async () => {
   assert.match(html, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /Stories of trust,/i);
   assert.match(html, /Kim R\./);
+  assert.match(html, /Kind, compassionate &amp; nonjudgmental\./i);
+  assert.match(html, /Mark E\./);
+  assert.match(html, /Help, support &amp; laughing at my bad jokes\./i);
   assert.match(html, /Becky/);
   assert.match(html, /Irene C\./);
   assert.match(html, /Morgan H\./);
@@ -81,14 +84,14 @@ test("server-renders the complete testimonials page", async () => {
   assert.equal((html.match(/class="google-review-card"/g) ?? []).length, 5);
   assert.match(html, /data-client="Abbey Griffith"[\s\S]*?testimonial-note-01\.jpg[\s\S]*?testimonial-note-02\.jpeg/i);
   assert.match(html, /data-client="Michelle"[\s\S]*?testimonial-note-03\.jpeg[\s\S]*?testimonial-note-04\.jpeg/i);
-  assert.match(html, /data-client="Karen"[\s\S]*?testimonial-note-07\.jpeg[\s\S]*?testimonial-note-08\.jpg/i);
-  assert.match(html, /data-client="Kim R\."[\s\S]*?testimonial-note-11\.jpeg/i);
-  assert.match(html, /data-client="Melissa L\."[\s\S]*?testimonial-note-12\.jpeg/i);
+  assert.match(html, /data-client="Karen"[\s\S]*?testimonial-note-07\.jpeg/i);
+  assert.match(html, /data-client="Maria"[\s\S]*?testimonial-note-09\.png[\s\S]*?testimonial-note-08\.jpg/i);
   assert.match(html, /data-client="Morgan H\."[\s\S]*?testimonial-note-13\.jpeg/i);
   assert.match(html, /data-client="Rachael P\."[\s\S]*?testimonial-note-14\.jpg/i);
   assert.match(html, /data-client="Dr\. Sammi Siegel"[\s\S]*?testimonial-note-15\.jpeg/i);
   assert.match(html, /data-client="Carlos C\."[\s\S]*?testimonial-note-16\.jpg/i);
-  assert.equal((html.match(/<img[^>]+src="\.\.\/images\/testimonials\/testimonial-note-/g) ?? []).length, 16);
+  assert.equal((html.match(/<img[^>]+src="\.\.\/images\/testimonials\/testimonial-note-/g) ?? []).length, 14);
+  assert.doesNotMatch(html, /client-quote-card/i);
   assert.doesNotMatch(html, /testimonial-image-gallery/i);
   assert.doesNotMatch(html, /rainbow of possibilities/i);
 });

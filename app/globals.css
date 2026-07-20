@@ -237,20 +237,28 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .visual-testimonial-note img, .visual-testimonial-portrait img { background: white; display: block; height: auto; width: 100%; }
 .visual-testimonial-portrait img { aspect-ratio: 1; object-fit: cover; }
 .visual-testimonial-card > p { color: var(--green); font-size: 10px; font-weight: 700; grid-column: 1 / -1; letter-spacing: .17em; margin: 2px 4px 3px; text-transform: uppercase; }
-.client-stories-section { background: var(--green); padding: 110px 8vw 120px; }
-.client-stories-section .story-heading h2 { color: white; }
-.client-stories-section .story-heading h2 em { color: var(--green-soft); }
-.client-quote-grid { align-items: start; display: grid; gap: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.client-quote-card { background: var(--paper); border-top: 4px solid var(--mulberry); padding: 34px 36px 32px; }
-.client-quote-card:nth-child(3n+2) { background: #f3e4ce; border-top-color: var(--gold); }
-.client-quote-card:nth-child(3n) { background: #e4eee7; border-top-color: var(--green-soft); }
-.client-quote-top { align-items: flex-start; display: flex; justify-content: space-between; margin-bottom: 27px; }
-.client-quote-top img { border: 6px solid rgba(255,255,255,.72); border-radius: 50%; height: 106px; object-fit: cover; width: 106px; }
-.quote-number { color: var(--mulberry); display: block; font-family: Georgia, serif; font-size: 23px; opacity: .55; }
-.client-quote-card blockquote { color: var(--plum); font-family: Georgia, serif; font-size: clamp(20px, 1.65vw, 26px); line-height: 1.5; margin: 0; }
-.client-quote-card blockquote p { margin: 0 0 17px; }
-.client-quote-card blockquote p:last-child { margin-bottom: 0; }
-.client-quote-name { color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .17em; margin: 26px 0 0; text-transform: uppercase; }
+.client-stories-section { background: var(--green); overflow: hidden; padding: 105px 8vw 135px; position: relative; }
+.client-stories-section::before { border: 1px solid rgba(255,255,255,.08); border-radius: 50%; content: ""; height: 680px; pointer-events: none; position: absolute; right: -280px; top: -330px; width: 680px; }
+.client-stories-section::after { background: radial-gradient(circle, rgba(183,214,194,.14) 0%, rgba(183,214,194,0) 70%); bottom: -300px; content: ""; height: 720px; left: -280px; pointer-events: none; position: absolute; width: 720px; }
+.client-stories-heading { margin-bottom: 105px; position: relative; z-index: 1; }
+.client-stories-heading > p { color: #d8eadf; font-family: Georgia, serif; font-size: clamp(24px, 2.6vw, 40px); font-style: italic; line-height: 1.2; margin: 0 0 20px; }
+.client-stories-heading h2 { color: white; font-size: clamp(88px, 11.8vw, 178px); line-height: .82; }
+.client-stories-heading h2 em { color: #f2c4dc; font-weight: 400; }
+.client-quote-cloud { display: grid; gap: clamp(42px, 5vw, 78px) clamp(14px, 2vw, 34px); grid-template-columns: repeat(6, minmax(0, 1fr)); position: relative; z-index: 1; }
+.client-quote-bubble { align-content: center; display: grid; grid-column: span 2; min-height: 285px; padding: 42px 34px; position: relative; text-align: center; }
+.client-quote-bubble::before { border: 1px solid rgba(255,255,255,.36); border-radius: 49% 51% 46% 54% / 54% 45% 55% 46%; content: ""; inset: 0; pointer-events: none; position: absolute; transform: rotate(-2deg); }
+.client-quote-bubble::after { border: 1px solid rgba(255,255,255,.36); border-radius: 50%; bottom: -18px; content: ""; height: 11px; left: 19%; position: absolute; width: 11px; }
+.client-quote-bubble:nth-child(even) { margin-top: 48px; }
+.client-quote-bubble:nth-child(even)::before { border-color: rgba(247,240,231,.5); border-radius: 55% 45% 52% 48% / 47% 54% 46% 53%; transform: rotate(2deg); }
+.client-quote-bubble:nth-child(3n)::before { border-color: rgba(242,196,220,.56); }
+.client-quote-bubble:nth-child(4n)::after { left: auto; right: 21%; }
+.client-quote-bubble:nth-last-child(2) { grid-column: 2 / span 2; }
+.client-quote-bubble:last-child { grid-column: 4 / span 2; }
+.quote-number { align-items: center; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; color: rgba(255,255,255,.7); display: flex; font-family: Georgia, serif; font-size: 13px; height: 37px; justify-content: center; left: 12%; position: absolute; top: 8%; width: 37px; }
+.client-quote-bubble blockquote { color: white; font-family: Georgia, serif; font-size: clamp(27px, 2.6vw, 42px); letter-spacing: -.025em; line-height: 1.12; margin: 0 auto; max-width: 430px; }
+.client-quote-bubble:nth-child(3n+2) blockquote { color: var(--cream); }
+.client-quote-bubble:nth-child(3n) blockquote { color: #f2c4dc; }
+.client-quote-name { color: #d8eadf; font-size: 10px; font-weight: 700; letter-spacing: .17em; margin: 24px 0 0; text-transform: uppercase; }
 .long-story-list { border-top: 1px solid #d9d0ca; }
 .long-story { border-bottom: 1px solid #d9d0ca; display: grid; gap: clamp(45px, 8vw, 120px); grid-template-columns: minmax(180px, .34fr) 1fr; padding: 58px 0 66px; }
 .long-story > header > img { background: var(--cream); border: 8px solid var(--cream); display: block; height: auto; margin: 0 0 28px; max-height: 260px; object-fit: cover; width: min(100%, 190px); }
@@ -354,9 +362,13 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .testimonial-page-heading h2 { font-size: 48px; }
   .visual-testimonial-grid { grid-template-columns: 1fr; margin: 0 auto; max-width: 560px; }
   .visual-testimonial-card.has-portrait { grid-template-columns: minmax(0, 1fr) minmax(92px, .32fr); }
-  .client-quote-grid { grid-template-columns: 1fr; }
-  .client-quote-card { padding: 28px 24px 27px; }
-  .client-quote-top img { height: 88px; width: 88px; }
+  .client-stories-heading { margin-bottom: 68px; }
+  .client-stories-heading > p { font-size: 25px; margin-bottom: 17px; }
+  .client-stories-heading h2 { font-size: clamp(68px, 21vw, 96px); line-height: .86; }
+  .client-quote-cloud { gap: 43px; grid-template-columns: 1fr; margin: 0 auto; max-width: 520px; }
+  .client-quote-bubble, .client-quote-bubble:nth-last-child(2), .client-quote-bubble:last-child { grid-column: auto; min-height: 250px; padding: 42px 30px; }
+  .client-quote-bubble:nth-child(even) { margin-top: 0; }
+  .client-quote-bubble blockquote { font-size: clamp(29px, 8vw, 39px); }
   .long-story { gap: 30px; grid-template-columns: 1fr; padding: 46px 0 52px; }
   .long-story h3 { margin-top: 12px; }
   .long-story blockquote p { font-size: 15px; }

@@ -27,6 +27,11 @@ type WrittenTestimonial = {
   role?: string;
 };
 
+type ClientHighlight = {
+  name: string;
+  highlight: string;
+};
+
 type GoogleReview = {
   name: string;
   review: string;
@@ -92,13 +97,13 @@ const visualTestimonials: VisualTestimonial[] = [
     name: "Karen",
     note: "testimonial-note-07.jpeg",
     noteAlt: "Handwritten note from Karen about overcoming an eating disorder and building a healthy relationship with food",
-    portrait: "testimonial-note-08.jpg",
-    portraitAlt: "Karen",
   },
   {
     name: "Maria",
     note: "testimonial-note-09.png",
     noteAlt: "Handwritten note from Maria calling Amy a trusted nutritionist and friend",
+    portrait: "testimonial-note-08.jpg",
+    portraitAlt: "Maria wearing a black blouse with pink stripes",
   },
   {
     name: "Morgan Herrick",
@@ -107,63 +112,50 @@ const visualTestimonials: VisualTestimonial[] = [
   },
 ];
 
-const clientTestimonials: WrittenTestimonial[] = [
+const clientTestimonials: ClientHighlight[] = [
   {
     name: "Kim R.",
-    image: "testimonial-note-11.jpeg",
-    imageAlt: "Kim R.",
-    paragraphs: ["I am so thankful to have found such a kind, compassionate, and nonjudgmental nutritionist. You have helped me pave my road to recovery!"],
-  },
-  {
-    name: "Becky",
-    paragraphs: [
-      "I don't know if you remember me. I just wanted to let you know I am finally in recovery. We found out I have autism and ARFID, which is an eating disorder highly linked to autism.",
-      "I wanted to text you because I know you probably value hearing from past clients, and I just wanted to say thank you for always giving me grace and realizing it was always a bit bigger than what everyone else saw. I have restored weight in the past year and I am so happy. Always grateful for you. Thanks, Amy.",
-    ],
+    highlight: "Kind, compassionate & nonjudgmental.",
   },
   {
     name: "Vicky",
-    paragraphs: ["Thank you for the great work you do and for reminding me to always be kind to myself!"],
+    highlight: "Always reminding me to be kind to myself.",
   },
   {
-    name: "Markey",
-    paragraphs: ["Thank you so much for all of your help and support, as well as laughing at my bad jokes!"],
+    name: "Mark E.",
+    highlight: "Help, support & laughing at my bad jokes.",
+  },
+  {
+    name: "Becky",
+    highlight: "You always gave me grace.",
   },
   {
     name: "Lauren",
-    paragraphs: [
-      "Hi Amy, This is Lauren. I know it has been a few years but I wanted to let you know that as of a few days ago I am officially a Registered Dietitian.",
-      "I wanted to thank you for inspiring me to go down this path and for all of your help in allowing me to find food freedom. I hope to work with clients like myself and make a difference in their lives like how you did in mine. Thank you so much for everything.",
-    ],
+    highlight: "You inspired me to find food freedom.",
   },
   {
     name: "Katie F.",
-    paragraphs: [
-      "I wanted to share and say THANK YOU!!!!! I am so pleased to be considered one of your successful clients. It makes a lot of sense NOW that this is the one approach that could give me the ability to trust myself with any and every food, and allow me the ability to really trust you when you tell me using this approach will make the difference with my long-term success.",
-      "It actually clicked for me because it's not a magic pill or new fad diet. It's using my own body, mind and some solid tips to nourish myself - finally. I finally know how to successfully do that. For teaching me this most important skill, I will be forever grateful to you!!!!",
-    ],
+    highlight: "I can trust myself with any and every food.",
   },
   {
     name: "Allison P.",
-    paragraphs: ["After working with Amy Jaffe for over a year, I can say that it's a pleasure to work with someone as professional and understanding as her. Amy focuses on nutrition, but it's very important for her to understand what's going on in my life that may be affecting my eating behavior. What makes all of my visits worth it is that she always listens carefully to all my thoughts and considers them important material to work with, no matter how simple I may consider them."],
+    highlight: "Professional, understanding & always listening.",
   },
   {
     name: "Janet M.",
-    paragraphs: ["Amy has been my nutritionist for years. She empowers me to make my own nutrition choices and doesn't make the food intimidating. She works with you and where you are and still challenges you to get a little closer to your nutrition goals. Can't isn't a word with Amy and she helps me find the CAN in any situation. I couldn't imagine working through my food issues with anyone else."],
+    highlight: "She helps me find the CAN in any situation.",
   },
   {
     name: "Josh H.",
-    paragraphs: ["I want to thank you for your guidance with your nutrition videos. I worked with you a couple years ago when you taught me about intuitive eating and it changed my life. I found great value in your videos. Thanks!"],
+    highlight: "Intuitive eating changed my life.",
   },
   {
     name: "Jackie H.",
-    paragraphs: ["It's been about one and a half years since I saw you but I wanted to send a quick note to say how eternally grateful I am for the time I spent with you sharing my struggles. Thank you for speaking the truth to my distorted thinking and helping me make changes mentally, physically, spiritually and socially. I am feeling strong and healthy. I haven't weighed myself or purged in almost 2 years!"],
+    highlight: "Strong, healthy & eternally grateful.",
   },
   {
     name: "Melissa L.",
-    image: "testimonial-note-12.jpeg",
-    imageAlt: "Melissa L.",
-    paragraphs: ["Amy, thank you for your continued support and wisdom. You truly are a gift to this world and to me. Thank you."],
+    highlight: "Continued support & wisdom.",
   },
 ];
 
@@ -323,20 +315,17 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <section className="client-stories-section">
-        <div className="testimonial-page-heading story-heading">
-          <p className="eyebrow light">In their words</p>
-          <h2>Care that stays<br /><em>with you.</em></h2>
+      <section className="client-stories-section" id="in-their-words">
+        <div className="client-stories-heading">
+          <p>Care that stays with you.</p>
+          <h2>In their <em>words.</em></h2>
         </div>
-        <div className="client-quote-grid">
+        <div className="client-quote-cloud">
           {clientTestimonials.map((testimonial, index) => (
-            <article className={`client-quote-card${testimonial.image ? " has-client-photo" : ""}`} data-client={testimonial.name} key={testimonial.name}>
-              <div className="client-quote-top">
-                <span className="quote-number">{String(index + 1).padStart(2, "0")}</span>
-                {testimonial.image && <img src={`../images/testimonials/${testimonial.image}`} alt={testimonial.imageAlt} loading="lazy" />}
-              </div>
-              <blockquote>{testimonial.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</blockquote>
-              <p className="client-quote-name">{testimonial.name}</p>
+            <article className="client-quote-bubble" data-client={testimonial.name} key={testimonial.name}>
+              <span className="quote-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <blockquote>{testimonial.highlight}</blockquote>
+              <p className="client-quote-name">— {testimonial.name}</p>
             </article>
           ))}
         </div>
