@@ -111,7 +111,7 @@ export default function Home() {
               <source src="video/nutritioncounselingflorida.mp4" type="video/mp4" />
             </video>
           </div>
-          <div className="experience-badge"><strong>25+</strong><span>years of<br />experience</span></div>
+          <div className="experience-badge"><strong>20+</strong><span>years of<br />experience</span></div>
         </div>
 
         <div className="about-copy">

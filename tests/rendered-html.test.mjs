@@ -29,6 +29,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
   assert.match(html, /Request an appointment/);
   assert.match(html, /Care that sees the/);
+  assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
   assert.match(html, /src="video\/client-testimonial\.mp4"/);
