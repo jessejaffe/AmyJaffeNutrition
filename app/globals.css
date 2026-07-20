@@ -43,10 +43,10 @@ button, input, textarea { font: inherit; }
 .desktop-nav > a:hover, .desktop-nav > a:focus-visible { color: var(--green); }
 .desktop-nav > a:hover::after, .desktop-nav > a:focus-visible::after { transform: scaleX(1); }
 .header-social-links { align-items: center; border-left: 1px solid rgba(36,29,32,.16); display: flex; gap: 12px; padding-left: clamp(16px, 1.5vw, 24px); }
-.desktop-nav .header-social-links a { align-items: center; display: flex; height: 28px; justify-content: center; opacity: .62; padding: 0; transition: opacity .2s ease, transform .2s ease; width: 22px; }
+.desktop-nav .header-social-links a { align-items: center; display: flex; height: 32px; justify-content: center; opacity: .62; padding: 0; transition: opacity .2s ease, transform .2s ease; width: 28px; }
 .desktop-nav .header-social-links a::after { display: none; }
 .desktop-nav .header-social-links a:hover { opacity: 1; transform: translateY(-1px); }
-.header-social-links img { height: 15px; max-width: 16px; width: auto; }
+.header-social-links img { height: 20px; max-width: 21px; width: auto; }
 .header-cta { align-items: center; background: var(--plum); color: #fff; display: flex; font-size: 12px; gap: 28px; justify-self: end; letter-spacing: .08em; padding: 14px 18px; text-transform: uppercase; }
 .header-cta span { color: var(--green-soft); font-size: 17px; }
 .mobile-menu { display: none; }
@@ -180,7 +180,7 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .mobile-menu nav > a { color: var(--mulberry); font-family: Georgia, serif; font-size: 24px; font-weight: 600; }
   .mobile-social-links { border-top: 1px solid rgba(91,33,72,.18); display: flex; gap: 10px; padding-top: 18px; }
   .mobile-menu nav .mobile-social-links a { align-items: center; border: 1px solid rgba(91,33,72,.28); border-radius: 50%; display: flex; height: 38px; justify-content: center; width: 38px; }
-  .mobile-social-links img { height: 16px; max-width: 17px; width: auto; }
+  .mobile-social-links img { height: 20px; max-width: 21px; width: auto; }
   .about { gap: 70px; }
   .testimonial { gap: 6vw; }
   .testimonial-video-wrap { min-height: 590px; }

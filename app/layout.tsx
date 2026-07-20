@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Amy Jaffe Nutrition",
     description: "A healthier relationship with food.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Amy Jaffe Nutrition — A healthier relationship with food" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Amy Jaffe Nutrition - A healthier relationship with food" }],
   },
   twitter: { card: "summary_large_image", images: ["/og.png"] },
 };

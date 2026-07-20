@@ -11,7 +11,7 @@ const services = [
     number: "01",
     title: "Nutrition assessment",
     meta: "90 minutes",
-    body: "A thoughtful look at your health, eating patterns, and goals—followed by a practical plan created together.",
+    body: "A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together.",
   },
   {
     number: "02",
@@ -86,7 +86,7 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow light">Nutrition counseling · Miami &amp; telehealth</p>
           <h1>Food can feel<br /><em>good again.</em></h1>
-          <p className="hero-lede">Find freedom from eating disorders, diets, food rules, and body struggles delivered with care that listens to you—not the numbers.</p>
+          <p className="hero-lede">Find freedom from eating disorders, diets, food rules, and body struggles delivered with care that listens to you - not the numbers.</p>
           <div className="hero-actions">
             <a className="button button-cream" href="#contact">Request an appointment <span>↗</span></a>
             <a className="text-link light" href="#about">Meet Amy <span>↓</span></a>
@@ -118,7 +118,7 @@ export default function Home() {
           <h2 className="about-title">Meet Amy Jaffe,<br /><em>MS, RD, LD</em></h2>
           <p className="about-subheadline">Care that sees the <em>whole person.</em></p>
           <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
-          <p>My approach is highly individualized and holistic. We work collaboratively—never from a place of judgment or rigid rules—to help you develop a healthier relationship with food and your body.</p>
+          <p>My approach is highly individualized and holistic. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
           <div className="credentials">
             <span>Registered Dietitian</span><span>Certified Intuitive Eating Specialist</span><span>HAES-aligned</span>
           </div>
@@ -129,7 +129,7 @@ export default function Home() {
       <section className="quote-section">
         <p className="quote-mark" aria-hidden="true">“</p>
         <blockquote>It&apos;s not only about calories, cholesterol, and other metrics. It&apos;s about your relationship with food. It&apos;s about challenging your beliefs.</blockquote>
-        <p className="quote-caption">— Amy Jaffe</p>
+        <p className="quote-caption">- Amy Jaffe</p>
       </section>
 
       <section className="services section" id="services">
