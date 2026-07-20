@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Client Testimonials | Amy Jaffe Nutrition",
-  description: "Client stories and reflections about working with Amy Jaffe for compassionate, non-diet nutrition care and eating disorder recovery.",
+  description: "Client stories, Google reviews, and Amy's responses about compassionate, non-diet nutrition care and eating disorder recovery.",
 };
 
 const socialLinks = [
