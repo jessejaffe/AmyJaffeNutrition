@@ -89,13 +89,14 @@ h2 em { color: var(--green); font-weight: 400; }
 .experience-badge strong { font-family: Georgia, serif; font-size: 37px; font-weight: 400; line-height: 1; }
 .experience-badge span { font-size: 9px; letter-spacing: .13em; line-height: 1.45; margin-top: 8px; text-transform: uppercase; }
 h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; }
-.about-title em { color: var(--green); }
+.about-title span { color: var(--mulberry); display: block; font-size: clamp(54px, 5vw, 72px); font-weight: 700; line-height: .92; }
+.about-title em { color: var(--green); display: block; font-size: clamp(40px, 3.6vw, 52px); line-height: 1; margin-top: 8px; }
 .about-subheadline { color: var(--plum); font-family: Georgia, serif; font-size: clamp(26px, 2.5vw, 37px); line-height: 1.25; margin: 30px 0 0; }
 .about-subheadline em { color: var(--green); font-weight: 400; }
 .about-copy .large-copy { color: var(--plum); font-family: Georgia, serif; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.42; margin: 25px 0 20px; }
 .about-copy > p:not(.eyebrow):not(.about-subheadline):not(.large-copy) { color: #5f5458; font-size: 15px; line-height: 1.75; max-width: 640px; }
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 35px; }
-.credentials span { border: 1px solid rgba(181,22,117,.38); border-radius: 30px; color: var(--mulberry); font-size: 12px; font-weight: 700; letter-spacing: .06em; padding: 11px 16px; text-transform: uppercase; }
+.credentials span { border: 1px solid rgba(181,22,117,.42); border-radius: 30px; color: var(--mulberry); font-size: 14px; font-weight: 800; letter-spacing: .045em; padding: 13px 18px; text-transform: uppercase; }
 .about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 14px; gap: 28px; }
 
 .quote-section { background: var(--plum); color: white; padding: 95px 14vw 105px; position: relative; text-align: center; }
@@ -204,6 +205,8 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .section { padding: 85px 24px; }
   .about, .section-heading-row, .testimonial, .resources, .insurance, .contact { grid-template-columns: 1fr; }
   .about { gap: 75px; }
+  .about-title span { font-size: 48px; }
+  .about-title em { font-size: 38px; }
   .experience-badge { bottom: -48px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
   .quote-section { padding: 80px 24px; }

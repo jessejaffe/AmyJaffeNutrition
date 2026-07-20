@@ -115,7 +115,7 @@ export default function Home() {
         </div>
 
         <div className="about-copy">
-          <h2 className="about-title">Meet Amy Jaffe,<br /><em>MS, RD, LD</em></h2>
+          <h2 className="about-title"><span>Meet Amy Jaffe,</span><em>MS, RD, LD</em></h2>
           <p className="about-subheadline">Care that sees the <em>whole person.</em></p>
           <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
           <p>My approach is highly individualized and holistic. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
