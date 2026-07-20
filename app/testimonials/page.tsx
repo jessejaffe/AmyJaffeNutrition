@@ -11,29 +11,115 @@ const socialLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/amysjaffe/", icon: "../images/social-linkedin.svg" },
 ];
 
-const testimonialImages = [
-  ["testimonial-note-01.jpg", "Handwritten client note thanking Amy for transforming their relationship with food and body"],
-  ["testimonial-note-02.jpeg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-03.jpeg", "Handwritten client note thanking Amy for eating disorder recovery support"],
-  ["testimonial-note-04.jpeg", "Client portrait with a Stay Hopeful message"],
-  ["testimonial-note-05.jpg", "Handwritten client note thanking Amy for years of help and guidance"],
-  ["testimonial-note-06.jpeg", "Client gratitude message about learning to enjoy food and life again"],
-  ["testimonial-note-07.jpeg", "Handwritten note about overcoming an eating disorder and building a healthy relationship with food"],
-  ["testimonial-note-08.jpg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-09.png", "Handwritten note calling Amy a trusted nutritionist and friend"],
-  ["testimonial-note-10.jpeg", "Client note thanking Amy for helping create food freedom"],
-  ["testimonial-note-11.jpeg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-12.jpeg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-13.jpeg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-14.jpg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-15.jpeg", "Portrait shared by an Amy Jaffe Nutrition client"],
-  ["testimonial-note-16.jpg", "Portrait shared with a client testimonial"],
+type VisualTestimonial = {
+  name: string;
+  note: string;
+  noteAlt: string;
+  portrait?: string;
+  portraitAlt?: string;
+};
+
+type WrittenTestimonial = {
+  name: string;
+  paragraphs: string[];
+  image?: string;
+  imageAlt?: string;
+  role?: string;
+};
+
+type GoogleReview = {
+  name: string;
+  review: string;
+  reply: string;
+};
+
+const googleReviewsUrl = "https://www.google.com/search?q=Amy+Jaffe+Nutrition+Inc.+reviews#lrd=0x88d9b798d570deaf:0xdb7f0e34ff8acdc,1,,,,";
+
+const googleReviews: GoogleReview[] = [
+  {
+    name: "Cata Cata",
+    review: "Amy is extremely knowledgeable, kind and compassionate. She’s been extremely helpful to me in my journey to a better relationship with food. She’s encouraged me and I’ve let learned a lot with her. I highly recommend her services.",
+    reply: "Thank you so much for your kind and generous review. This means a lot to me🙏🏻! Thanks again",
+  },
+  {
+    name: "Ana Dutton-Franco",
+    review: "Amy was such a light and joy to work with! She helped me understand nutrition and what my body was undergoing. She is very kind and professional. I highly recommend her!!!",
+    reply: "Ana, it was you who were such a light and joy to work with! I appreciate your kind and generous words…all the best as you continue your journeys ✳️",
+  },
+  {
+    name: "Lori Werner",
+    review: "Amy was a great listener and showed my daughter empathy, compassion and a safe space to talk when she was struggling with disordered eating. She was also available to talk if I had any questions or concerns. Thank you, Amy!",
+    reply: "You are so welcome! Thank you for your kind words...You know how much I enjoyed working with your lovely daughter. I wish the best for both of you! Amy",
+  },
+  {
+    name: "Madeleine Trueba",
+    review: "Amy is amazing! She is very knowledgeable and welcoming. She has helped me for over a year now. I highly recommend seeing her if you need any guidance on nutrition and support in recovery!",
+    reply: "Mado, thank you so much for your kind and generous review! You continue to make so much progress and are a joy to work with. It’s an honor to be a witness to your journey ❗️",
+  },
+  {
+    name: "Coco Hull",
+    review: "Amy helped me get my life back. I’m not sure where I’d be without her. She changed my life — I’m about a year post seeing her regularly, and I use the tools and mindset she gave me everyday. Thank you, Amy.",
+    reply: "Coco! it is gratifying to know that you remembered me and our work together after this much time has gone by. I'm thrilled to hear how well you are doing and know you have been, and will continue to be successful in whatever you endeavor you to accomplish. All my best and a big virtual hug, Amy",
+  },
 ];
 
-const clientTestimonials = [
+const visualTestimonials: VisualTestimonial[] = [
+  {
+    name: "Abbey Griffith",
+    note: "testimonial-note-01.jpg",
+    noteAlt: "Handwritten note from Abbey thanking Amy for transforming her relationship with food and her body",
+    portrait: "testimonial-note-02.jpeg",
+    portraitAlt: "Abbey Griffith",
+  },
+  {
+    name: "Michelle",
+    note: "testimonial-note-03.jpeg",
+    noteAlt: "Handwritten note from Michelle thanking Amy for her eating disorder recovery support",
+    portrait: "testimonial-note-04.jpeg",
+    portraitAlt: "Michelle wearing a Stay Hopeful shirt",
+  },
+  {
+    name: "Cristi",
+    note: "testimonial-note-05.jpg",
+    noteAlt: "Handwritten note from Cristi thanking Amy for years of guidance and encouragement",
+  },
+  {
+    name: "Rachel",
+    note: "testimonial-note-06.jpeg",
+    noteAlt: "Message from Rachel thanking Amy for helping her enjoy food and life again",
+  },
+  {
+    name: "Karen",
+    note: "testimonial-note-07.jpeg",
+    noteAlt: "Handwritten note from Karen about overcoming an eating disorder and building a healthy relationship with food",
+    portrait: "testimonial-note-08.jpg",
+    portraitAlt: "Karen",
+  },
+  {
+    name: "Maria",
+    note: "testimonial-note-09.png",
+    noteAlt: "Handwritten note from Maria calling Amy a trusted nutritionist and friend",
+  },
+  {
+    name: "Morgan Herrick",
+    note: "testimonial-note-10.jpeg",
+    noteAlt: "Note from Morgan Herrick thanking Amy for helping her find food freedom",
+  },
+];
+
+const clientTestimonials: WrittenTestimonial[] = [
   {
     name: "Kim R.",
+    image: "testimonial-note-11.jpeg",
+    imageAlt: "Kim R.",
     paragraphs: ["I am so thankful to have found such a kind, compassionate, and nonjudgmental nutritionist. You have helped me pave my road to recovery!"],
+  },
+  {
+    name: "Becky",
+    paragraphs: [
+      "I don't know if you remember me. I just wanted to let you know I am finally in recovery. We found out I have autism and ARFID, which is an eating disorder highly linked to autism.",
+      "I wanted to text you because I know you probably value hearing from past clients, and I just wanted to say thank you for always giving me grace and realizing it was always a bit bigger than what everyone else saw. I have restored weight in the past year and I am so happy. Always grateful for you. Thanks, Amy.",
+    ],
   },
   {
     name: "Vicky",
@@ -75,11 +161,13 @@ const clientTestimonials = [
   },
   {
     name: "Melissa L.",
+    image: "testimonial-note-12.jpeg",
+    imageAlt: "Melissa L.",
     paragraphs: ["Amy, thank you for your continued support and wisdom. You truly are a gift to this world and to me. Thank you."],
   },
 ];
 
-const longerStories = [
+const longerStories: WrittenTestimonial[] = [
   {
     name: "Irene C.",
     paragraphs: [
@@ -98,6 +186,8 @@ const longerStories = [
   },
   {
     name: "Morgan H.",
+    image: "testimonial-note-13.jpeg",
+    imageAlt: "Morgan H.",
     paragraphs: [
       "12 months ago I was caught in a never-ending cycle of bingeing and restricting, and I had a terrible relationship with my body. I had lived this way for years, and I 100% believed that recovery was not possible for me. My therapist kept encouraging me to meet with a nutritionist, but honestly, I was terrified. I didn't want to be put on a diet plan. I didn't want to be told I needed to gain or lose weight. I didn't want someone to know what I did or did not let myself eat.",
       "But I did know that I couldn't live that life anymore. Something needed to change. So, I got the guts to schedule my first appointment with Amy. And I can honestly say that is the best thing I have ever done for myself. Amy introduced me to intuitive eating and it changed my life. She helped me break up with dieting and develop a positive relationship with food.",
@@ -106,6 +196,8 @@ const longerStories = [
   },
   {
     name: "Rachael P.",
+    image: "testimonial-note-14.jpg",
+    imageAlt: "Rachael P.",
     paragraphs: [
       "I worked with Amy Jaffe in the capacity of my registered dietician from April through November 2018. Initially we worked face-to-face while I was working in Miami; however, we continued meeting for weekly sessions on the telephone and FaceTime. Amy was always most attentive to my needs as an individual and was very quick to learn about my own personal circumstances: I suffer from anorexia, complex-PTSD, and dissociation.",
       "Within a matter of weeks Amy had a concrete grasp of my various diagnoses and had become very adept at adjusting her approach to best meet my needs on any given day. She liaised frequently with my therapists and family members and communicated with me on a near-daily basis through text messages and an online recovery application for people with eating disorders. Amy's understanding of my unique needs and her continued support enabled me to continue setting and attaining achievable goals.",
@@ -116,10 +208,14 @@ const longerStories = [
   {
     name: "Dr. Sammi Siegel",
     role: "Licensed Mental Health Counselor",
+    image: "testimonial-note-15.jpeg",
+    imageAlt: "Dr. Sammi Siegel",
     paragraphs: ["I can't do my job without Amy Jaffe! I would be remiss if I did not enlist the collaboration with her in working with my clients who struggle with their relationship with food. Having her working with my clients gives me the peace of mind that they are well taken care of for the nutrition piece so that I can focus on the psychotherapy aspects of eating disorder treatment. She is the peanut butter to my jelly, the yin to my yang."],
   },
   {
     name: "Carlos C.",
+    image: "testimonial-note-16.jpg",
+    imageAlt: "Carlos C.",
     paragraphs: [
       "Several years ago, I was overweight with pain in my right knee. I wanted to reduce my weight but not follow a diet that might last some months only. Instead, I was looking for a long-term solution by changing my eating habits.",
       "I met Amy at that moment, and I have to say that she was outstanding in helping me accomplish my goals. She knows how to help you change your eating habits in ways that later impact a healthy lifestyle. I highly recommend Amy for her professionalism and human quality.",
@@ -174,16 +270,55 @@ export default function TestimonialsPage() {
         <div className="testimonials-hero-note"><span>✦</span><p>Every story is shared with permission and presented in the client&apos;s own voice.</p></div>
       </section>
 
+      <section className="google-reviews-section" aria-labelledby="google-reviews-title">
+        <div className="google-reviews-heading">
+          <div>
+            <p className="eyebrow">Google reviews</p>
+            <h2 id="google-reviews-title">Kind words,<br /><em>answered with care.</em></h2>
+          </div>
+          <a className="google-rating" href={googleReviewsUrl} target="_blank" rel="noreferrer" aria-label="Read all 26 Google reviews for Amy Jaffe Nutrition">
+            <span className="google-rating-score">5.0</span>
+            <span className="google-stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <span>26 Google reviews</span>
+            <strong>Read all reviews <span aria-hidden="true">↗</span></strong>
+          </a>
+        </div>
+        <div className="google-review-grid">
+          {googleReviews.map((review) => (
+            <article className="google-review-card" key={review.name}>
+              <header>
+                <div className="google-reviewer-mark" aria-hidden="true">{review.name.charAt(0)}</div>
+                <div><h3>{review.name}</h3><span className="google-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+              </header>
+              <blockquote>{review.review}</blockquote>
+              <div className="google-owner-reply">
+                <p>Amy Jaffe Nutrition replied</p>
+                <blockquote>{review.reply}</blockquote>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="google-review-source">Selected public reviews and owner responses from Google.</p>
+      </section>
+
       <section className="testimonial-gallery-section">
         <div className="testimonial-page-heading">
           <p className="eyebrow">Notes and milestones</p>
           <h2>Messages that mean<br /><em>the world.</em></h2>
         </div>
-        <div className="testimonial-image-gallery">
-          {testimonialImages.map(([file, alt], index) => (
-            <figure className={`testimonial-image-card image-card-${index + 1}`} key={file}>
-              <img src={`../images/testimonials/${file}`} alt={alt} loading={index > 3 ? "lazy" : "eager"} />
-            </figure>
+        <div className="visual-testimonial-grid">
+          {visualTestimonials.map((testimonial, index) => (
+            <article className={`visual-testimonial-card${testimonial.portrait ? " has-portrait" : ""}`} data-client={testimonial.name} key={testimonial.name}>
+              <figure className="visual-testimonial-note">
+                <img src={`../images/testimonials/${testimonial.note}`} alt={testimonial.noteAlt} loading={index > 1 ? "lazy" : "eager"} />
+              </figure>
+              {testimonial.portrait && (
+                <figure className="visual-testimonial-portrait">
+                  <img src={`../images/testimonials/${testimonial.portrait}`} alt={testimonial.portraitAlt} loading={index > 1 ? "lazy" : "eager"} />
+                </figure>
+              )}
+              <p>{testimonial.name}</p>
+            </article>
           ))}
         </div>
       </section>
@@ -195,8 +330,11 @@ export default function TestimonialsPage() {
         </div>
         <div className="client-quote-grid">
           {clientTestimonials.map((testimonial, index) => (
-            <article className="client-quote-card" key={testimonial.name}>
-              <span className="quote-number">{String(index + 1).padStart(2, "0")}</span>
+            <article className={`client-quote-card${testimonial.image ? " has-client-photo" : ""}`} data-client={testimonial.name} key={testimonial.name}>
+              <div className="client-quote-top">
+                <span className="quote-number">{String(index + 1).padStart(2, "0")}</span>
+                {testimonial.image && <img src={`../images/testimonials/${testimonial.image}`} alt={testimonial.imageAlt} loading="lazy" />}
+              </div>
               <blockquote>{testimonial.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</blockquote>
               <p className="client-quote-name">{testimonial.name}</p>
             </article>
@@ -211,8 +349,11 @@ export default function TestimonialsPage() {
         </div>
         <div className="long-story-list">
           {longerStories.map((story, index) => (
-            <article className="long-story" key={story.name}>
-              <header><span>{String(index + 1).padStart(2, "0")}</span><h3>{story.name}</h3>{story.role && <p>{story.role}</p>}</header>
+            <article className={`long-story${story.image ? " has-client-photo" : ""}`} data-client={story.name} key={story.name}>
+              <header>
+                {story.image && <img src={`../images/testimonials/${story.image}`} alt={story.imageAlt} loading="lazy" />}
+                <span>{String(index + 1).padStart(2, "0")}</span><h3>{story.name}</h3>{story.role && <p>{story.role}</p>}
+              </header>
               <blockquote>{story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</blockquote>
             </article>
           ))}
