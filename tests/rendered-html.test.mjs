@@ -49,6 +49,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /enctype="text\/plain"/i);
   assert.match(html, /name="Reply-to email"/i);
   assert.match(html, /name="Support requested"[^>]*required/i);
+  assert.match(html, /Map of Amy Jaffe Nutrition in Miami/i);
+  assert.match(html, /1801 NE 123rd Street, Suite 303/);
+  assert.match(html, /google\.com\/maps\/dir\/\?api=1/i);
   assert.match(html, /property="og:image" content="https:\/\/www\.amyjaffenutrition\.com\/og\.png"/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton|A note from Amy/i);
 });

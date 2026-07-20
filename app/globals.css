@@ -98,17 +98,17 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 35px; }
 .credentials span { border: 1px solid rgba(181,22,117,.42); border-radius: 30px; color: var(--mulberry); font-size: 14px; font-weight: 800; letter-spacing: .045em; padding: 13px 18px; text-transform: uppercase; }
 .about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 14px; gap: 28px; }
-.about-awards { border-top: 1px solid #d9d0ca; grid-column: 1/-1; padding-top: 55px; }
-.about-awards-heading { align-items: end; display: grid; gap: 50px; grid-template-columns: .42fr 1fr; margin-bottom: 38px; }
+.about-awards { border-top: 1px solid #d9d0ca; grid-column: 1/-1; padding-top: 40px; }
+.about-awards-heading { align-items: end; display: grid; gap: 50px; grid-template-columns: .42fr 1fr; margin-bottom: 26px; }
 .about-awards-heading .eyebrow { margin: 0; }
-.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(30px, 3.3vw, 47px); font-weight: 400; letter-spacing: -.035em; line-height: 1.08; margin: 0; }
-.award-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
-.award-card { background: var(--cream); border: 1px solid #e2d8cf; margin: 0; padding: 14px 14px 20px; }
-.award-image { align-items: center; aspect-ratio: 4/5; background: white; display: flex; justify-content: center; overflow: hidden; }
+.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(26px, 2.7vw, 38px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; margin: 0; }
+.award-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+.award-card { align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: grid; gap: 16px; grid-template-columns: 82px 1fr; margin: 0; min-height: 116px; padding: 12px 16px 12px 12px; }
+.award-image { align-items: center; aspect-ratio: 1; background: rgba(255,255,255,.72); display: flex; justify-content: center; overflow: hidden; }
 .award-image img { height: 100%; object-fit: contain; width: 100%; }
-.award-card figcaption { display: flex; flex-direction: column; gap: 7px; padding: 18px 6px 0; }
-.award-card figcaption strong { color: var(--plum); font-family: Georgia, serif; font-size: 20px; font-weight: 400; line-height: 1.2; }
-.award-card figcaption span { color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.award-card figcaption { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 0; }
+.award-card figcaption strong { color: var(--plum); font-family: Georgia, serif; font-size: 16px; font-weight: 400; line-height: 1.22; }
+.award-card figcaption span { color: var(--green); font-size: 8px; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
 
 .quote-section { background: var(--plum); color: white; padding: 95px 14vw 105px; position: relative; text-align: center; }
 .quote-section blockquote { font-family: Georgia, serif; font-size: clamp(27px, 3.1vw, 48px); font-style: italic; line-height: 1.36; margin: 0 auto; max-width: 1050px; }
@@ -169,11 +169,23 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .contact-form button span { font-size: 18px; }
 .contact-form small { color: #baa5b0; font-size: 10px; line-height: 1.5; }
 
-footer { align-items: center; background: #211a1d; color: white; display: grid; gap: 35px; grid-template-columns: 170px 1fr auto; padding: 48px 8vw; }
+footer { background: #211a1d; color: white; padding: 58px 8vw 28px; }
+.footer-grid { align-items: start; display: grid; gap: clamp(38px, 5vw, 78px); grid-template-columns: 130px minmax(320px, 480px) minmax(220px, 1fr); }
 .footer-brand { width: 120px; }
 .footer-brand img { filter: brightness(0) invert(1); opacity: .85; width: 100%; }
 footer p { color: #c9bec3; font-family: Georgia, serif; font-size: 15px; margin: 0 0 13px; }
 footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+.footer-location h2 { color: var(--green-soft); font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .22em; margin: 0 0 16px; text-transform: uppercase; }
+.footer-map { aspect-ratio: 16/9; background: #332b2f; overflow: hidden; width: 100%; }
+.footer-map iframe { border: 0; display: block; height: 100%; width: 100%; }
+.footer-address { align-items: center; border-bottom: 1px solid rgba(255,255,255,.18); display: flex; gap: 24px; justify-content: space-between; padding: 16px 0 14px; transition: border-color .2s ease, color .2s ease; }
+.footer-address:hover, .footer-address:focus-visible { border-color: var(--green-soft); color: var(--green-soft); }
+.footer-address address { color: #d7cbd1; font-family: Georgia, serif; font-size: 14px; font-style: normal; line-height: 1.55; }
+.footer-address span { font-size: 18px; }
+.footer-summary { display: flex; flex-direction: column; min-height: 100%; }
+.footer-summary p { font-size: clamp(18px, 1.8vw, 25px); line-height: 1.45; max-width: 430px; }
+.footer-summary .social-links { margin-top: auto; padding-top: 32px; }
+.footer-copyright { border-top: 1px solid rgba(255,255,255,.1); display: block; margin-top: 42px; padding-top: 22px; }
 .social-links { display: flex; gap: 10px; }
 .social-links a { align-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; display: flex; height: 42px; justify-content: center; transition: border-color .2s ease, transform .2s ease; width: 42px; }
 .social-links a:hover { border-color: var(--green-soft); transform: translateY(-2px); }
@@ -196,6 +208,9 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .about { gap: 70px; }
   .testimonial { gap: 6vw; }
   .testimonial-video-wrap { min-height: 590px; }
+  .footer-grid { grid-template-columns: 110px minmax(300px, 1fr); }
+  .footer-summary { grid-column: 1/-1; }
+  .footer-summary .social-links { padding-top: 16px; }
 }
 
 @media (max-width: 760px) {
@@ -220,10 +235,10 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .about-title em { font-size: 38px; }
   .experience-badge { bottom: -48px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
-  .about-awards { padding-top: 44px; }
-  .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 28px; }
+  .about-awards { padding-top: 34px; }
+  .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 22px; }
   .award-grid { grid-template-columns: 1fr; }
-  .award-card { margin: 0 auto; max-width: 430px; width: 100%; }
+  .award-card { grid-template-columns: 74px 1fr; margin: 0; max-width: 430px; min-height: 100px; width: 100%; }
   .quote-section { padding: 80px 24px; }
   .section-heading-row { gap: 28px; margin-bottom: 50px; }
   .service-list { grid-template-columns: 1fr; }
@@ -238,8 +253,12 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .contact { gap: 55px; padding: 85px 24px; }
   .contact-form { grid-template-columns: 1fr; }
   .contact-form label, .contact-form label.full, .contact-form button, .contact-form small { grid-column: 1; }
-  footer { grid-template-columns: 1fr; padding: 45px 24px; }
+  footer { padding: 45px 24px 25px; }
+  .footer-grid { gap: 38px; grid-template-columns: 1fr; }
   .footer-brand { width: 95px; }
+  .footer-summary { grid-column: auto; }
+  .footer-location { max-width: 520px; width: 100%; }
+  .footer-copyright { margin-top: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-video { display: none; } * { transition: none !important; } }
