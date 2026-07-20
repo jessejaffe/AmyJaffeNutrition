@@ -205,14 +205,15 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .testimonials-hero-note span { color: var(--mulberry); font-size: 18px; }
 .testimonials-hero-note p { font-family: Georgia, serif; font-size: 15px; line-height: 1.5; margin: 0; }
 .google-reviews-section { background: #f3eee9; padding: 110px 8vw 115px; }
-.google-reviews-heading { align-items: end; display: grid; gap: 55px; grid-template-columns: 1fr 280px; margin-bottom: 62px; }
+.google-reviews-heading { align-items: end; display: grid; gap: 55px; grid-template-columns: 1fr 360px; margin-bottom: 62px; }
+.google-reviews-heading .eyebrow { font-size: 16px; font-weight: 800; letter-spacing: .16em; }
 .google-reviews-heading h2 { font-size: clamp(47px, 5vw, 72px); }
-.google-rating { background: white; border: 1px solid #dfd5cf; color: var(--plum); display: grid; gap: 6px; padding: 26px 28px; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
+.google-rating { background: white; border: 1px solid #dfd5cf; color: var(--plum); display: grid; gap: 9px; padding: 38px 40px; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
 .google-rating:hover { border-color: var(--green); transform: translateY(-2px); }
-.google-rating-score { font-family: Georgia, serif; font-size: 44px; line-height: 1; }
-.google-stars { color: #e5a62c; display: block; font-size: 15px; letter-spacing: .08em; }
-.google-rating > span:nth-child(3) { color: #71676c; font-size: 13px; }
-.google-rating strong { color: var(--green); font-size: 10px; letter-spacing: .13em; margin-top: 11px; text-transform: uppercase; }
+.google-rating-score { font-family: Georgia, serif; font-size: 60px; line-height: 1; }
+.google-stars { color: #e5a62c; display: block; font-size: 18px; letter-spacing: .08em; }
+.google-rating > span:nth-child(3) { color: #71676c; font-size: 15px; }
+.google-rating strong { color: var(--green); font-size: 14px; letter-spacing: .11em; margin-top: 14px; text-transform: uppercase; }
 .google-review-grid { align-items: start; display: grid; gap: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .google-review-card { background: white; border-top: 4px solid var(--green); padding: 32px 34px 34px; }
 .google-review-card:nth-child(even) { border-top-color: var(--mulberry); }
@@ -223,8 +224,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .google-review-card:nth-child(even) .google-reviewer-mark { background: var(--mulberry); }
 .google-review-card > blockquote { color: #5d5257; font-family: Georgia, serif; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.58; margin: 0; }
 .google-owner-reply { background: var(--cream); border-left: 3px solid var(--green-soft); margin-top: 27px; padding: 21px 23px; }
-.google-owner-reply > p { color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: .14em; margin: 0 0 10px; text-transform: uppercase; }
-.google-owner-reply blockquote { color: #685d62; font-size: 14px; line-height: 1.65; margin: 0; }
+.google-owner-reply > p { color: var(--green); font-family: Georgia, serif; font-size: clamp(18px, 1.5vw, 22px); font-weight: 700; letter-spacing: .01em; margin: 0 0 13px; }
+.google-owner-reply blockquote { color: #685d62; font-family: Georgia, serif; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.58; margin: 0; }
 .google-review-source { color: #766c71; font-size: 11px; letter-spacing: .04em; margin: 24px 0 0; }
 .testimonial-gallery-section, .long-stories-section { padding: 110px 8vw 120px; }
 .testimonial-page-heading { align-items: end; display: grid; gap: 55px; grid-template-columns: .42fr 1fr; margin-bottom: 65px; }
@@ -285,7 +286,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .footer-grid { grid-template-columns: 160px minmax(300px, 1fr); }
   .footer-summary { grid-column: 1/-1; }
   .footer-summary .social-links { padding-top: 16px; }
-  .google-reviews-heading { grid-template-columns: 1fr 250px; }
+  .google-reviews-heading { grid-template-columns: 1fr 320px; }
   .visual-testimonial-grid { gap: 20px; }
   .testimonials-hero::after { opacity: .45; right: -90px; }
   .testimonial-page-heading { grid-template-columns: .3fr 1fr; }
@@ -346,7 +347,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .google-reviews-section, .testimonial-gallery-section, .client-stories-section, .long-stories-section { padding: 80px 24px 85px; }
   .google-reviews-heading { align-items: start; gap: 30px; grid-template-columns: 1fr; margin-bottom: 40px; }
   .google-reviews-heading h2 { font-size: 48px; }
-  .google-rating { max-width: 320px; width: 100%; }
+  .google-rating { max-width: 390px; padding: 32px; width: 100%; }
   .google-review-grid { grid-template-columns: 1fr; }
   .google-review-card, .google-review-card:last-child:nth-child(odd) { grid-column: auto; padding: 28px 24px; }
   .testimonial-page-heading { align-items: start; gap: 18px; grid-template-columns: 1fr; margin-bottom: 40px; }
