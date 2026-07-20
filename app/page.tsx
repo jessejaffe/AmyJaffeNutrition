@@ -48,7 +48,7 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#testimonials">Testimonials</a>
+          <a href="testimonials/">Testimonials</a>
           <a href="#resources">Resources</a>
           <div className="header-social-links" aria-label="Social media">
             {socialLinks.map((social) => (
@@ -65,7 +65,7 @@ export default function Home() {
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             <a href="#about">About</a><a href="#services">Services</a>
-            <a href="#testimonials">Testimonials</a><a href="#resources">Resources</a>
+            <a href="testimonials/">Testimonials</a><a href="#resources">Resources</a>
             <a href="#contact">Contact</a>
             <div className="mobile-social-links" aria-label="Social media">
               {socialLinks.map((social) => (

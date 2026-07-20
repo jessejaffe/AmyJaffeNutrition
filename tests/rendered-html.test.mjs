@@ -4,13 +4,13 @@ import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -29,6 +29,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
   assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
   assert.match(html, /Request an appointment/);
+  assert.match(html, /href="testimonials\/">Testimonials<\/a>/i);
   assert.match(html, /Eating disorder recovery\..*Less food fear\..*More body trust\..*A life beyond diets\./s);
   assert.match(html, /<h2 class="about-title"><span>Meet Amy Jaffe,<\/span><em>MS, RD, LD<\/em><\/h2>/i);
   assert.match(html, /<p class="about-subheadline">Care that sees the/i);
@@ -56,15 +57,41 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton|A note from Amy/i);
 });
 
+test("server-renders the complete testimonials page", async () => {
+  const response = await render("/testimonials");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /Stories of trust,/i);
+  assert.match(html, /Kim R\./);
+  assert.match(html, /Irene C\./);
+  assert.match(html, /Morgan H\./);
+  assert.match(html, /Rachael P\./);
+  assert.match(html, /Dr\. Sammi Siegel/);
+  assert.match(html, /Carlos C\./);
+  assert.match(html, /She helped me get my life back/i);
+  assert.equal((html.match(/<img[^>]+src="\.\.\/images\/testimonials\/testimonial-note-/g) ?? []).length, 16);
+  assert.doesNotMatch(html, /rainbow of possibilities/i);
+});
+
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
+  const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4"/);
   assert.doesNotMatch(index, /<script\b/i);
   assert.doesNotMatch(index, /modulepreload/i);
+  assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(testimonials, /href="\.\.\/assets\//);
+  assert.match(testimonials, /src="\.\.\/images\/testimonials\/testimonial-note-01\.jpg"/i);
+  assert.match(testimonials, /href="\.\.\/#about"/i);
+  assert.doesNotMatch(testimonials, /<script\b/i);
+  assert.doesNotMatch(testimonials, /modulepreload/i);
   assert.equal(notFound, index);
   await access(new URL("../dist/client/.nojekyll", import.meta.url));
 });
@@ -78,6 +105,10 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/images/award-businessrate-2026.png", import.meta.url)),
     access(new URL("../public/images/award-businessrate-2025.png", import.meta.url)),
     access(new URL("../public/images/award-marquis-whos-who-2025.png", import.meta.url)),
+    access(new URL("../public/images/testimonials/testimonial-note-01.jpg", import.meta.url)),
+    access(new URL("../public/images/testimonials/testimonial-note-08.jpg", import.meta.url)),
+    access(new URL("../public/images/testimonials/testimonial-note-09.png", import.meta.url)),
+    access(new URL("../public/images/testimonials/testimonial-note-16.jpg", import.meta.url)),
     access(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url)),
     access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
