@@ -80,7 +80,7 @@ h2 em { color: var(--green); font-weight: 400; }
 .belief-strip p { margin: 0; }
 .belief-strip span { color: var(--mulberry); font-size: 13px; }
 .section { padding: 120px 8vw; }
-.about { align-items: center; display: grid; gap: clamp(60px, 9vw, 145px); grid-template-columns: minmax(320px, .82fr) 1fr; }
+.about { align-items: center; column-gap: clamp(60px, 9vw, 145px); display: grid; grid-template-columns: minmax(320px, .82fr) 1fr; row-gap: 95px; }
 .about-image-wrap { position: relative; }
 .about-video-frame { aspect-ratio: 3/4; background: var(--cream); overflow: hidden; position: relative; }
 .about-video-frame::before { border: 1px solid rgba(255,255,255,.75); content: ""; inset: 16px; pointer-events: none; position: absolute; z-index: 2; }
@@ -89,7 +89,7 @@ h2 em { color: var(--green); font-weight: 400; }
 .experience-badge strong { font-family: Georgia, serif; font-size: 37px; font-weight: 400; line-height: 1; }
 .experience-badge span { font-size: 9px; letter-spacing: .13em; line-height: 1.45; margin-top: 8px; text-transform: uppercase; }
 h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; }
-.about-title span { color: var(--mulberry); display: block; font-size: clamp(54px, 5vw, 72px); font-weight: 700; line-height: .92; }
+.about-title span { color: var(--mulberry); display: block; font-size: clamp(54px, 5vw, 72px); font-weight: 400; line-height: .92; }
 .about-title em { color: var(--green); display: block; font-size: clamp(40px, 3.6vw, 52px); line-height: 1; margin-top: 8px; }
 .about-subheadline { color: var(--plum); font-family: Georgia, serif; font-size: clamp(26px, 2.5vw, 37px); line-height: 1.25; margin: 30px 0 0; }
 .about-subheadline em { color: var(--green); font-weight: 400; }
@@ -98,6 +98,17 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 35px; }
 .credentials span { border: 1px solid rgba(181,22,117,.42); border-radius: 30px; color: var(--mulberry); font-size: 14px; font-weight: 800; letter-spacing: .045em; padding: 13px 18px; text-transform: uppercase; }
 .about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 14px; gap: 28px; }
+.about-awards { border-top: 1px solid #d9d0ca; grid-column: 1/-1; padding-top: 55px; }
+.about-awards-heading { align-items: end; display: grid; gap: 50px; grid-template-columns: .42fr 1fr; margin-bottom: 38px; }
+.about-awards-heading .eyebrow { margin: 0; }
+.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(30px, 3.3vw, 47px); font-weight: 400; letter-spacing: -.035em; line-height: 1.08; margin: 0; }
+.award-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+.award-card { background: var(--cream); border: 1px solid #e2d8cf; margin: 0; padding: 14px 14px 20px; }
+.award-image { align-items: center; aspect-ratio: 4/5; background: white; display: flex; justify-content: center; overflow: hidden; }
+.award-image img { height: 100%; object-fit: contain; width: 100%; }
+.award-card figcaption { display: flex; flex-direction: column; gap: 7px; padding: 18px 6px 0; }
+.award-card figcaption strong { color: var(--plum); font-family: Georgia, serif; font-size: 20px; font-weight: 400; line-height: 1.2; }
+.award-card figcaption span { color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 
 .quote-section { background: var(--plum); color: white; padding: 95px 14vw 105px; position: relative; text-align: center; }
 .quote-section blockquote { font-family: Georgia, serif; font-size: clamp(27px, 3.1vw, 48px); font-style: italic; line-height: 1.36; margin: 0 auto; max-width: 1050px; }
@@ -209,6 +220,10 @@ footer small { color: #86797f; font-size: 9px; letter-spacing: .12em; text-trans
   .about-title em { font-size: 38px; }
   .experience-badge { bottom: -48px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
+  .about-awards { padding-top: 44px; }
+  .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 28px; }
+  .award-grid { grid-template-columns: 1fr; }
+  .award-card { margin: 0 auto; max-width: 430px; width: 100%; }
   .quote-section { padding: 80px 24px; }
   .section-heading-row { gap: 28px; margin-bottom: 50px; }
   .service-list { grid-template-columns: 1fr; }

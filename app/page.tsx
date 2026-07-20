@@ -124,6 +124,33 @@ export default function Home() {
           </div>
           <a className="text-link" href="#services">Explore how we can work together <span>→</span></a>
         </div>
+
+        <div className="about-awards" aria-labelledby="recognition-title">
+          <div className="about-awards-heading">
+            <p className="eyebrow">Recognition</p>
+            <h3 id="recognition-title">Honored for care in our community.</h3>
+          </div>
+          <div className="award-grid">
+            <figure className="award-card">
+              <div className="award-image">
+                <img src="images/award-businessrate-2026.png" alt="BusinessRate Best of 2026 Award Winner for Best Nutritionist in North Miami" />
+              </div>
+              <figcaption><strong>Best Nutritionist in North Miami</strong><span>BusinessRate · 2026</span></figcaption>
+            </figure>
+            <figure className="award-card">
+              <div className="award-image">
+                <img src="images/award-businessrate-2025.png" alt="BusinessRate Best of 2025 Nutritionist recognition for Amy Jaffe Nutrition" />
+              </div>
+              <figcaption><strong>Best of BusinessRate</strong><span>North Miami · 2025</span></figcaption>
+            </figure>
+            <figure className="award-card">
+              <div className="award-image">
+                <img src="images/award-marquis-whos-who-2025.png" alt="Marquis Who's Who Honored Listee 2025 badge" />
+              </div>
+              <figcaption><strong>Honored Listee</strong><span>Marquis Who&apos;s Who · 2025</span></figcaption>
+            </figure>
+          </div>
+        </div>
       </section>
 
       <section className="quote-section">

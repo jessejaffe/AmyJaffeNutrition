@@ -33,6 +33,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /<h2 class="about-title"><span>Meet Amy Jaffe,<\/span><em>MS, RD, LD<\/em><\/h2>/i);
   assert.match(html, /<p class="about-subheadline">Care that sees the/i);
   assert.doesNotMatch(html, /RDN, LDN/i);
+  assert.match(html, /Honored for care in our community\./i);
+  assert.match(html, /images\/award-businessrate-2026\.png/i);
+  assert.match(html, /images\/award-businessrate-2025\.png/i);
+  assert.match(html, /images\/award-marquis-whos-who-2025\.png/i);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
@@ -68,6 +72,9 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/images/purple-flowers-breeze-poster.jpg", import.meta.url)),
     access(new URL("../public/images/amy-video-poster.jpg", import.meta.url)),
     access(new URL("../public/images/client-testimonial-poster.jpg", import.meta.url)),
+    access(new URL("../public/images/award-businessrate-2026.png", import.meta.url)),
+    access(new URL("../public/images/award-businessrate-2025.png", import.meta.url)),
+    access(new URL("../public/images/award-marquis-whos-who-2025.png", import.meta.url)),
     access(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url)),
     access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
