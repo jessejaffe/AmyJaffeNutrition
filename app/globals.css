@@ -98,17 +98,17 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 35px; }
 .credentials span { border: 1px solid rgba(181,22,117,.42); border-radius: 30px; color: var(--mulberry); font-size: 14px; font-weight: 800; letter-spacing: .045em; padding: 13px 18px; text-transform: uppercase; }
 .about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 14px; gap: 28px; }
-.about-awards { border-top: 1px solid #d9d0ca; grid-column: 1/-1; padding-top: 40px; }
-.about-awards-heading { align-items: end; display: grid; gap: 50px; grid-template-columns: .42fr 1fr; margin-bottom: 26px; }
+.about-awards { border-top: 1px solid #d9d0ca; grid-column: 1/-1; padding-top: 48px; }
+.about-awards-heading { align-items: end; display: grid; gap: 50px; grid-template-columns: .42fr 1fr; margin-bottom: 32px; }
 .about-awards-heading .eyebrow { margin: 0; }
-.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(26px, 2.7vw, 38px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; margin: 0; }
-.award-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
-.award-card { align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: grid; gap: 16px; grid-template-columns: 82px 1fr; margin: 0; min-height: 116px; padding: 12px 16px 12px 12px; }
+.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(28px, 3vw, 43px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; margin: 0; }
+.award-grid { display: grid; gap: 15px; grid-template-columns: repeat(3, 1fr); }
+.award-card { align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: grid; gap: 18px; grid-template-columns: 106px 1fr; margin: 0; min-height: 142px; padding: 14px 18px 14px 14px; }
 .award-image { align-items: center; aspect-ratio: 1; background: rgba(255,255,255,.72); display: flex; justify-content: center; overflow: hidden; }
 .award-image img { height: 100%; object-fit: contain; width: 100%; }
 .award-card figcaption { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 0; }
-.award-card figcaption strong { color: var(--plum); font-family: Georgia, serif; font-size: 16px; font-weight: 400; line-height: 1.22; }
-.award-card figcaption span { color: var(--green); font-size: 8px; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
+.award-card figcaption strong { color: var(--plum); font-family: Georgia, serif; font-size: 18px; font-weight: 400; line-height: 1.22; }
+.award-card figcaption span { color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
 
 .quote-section { background: var(--plum); color: white; padding: 95px 14vw 105px; position: relative; text-align: center; }
 .quote-section blockquote { font-family: Georgia, serif; font-size: clamp(27px, 3.1vw, 48px); font-style: italic; line-height: 1.36; margin: 0 auto; max-width: 1050px; }
@@ -295,6 +295,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .mobile-menu nav .mobile-social-links a { align-items: center; border: 1px solid rgba(91,33,72,.28); border-radius: 50%; display: flex; height: 38px; justify-content: center; width: 38px; }
   .mobile-social-links img { height: 20px; max-width: 21px; width: auto; }
   .about { gap: 70px; }
+  .award-grid { grid-template-columns: 1fr; }
+  .award-card { grid-template-columns: 110px 1fr; max-width: 600px; }
   .testimonial { gap: 6vw; }
   .testimonial-video-wrap { min-height: 590px; }
   .footer-grid { grid-template-columns: 160px minmax(300px, 1fr); }
@@ -328,10 +330,10 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .about-title em { font-size: 38px; }
   .experience-badge { bottom: -48px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
-  .about-awards { padding-top: 34px; }
-  .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 22px; }
+  .about-awards { padding-top: 40px; }
+  .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 25px; }
   .award-grid { grid-template-columns: 1fr; }
-  .award-card { grid-template-columns: 74px 1fr; margin: 0; max-width: 430px; min-height: 100px; width: 100%; }
+  .award-card { grid-template-columns: 96px 1fr; margin: 0; max-width: 430px; min-height: 126px; width: 100%; }
   .quote-section { padding: 80px 24px; }
   .section-heading-row { gap: 28px; margin-bottom: 50px; }
   .service-list { grid-template-columns: 1fr; }
