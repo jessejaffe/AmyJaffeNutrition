@@ -257,7 +257,10 @@ export default function TestimonialsPage() {
         <div className="testimonials-hero-content">
           <p className="eyebrow light">Client experiences</p>
           <h1>Stories of trust,<br /><em>recovery,</em> and<br />food freedom.</h1>
-          <p>Real reflections from clients and colleagues who have worked with Amy through eating disorder recovery, intuitive eating, and a more compassionate relationship with food.</p>
+          <p className="testimonials-hero-quote">“Amy helped me navigate my relationship with food, transforming it into a source of joy rather than anxiety.”</p>
+        </div>
+        <div className="testimonials-hero-portrait">
+          <img src="../images/client-testimonial-poster.jpg" alt="Client sharing her experience with Amy Jaffe" />
         </div>
         <div className="testimonials-hero-note"><span>✦</span><p>Every story is shared with permission and presented in the client&apos;s own voice.</p></div>
       </section>

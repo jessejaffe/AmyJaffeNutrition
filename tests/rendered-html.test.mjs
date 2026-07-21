@@ -65,6 +65,8 @@ test("server-renders the complete testimonials page", async () => {
   const html = await response.text();
   assert.match(html, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /Stories of trust,/i);
+  assert.match(html, /Amy helped me navigate my relationship with food, transforming it into a source of joy rather than anxiety\./i);
+  assert.match(html, /images\/client-testimonial-poster\.jpg/i);
   assert.match(html, /Kim R\./);
   assert.match(html, /Kind, compassionate &amp; nonjudgmental\./i);
   assert.match(html, /Mark E\./);

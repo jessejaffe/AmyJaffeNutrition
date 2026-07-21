@@ -196,11 +196,12 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .testimonials-page { overflow: hidden; }
 .testimonials-hero { background: var(--plum); color: white; min-height: 760px; overflow: hidden; padding: 210px 8vw 120px; position: relative; }
 .testimonials-hero::before { background: radial-gradient(circle, rgba(86,167,123,.34) 0%, rgba(86,167,123,0) 68%); content: ""; height: 720px; pointer-events: none; position: absolute; right: -180px; top: -130px; width: 720px; }
-.testimonials-hero::after { border: 1px solid rgba(183,214,194,.32); border-radius: 50%; content: ""; height: 420px; pointer-events: none; position: absolute; right: 9vw; top: 190px; width: 420px; }
 .testimonials-hero-content { max-width: 900px; position: relative; z-index: 1; }
 .testimonials-hero h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(62px, 7.3vw, 108px); font-weight: 400; letter-spacing: -.05em; line-height: .9; margin: 0; }
 .testimonials-hero h1 em { color: var(--green-soft); font-weight: 400; }
-.testimonials-hero-content > p:last-child { color: #e3d5dd; font-family: Georgia, serif; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.55; margin: 42px 0 0; max-width: 700px; }
+.testimonials-hero-quote { color: #e3d5dd; font-family: Georgia, serif; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.55; margin: 42px 0 0; max-width: 700px; }
+.testimonials-hero-portrait { border: 1px solid rgba(183,214,194,.55); border-radius: 50%; height: 420px; overflow: hidden; position: absolute; right: 9vw; top: 190px; width: 420px; z-index: 1; }
+.testimonials-hero-portrait img { height: 100%; object-fit: cover; object-position: center 28%; width: 100%; }
 .testimonials-hero-note { align-items: center; background: var(--cream); bottom: 0; color: var(--plum); display: flex; gap: 20px; padding: 26px 34px; position: absolute; right: 0; width: min(520px, 44vw); z-index: 2; }
 .testimonials-hero-note span { color: var(--mulberry); font-size: 18px; }
 .testimonials-hero-note p { font-family: Georgia, serif; font-size: 15px; line-height: 1.5; margin: 0; }
@@ -283,6 +284,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 @media (max-width: 1200px) {
   .award-grid { grid-template-columns: 1fr; }
   .award-card { grid-template-columns: 165px 1fr; max-width: 640px; min-height: 193px; }
+  .testimonials-hero-content { max-width: 55vw; }
+  .testimonials-hero-portrait { height: min(32vw, 380px); right: 5vw; top: 220px; width: min(32vw, 380px); }
 }
 
 @media (max-width: 1000px) {
@@ -309,7 +312,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .footer-summary .social-links { padding-top: 16px; }
   .google-reviews-heading { grid-template-columns: 1fr 320px; }
   .visual-testimonial-grid { gap: 20px; }
-  .testimonials-hero::after { opacity: .45; right: -90px; }
+  .testimonials-hero-content { max-width: 65vw; }
+  .testimonials-hero-portrait { height: 250px; right: 5vw; top: 245px; width: 250px; }
   .testimonial-page-heading { grid-template-columns: .3fr 1fr; }
 }
 
@@ -362,8 +366,9 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .testimonials-hero { min-height: 760px; padding: 160px 24px 120px; }
   .testimonials-hero h1 { font-size: clamp(56px, 17vw, 76px); }
   .testimonials-hero::before { height: 520px; right: -270px; top: 30px; width: 520px; }
-  .testimonials-hero::after { display: none; }
-  .testimonials-hero-content > p:last-child { font-size: 17px; margin-top: 30px; }
+  .testimonials-hero-content { max-width: none; }
+  .testimonials-hero-quote { font-size: 17px; margin-top: 30px; }
+  .testimonials-hero-portrait { height: min(62vw, 260px); margin: 36px 0 24px auto; position: relative; right: auto; top: auto; width: min(62vw, 260px); }
   .testimonials-hero-note { left: 0; padding: 22px 24px; right: auto; width: calc(100% - 20px); }
   .google-reviews-section, .testimonial-gallery-section, .client-stories-section, .long-stories-section { padding: 80px 24px 85px; }
   .google-reviews-heading { align-items: start; gap: 30px; grid-template-columns: 1fr; margin-bottom: 40px; }
