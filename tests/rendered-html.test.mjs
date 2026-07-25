@@ -98,6 +98,7 @@ test("server-renders the complete testimonials page", async () => {
   assert.match(html, /data-client="Carlos C\."[\s\S]*?testimonial-note-16\.jpg/i);
   assert.equal((html.match(/<img[^>]+src="\.\.\/images\/testimonials\/testimonial-note-/g) ?? []).length, 14);
   assert.doesNotMatch(html, /client-quote-card/i);
+  assert.doesNotMatch(html, /quote-number/i);
   assert.doesNotMatch(html, /testimonial-image-gallery/i);
   assert.doesNotMatch(html, /rainbow of possibilities/i);
 });

@@ -329,9 +329,8 @@ export default function TestimonialsPage() {
           <h2>In their <em>words.</em></h2>
         </div>
         <div className="client-quote-cloud">
-          {clientTestimonials.map((testimonial, index) => (
+          {clientTestimonials.map((testimonial) => (
             <article className="client-quote-bubble" data-client={testimonial.name} key={testimonial.name}>
-              <span className="quote-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <blockquote>{testimonial.highlight}</blockquote>
               <p className="client-quote-name">— {testimonial.name}</p>
             </article>
