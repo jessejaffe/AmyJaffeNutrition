@@ -198,14 +198,14 @@ export default function Home() {
           <h2>Areas of<br /><em>expertise.</em></h2>
           <p className="expertise-age"><span aria-hidden="true" />Ages 13 and up</p>
         </div>
-        <ol className="expertise-list">
-          {expertiseAreas.map((area, index) => (
+        <ul className="expertise-list">
+          {expertiseAreas.map((area) => (
             <li className="expertise-item" key={area}>
-              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <span className="expertise-icon" aria-hidden="true">✦</span>
               <strong>{area}</strong>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
 
       <section className="testimonial section" id="testimonials">

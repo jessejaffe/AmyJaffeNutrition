@@ -68,8 +68,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Metabolic Syndrome/i);
   assert.doesNotMatch(html, /High Blood Pressure/i);
   assert.equal((html.match(/class="expertise-item"/g) ?? []).length, 14);
-  assert.equal((html.match(/<span aria-hidden="true">\d{2}<\/span>/g) ?? []).length, 14);
-  assert.doesNotMatch(html, /class="expertise-icon"/i);
+  assert.equal((html.match(/class="expertise-icon" aria-hidden="true">✦<\/span>/g) ?? []).length, 14);
+  assert.doesNotMatch(html, /class="expertise-icon"[^>]*>\d+/i);
+  assert.match(html, /<ul class="expertise-list">/i);
+  assert.doesNotMatch(html, /<ol class="expertise-list">/i);
   const expertiseOrder = [
     "Bariatric Surgery",
     "Body Image",
