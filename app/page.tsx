@@ -40,7 +40,6 @@ const expertiseAreas = [
   "GI Issues",
   "GLP-1 Nutrition Support",
   "Heart Disease",
-  "High Blood Pressure",
   "Intuitive Eating",
   "Menopause",
   "Metabolic Syndrome",

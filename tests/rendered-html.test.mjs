@@ -65,9 +65,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /GI Issues/i);
   assert.match(html, /Body Image/i);
   assert.match(html, /Heart Disease/i);
-  assert.match(html, /High Blood Pressure/i);
   assert.match(html, /Metabolic Syndrome/i);
-  assert.equal((html.match(/class="expertise-item"/g) ?? []).length, 15);
+  assert.doesNotMatch(html, /High Blood Pressure/i);
+  assert.equal((html.match(/class="expertise-item"/g) ?? []).length, 14);
   const expertiseOrder = [
     "Bariatric Surgery",
     "Body Image",
@@ -75,7 +75,6 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
     "GI Issues",
     "GLP-1 Nutrition Support",
     "Heart Disease",
-    "High Blood Pressure",
     "Intuitive Eating",
     "Menopause",
     "Metabolic Syndrome",
