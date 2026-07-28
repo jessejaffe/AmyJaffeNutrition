@@ -155,7 +155,7 @@ export default function Home() {
 
       <section className="quote-section">
         <p className="quote-mark" aria-hidden="true">“</p>
-        <blockquote>It&apos;s not only about calories, cholesterol, and other metrics. It&apos;s about your relationship with food. It&apos;s about challenging your beliefs.</blockquote>
+        <blockquote>It&apos;s not only about calories, cholesterol, and other numbers. It&apos;s about your relationship with food. It&apos;s about challenging your beliefs and ending the struggle… and finally finding food freedom.</blockquote>
         <p className="quote-caption">- Amy Jaffe</p>
       </section>
 

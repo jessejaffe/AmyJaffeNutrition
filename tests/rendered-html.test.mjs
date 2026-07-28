@@ -37,6 +37,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.doesNotMatch(html, /Care that sees the whole person|highly individualized and holistic/i);
   assert.doesNotMatch(html, /RDN, LDN/i);
   assert.match(html, /Honored for care in our community\./i);
+  assert.match(html, /It&#x27;s not only about calories, cholesterol, and other numbers\./i);
+  assert.match(html, /ending the struggle… and finally finding food freedom\./i);
+  assert.doesNotMatch(html, /other metrics|It&#x27;s about challenging your beliefs\.<\/blockquote>/i);
+  assert.match(html, /<p class="quote-caption">- Amy Jaffe<\/p>/i);
   assert.match(html, /images\/award-businessrate-2026\.png/i);
   assert.match(html, /images\/award-businessrate-2025\.png/i);
   assert.match(html, /images\/award-marquis-whos-who-2025\.png/i);
