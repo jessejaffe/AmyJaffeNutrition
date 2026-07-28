@@ -68,6 +68,29 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /High Blood Pressure/i);
   assert.match(html, /Metabolic Syndrome/i);
   assert.equal((html.match(/class="expertise-item"/g) ?? []).length, 15);
+  const expertiseOrder = [
+    "Bariatric Surgery",
+    "Body Image",
+    "Eating Disorders, Disordered Eating",
+    "GI Issues",
+    "GLP-1 Nutrition Support",
+    "Heart Disease",
+    "High Blood Pressure",
+    "Intuitive Eating",
+    "Menopause",
+    "Metabolic Syndrome",
+    "Overeating/Emotional Eating",
+    "PMOS (PCOS)",
+    "Pregnancy",
+    "Type 2 Diabetes",
+    "Weight Cycling",
+  ];
+  let previousExpertiseIndex = -1;
+  for (const area of expertiseOrder) {
+    const areaIndex = html.indexOf(area, previousExpertiseIndex + 1);
+    assert.ok(areaIndex > previousExpertiseIndex, `${area} should appear in alphabetical order`);
+    previousExpertiseIndex = areaIndex;
+  }
   assert.match(html, /Let&#x27;s make peace/);
   assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
   assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Initial%20Nutrition%20Assessment"/i);

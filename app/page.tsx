@@ -34,21 +34,21 @@ const resources = [
 ];
 
 const expertiseAreas = [
-  "Eating Disorders, Disordered Eating",
-  "GLP-1 Nutrition Support",
   "Bariatric Surgery",
-  "Intuitive Eating",
-  "PMOS (PCOS)",
-  "Type 2 Diabetes",
-  "Pregnancy",
-  "Menopause",
-  "Overeating/Emotional Eating",
-  "Weight Cycling",
-  "GI Issues",
   "Body Image",
+  "Eating Disorders, Disordered Eating",
+  "GI Issues",
+  "GLP-1 Nutrition Support",
   "Heart Disease",
   "High Blood Pressure",
+  "Intuitive Eating",
+  "Menopause",
   "Metabolic Syndrome",
+  "Overeating/Emotional Eating",
+  "PMOS (PCOS)",
+  "Pregnancy",
+  "Type 2 Diabetes",
+  "Weight Cycling",
 ];
 
 export default function Home() {
