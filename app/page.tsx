@@ -33,6 +33,24 @@ const resources = [
   ["Eating support", "Compassionate nutrition care for disordered eating, chronic dieting, and food anxiety."],
 ];
 
+const expertiseAreas = [
+  "Eating Disorders, Disordered Eating",
+  "GLP-1 Nutrition Support",
+  "Bariatric Surgery",
+  "Intuitive Eating",
+  "PCOS",
+  "Type 2 Diabetes",
+  "Pregnancy",
+  "Menopause",
+  "Overeating/Emotional Eating",
+  "Weight Cycling",
+  "GI Issues",
+  "Body Image",
+  "Heart Disease",
+  "High Blood Pressure",
+  "Metabolic Syndrome",
+];
+
 export default function Home() {
   return (
     <main>
@@ -173,6 +191,22 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="expertise section" id="expertise">
+        <div className="expertise-intro">
+          <p className="eyebrow">Specialized support</p>
+          <h2>Areas of<br /><em>expertise.</em></h2>
+          <p className="expertise-age"><span aria-hidden="true" />Ages 13 and up</p>
+        </div>
+        <ol className="expertise-list">
+          {expertiseAreas.map((area, index) => (
+            <li className="expertise-item" key={area}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <strong>{area}</strong>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="testimonial section" id="testimonials">
