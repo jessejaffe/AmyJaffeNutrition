@@ -38,7 +38,7 @@ const expertiseAreas = [
   "GLP-1 Nutrition Support",
   "Bariatric Surgery",
   "Intuitive Eating",
-  "PCOS",
+  "PMOS (PCOS)",
   "Type 2 Diabetes",
   "Pregnancy",
   "Menopause",

@@ -56,7 +56,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /GLP-1 Nutrition Support/i);
   assert.match(html, /Bariatric Surgery/i);
   assert.match(html, /Intuitive Eating/i);
-  assert.match(html, /PCOS/i);
+  assert.match(html, /PMOS \(PCOS\)/i);
   assert.match(html, /Type 2 Diabetes/i);
   assert.match(html, /Pregnancy/i);
   assert.match(html, /Menopause/i);
