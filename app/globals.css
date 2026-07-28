@@ -138,10 +138,9 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .expertise-intro { position: sticky; top: 40px; }
 .expertise-age { align-items: center; border-top: 1px solid #d9d0ca; color: var(--plum); display: flex; font-family: Georgia, serif; font-size: clamp(21px, 2vw, 28px); gap: 14px; margin: 36px 0 0; padding-top: 24px; }
 .expertise-age span { background: var(--green); border: 4px solid #d2eadc; border-radius: 50%; flex: 0 0 auto; height: 16px; width: 16px; }
-.expertise-list { border-top: 1px solid #d9d0ca; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.expertise-list { border-top: 1px solid #d9d0ca; display: grid; grid-auto-flow: column; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(7, minmax(92px, auto)); list-style: none; margin: 0; padding: 0; }
 .expertise-item { align-items: center; border-bottom: 1px solid #d9d0ca; display: grid; gap: 18px; grid-template-columns: 30px 1fr; min-height: 92px; padding: 20px 22px; }
-.expertise-item:nth-child(odd) { border-right: 1px solid #d9d0ca; padding-left: 0; }
-.expertise-item:last-child:nth-child(odd) { border-right: 0; grid-column: 1 / -1; }
+.expertise-item:nth-child(-n+7) { border-right: 1px solid #d9d0ca; padding-left: 0; }
 .expertise-item > span { color: var(--green); font-family: Georgia, serif; font-size: 13px; }
 .expertise-item strong { color: var(--plum); font-family: Georgia, serif; font-size: clamp(20px, 1.8vw, 27px); font-weight: 400; line-height: 1.2; }
 
@@ -366,8 +365,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .expertise { gap: 50px; }
   .expertise-intro { position: static; }
   .expertise-age { margin-top: 28px; }
-  .expertise-list { grid-template-columns: 1fr; }
-  .expertise-item, .expertise-item:nth-child(odd) { border-right: 0; min-height: 82px; padding: 18px 0; }
+  .expertise-list { grid-auto-flow: row; grid-template-columns: 1fr; grid-template-rows: none; }
+  .expertise-item, .expertise-item:nth-child(-n+7) { border-right: 0; min-height: 82px; padding: 18px 0; }
   .expertise-item strong { font-size: 21px; }
   .testimonial { padding: 0; }
   .testimonial-video-wrap { aspect-ratio: 3/4; margin: 0; min-height: 0; }
