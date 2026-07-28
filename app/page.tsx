@@ -9,15 +9,9 @@ const socialLinks = [
 const services = [
   {
     number: "01",
-    title: "Initial nutrition assessment",
-    meta: "90 min",
-    body: (
-      <>
-        <p>The assessment includes a detailed medical history, history of eating patterns, weight and diet trends. We also review current food practices, determine the degree of interoceptive senses (internal cues of hunger and fullness), distribution of food throughout a normal day and an overview of nutrition education as it pertains to normal nutrition principles, physiological changes in metabolism and blood sugar, intuitive eating framework, physical/emotional hunger and fullness and body image.</p>
-        <p>Goals are jointly determined and you&apos;ll leave the initial session with a concrete plan of action that is evaluated in follow-up sessions.</p>
-        <p>Often my clients will keep electronic food logs using the free apps, <a href="https://www.recoveryrecord.com/" target="_blank" rel="noreferrer">Recovery Record</a> or <a href="https://www.nourishly.com/" target="_blank" rel="noreferrer">Nourishly</a>, as a way to stay connected between sessions, increase awareness of food behaviors and promote accountability.</p>
-      </>
-    ),
+    title: "Nutrition assessment",
+    meta: "90 minutes",
+    body: <p>A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together.</p>,
   },
   {
     number: "02",
@@ -188,8 +182,14 @@ export default function Home() {
           <p className="section-intro">There is no one-size-fits-all path to feeling at home in your body. We&apos;ll start with your story and build from there.</p>
         </div>
         <div className="service-list">
-          {services.map((service) => (
-            <article className={`service-card${service.number === "01" ? " service-card-featured" : ""}`} key={service.number}>
+          {services.map((service) => service.number === "01" ? (
+            <a className="service-card service-card-assessment" href="services/nutrition-assessment/" aria-label="Learn more about the nutrition assessment" key={service.number}>
+              <span className="service-number">{service.number}</span>
+              <div><p className="service-meta">{service.meta}</p><h3>{service.title}</h3><div className="service-body">{service.body}</div></div>
+              <span className="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <article className="service-card" key={service.number}>
               <span className="service-number">{service.number}</span>
               <div><p className="service-meta">{service.meta}</p><h3>{service.title}</h3><div className="service-body">{service.body}</div></div>
               <a href="#contact" aria-label={`Ask about ${service.title}`}>↗</a>

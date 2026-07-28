@@ -48,12 +48,11 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
   assert.match(html, /src="video\/client-testimonial\.mp4"/);
-  assert.match(html, /Initial nutrition assessment/i);
-  assert.match(html, /The assessment includes a detailed medical history/i);
-  assert.match(html, /interoceptive senses \(internal cues of hunger and fullness\)/i);
-  assert.match(html, /concrete plan of action that is evaluated in follow-up sessions/i);
-  assert.match(html, /href="https:\/\/www\.recoveryrecord\.com\/"[^>]*>Recovery Record<\/a>/i);
-  assert.match(html, /href="https:\/\/www\.nourishly\.com\/"[^>]*>Nourishly<\/a>/i);
+  assert.match(html, /Nutrition assessment/i);
+  assert.match(html, /90 minutes/i);
+  assert.match(html, /A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together\./i);
+  assert.match(html, /href="services\/nutrition-assessment\/"[^>]*aria-label="Learn more about the nutrition assessment"/i);
+  assert.doesNotMatch(html, /The assessment includes a detailed medical history/i);
   assert.match(html, /<section class="expertise section" id="expertise">/i);
   assert.match(html, /Areas of[\s\S]*?expertise\./i);
   assert.match(html, /Ages 13 and up/i);
@@ -159,10 +158,27 @@ test("server-renders the complete testimonials page", async () => {
   assert.doesNotMatch(html, /rainbow of possibilities/i);
 });
 
+test("server-renders the nutrition assessment detail page", async () => {
+  const response = await render("/services/nutrition-assessment");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /Initial session · 90 minutes/i);
+  assert.match(html, /The assessment includes a detailed medical history/i);
+  assert.match(html, /interoceptive senses \(internal cues of hunger and fullness\)/i);
+  assert.match(html, /concrete plan of action that is evaluated in follow-up sessions/i);
+  assert.match(html, /href="https:\/\/www\.recoveryrecord\.com\/"[^>]*>Recovery Record/i);
+  assert.match(html, /href="https:\/\/www\.nourishly\.com\/"[^>]*>Nourishly/i);
+  assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
+});
+
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
   const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
+  const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
@@ -177,6 +193,12 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(testimonials, /href="\.\.\/#about"/i);
   assert.doesNotMatch(testimonials, /<script\b/i);
   assert.doesNotMatch(testimonials, /modulepreload/i);
+  assert.match(assessment, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(assessment, /href="\.\.\/\.\.\/assets\//);
+  assert.match(assessment, /src="\.\.\/\.\.\/images\/amy-jaffe-logo\.avif"/i);
+  assert.match(assessment, /href="\.\.\/\.\.\/#services"/i);
+  assert.doesNotMatch(assessment, /<script\b/i);
+  assert.doesNotMatch(assessment, /modulepreload/i);
   assert.equal(notFound, index);
   await access(new URL("../dist/client/.nojekyll", import.meta.url));
 });
