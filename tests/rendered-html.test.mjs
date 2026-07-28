@@ -32,7 +32,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /href="testimonials\/">Testimonials<\/a>/i);
   assert.match(html, /Eating disorder recovery\..*Less food fear\..*More body trust\..*A life beyond diets\./s);
   assert.match(html, /<h2 class="about-title"><span>Meet Amy Jaffe,<\/span><em>MS, RD, LD<\/em><\/h2>/i);
-  assert.match(html, /<p class="about-subheadline">Care that sees the/i);
+  assert.match(html, /<p class="about-subheadline">Providing care that considers your/i);
+  assert.match(html, /My approach is highly individualized and comprehensive\./i);
+  assert.doesNotMatch(html, /Care that sees the whole person|highly individualized and holistic/i);
   assert.doesNotMatch(html, /RDN, LDN/i);
   assert.match(html, /Honored for care in our community\./i);
   assert.match(html, /images\/award-businessrate-2026\.png/i);

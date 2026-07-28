@@ -116,39 +116,39 @@ export default function Home() {
 
         <div className="about-copy">
           <h2 className="about-title"><span>Meet Amy Jaffe,</span><em>MS, RD, LD</em></h2>
-          <p className="about-subheadline">Care that sees the <em>whole person.</em></p>
+          <p className="about-subheadline">Providing care that considers your <em>whole person.</em></p>
           <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
-          <p>My approach is highly individualized and holistic. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
+          <p className="approach-copy">My approach is highly individualized and comprehensive. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
           <div className="credentials">
             <span>Registered Dietitian</span><span>Certified Intuitive Eating Specialist</span><span>HAES-aligned</span>
           </div>
           <a className="text-link" href="#services">Explore how we can work together <span>→</span></a>
-        </div>
 
-        <div className="about-awards" aria-labelledby="recognition-title">
-          <div className="about-awards-heading">
-            <p className="eyebrow">Recognition</p>
-            <h3 id="recognition-title">Honored for care in our community.</h3>
-          </div>
-          <div className="award-grid">
-            <figure className="award-card">
-              <div className="award-image">
-                <img src="images/award-businessrate-2026.png" alt="BusinessRate Best of 2026 Award Winner for Best Nutritionist in North Miami" />
-              </div>
-              <figcaption><strong>Best Nutritionist in North Miami</strong><span>BusinessRate · 2026</span></figcaption>
-            </figure>
-            <figure className="award-card">
-              <div className="award-image">
-                <img src="images/award-businessrate-2025.png" alt="BusinessRate Best of 2025 Nutritionist recognition for Amy Jaffe Nutrition" />
-              </div>
-              <figcaption><strong>Best of BusinessRate</strong><span>North Miami · 2025</span></figcaption>
-            </figure>
-            <figure className="award-card">
-              <div className="award-image">
-                <img src="images/award-marquis-whos-who-2025.png" alt="Marquis Who's Who Honored Listee 2025 badge" />
-              </div>
-              <figcaption><strong>Honored Listee</strong><span>Marquis Who&apos;s Who · 2025</span></figcaption>
-            </figure>
+          <div className="about-awards" aria-labelledby="recognition-title">
+            <div className="about-awards-heading">
+              <p className="eyebrow">Recognition</p>
+              <h3 id="recognition-title">Honored for care in our community.</h3>
+            </div>
+            <div className="award-grid">
+              <figure className="award-card">
+                <div className="award-image">
+                  <img src="images/award-businessrate-2026.png" alt="BusinessRate Best of 2026 Award Winner for Best Nutritionist in North Miami" />
+                </div>
+                <figcaption><strong>Best Nutritionist in North Miami</strong><span>BusinessRate · 2026</span></figcaption>
+              </figure>
+              <figure className="award-card">
+                <div className="award-image">
+                  <img src="images/award-businessrate-2025.png" alt="BusinessRate Best of 2025 Nutritionist recognition for Amy Jaffe Nutrition" />
+                </div>
+                <figcaption><strong>Best of BusinessRate</strong><span>North Miami · 2025</span></figcaption>
+              </figure>
+              <figure className="award-card">
+                <div className="award-image">
+                  <img src="images/award-marquis-whos-who-2025.png" alt="Marquis Who's Who Honored Listee 2025 badge" />
+                </div>
+                <figcaption><strong>Honored Listee</strong><span>Marquis Who&apos;s Who · 2025</span></figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
