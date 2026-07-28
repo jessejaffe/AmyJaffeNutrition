@@ -48,7 +48,12 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
   assert.match(html, /src="video\/client-testimonial\.mp4"/);
-  assert.match(html, /Nutrition assessment/);
+  assert.match(html, /Initial nutrition assessment/i);
+  assert.match(html, /The assessment includes a detailed medical history/i);
+  assert.match(html, /interoceptive senses \(internal cues of hunger and fullness\)/i);
+  assert.match(html, /concrete plan of action that is evaluated in follow-up sessions/i);
+  assert.match(html, /href="https:\/\/www\.recoveryrecord\.com\/"[^>]*>Recovery Record<\/a>/i);
+  assert.match(html, /href="https:\/\/www\.nourishly\.com\/"[^>]*>Nourishly<\/a>/i);
   assert.match(html, /<section class="expertise section" id="expertise">/i);
   assert.match(html, /Areas of[\s\S]*?expertise\./i);
   assert.match(html, /Ages 13 and up/i);

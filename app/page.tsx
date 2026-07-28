@@ -9,21 +9,27 @@ const socialLinks = [
 const services = [
   {
     number: "01",
-    title: "Nutrition assessment",
-    meta: "90 minutes",
-    body: "A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together.",
+    title: "Initial nutrition assessment",
+    meta: "90 min",
+    body: (
+      <>
+        <p>The assessment includes a detailed medical history, history of eating patterns, weight and diet trends. We also review current food practices, determine the degree of interoceptive senses (internal cues of hunger and fullness), distribution of food throughout a normal day and an overview of nutrition education as it pertains to normal nutrition principles, physiological changes in metabolism and blood sugar, intuitive eating framework, physical/emotional hunger and fullness and body image.</p>
+        <p>Goals are jointly determined and you&apos;ll leave the initial session with a concrete plan of action that is evaluated in follow-up sessions.</p>
+        <p>Often my clients will keep electronic food logs using the free apps, <a href="https://www.recoveryrecord.com/" target="_blank" rel="noreferrer">Recovery Record</a> or <a href="https://www.nourishly.com/" target="_blank" rel="noreferrer">Nourishly</a>, as a way to stay connected between sessions, increase awareness of food behaviors and promote accountability.</p>
+      </>
+    ),
   },
   {
     number: "02",
     title: "Individual counseling",
     meta: "Ongoing support",
-    body: "Personalized, judgment-free sessions that build trust in your body and make room for food to feel easier.",
+    body: <p>Personalized, judgment-free sessions that build trust in your body and make room for food to feel easier.</p>,
   },
   {
     number: "03",
     title: "Telehealth sessions",
     meta: "Wherever you are",
-    body: "Private video appointments for clients in Florida and beyond, with the same warm, collaborative care.",
+    body: <p>Private video appointments for clients in Florida and beyond, with the same warm, collaborative care.</p>,
   },
 ];
 
@@ -183,9 +189,9 @@ export default function Home() {
         </div>
         <div className="service-list">
           {services.map((service) => (
-            <article className="service-card" key={service.number}>
+            <article className={`service-card${service.number === "01" ? " service-card-featured" : ""}`} key={service.number}>
               <span className="service-number">{service.number}</span>
-              <div><p className="service-meta">{service.meta}</p><h3>{service.title}</h3><p>{service.body}</p></div>
+              <div><p className="service-meta">{service.meta}</p><h3>{service.title}</h3><div className="service-body">{service.body}</div></div>
               <a href="#contact" aria-label={`Ask about ${service.title}`}>↗</a>
             </article>
           ))}
