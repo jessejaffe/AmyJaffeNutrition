@@ -101,9 +101,9 @@ export default function Home() {
         </video>
         <div className="hero-wash" />
         <div className="hero-content">
-          <p className="eyebrow light">Nutrition counseling · Miami &amp; telehealth</p>
+          <p className="eyebrow light">Nutrition counseling · South Florida &amp; telehealth</p>
           <h1>Food can feel<br /><em>good again.</em></h1>
-          <p className="hero-lede">Find freedom from eating disorders, diets, food rules, and body struggles delivered with care that listens to you - not the numbers.</p>
+          <p className="hero-lede">Find freedom from eating disorders, diets, food rules, and body struggles - delivered with care and compassion, curiosity, not judgment.</p>
           <div className="hero-actions">
             <a className="button button-cream" href="#contact">Request an appointment <span>↗</span></a>
             <a className="text-link light" href="#about">Meet Amy <span>↓</span></a>
@@ -112,13 +112,13 @@ export default function Home() {
 
         <div className="hero-note" aria-label="Practice details">
           <span className="note-dot" />
-          <p><strong>Currently accepting new clients</strong><br />In-person in Miami and via secure telehealth</p>
+          <p><strong>Currently accepting new clients</strong><br />In-person in South Florida and via secure telehealth</p>
         </div>
 
       </section>
 
       <section className="belief-strip" aria-label="Amy's approach">
-        <p>Eating disorder recovery.</p><span>✦</span><p>Less food fear.</p><span>✦</span><p>More body trust.</p><span>✦</span><p>A life beyond diets.</p>
+        <p>Eating disorder recovery.</p><span>✦</span><p>GLP-1 support.</p><span>✦</span><p>Less food fear.</p><span>✦</span><p>More body trust.</p>
       </section>
 
       <section className="about section" id="about">
@@ -137,7 +137,7 @@ export default function Home() {
           <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
           <p className="approach-copy">My approach is highly individualized and comprehensive. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
           <div className="credentials">
-            <span>Registered Dietitian</span><span>Certified Intuitive Eating Specialist</span><span>HAES-aligned</span>
+            <span>Nationally Registered and Licensed Nutritionist/Dietitian</span><span>Certified Intuitive Eating Specialist</span>
           </div>
           <a className="text-link" href="#services">Explore how we can work together <span>→</span></a>
         </div>
@@ -178,7 +178,7 @@ export default function Home() {
 
       <section className="quote-section">
         <p className="quote-mark" aria-hidden="true">“</p>
-        <blockquote>It&apos;s not only about calories, cholesterol, and other numbers. It&apos;s about your relationship with food. It&apos;s about challenging your beliefs and ending the struggle… and finally finding food freedom.</blockquote>
+        <blockquote>It&apos;s not only about calories, cholesterol, and other numbers. It&apos;s about your relationship with food. It&apos;s about challenging your beliefs and ending the struggle… so you can build a life of balance, confidence, and peace.</blockquote>
         <p className="quote-caption">- Amy Jaffe</p>
       </section>
 

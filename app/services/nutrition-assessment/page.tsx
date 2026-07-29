@@ -66,7 +66,7 @@ export default function NutritionAssessmentPage() {
         </div>
         <div className="assessment-detail-copy">
           <p>The assessment includes a detailed medical history, history of eating patterns, weight and diet trends.</p>
-          <p>We also review current food practices, determine the degree of interoceptive senses (internal cues of hunger and fullness), distribution of food throughout a normal day and an overview of nutrition education as it pertains to normal nutrition principles, physiological changes in metabolism and blood sugar, intuitive eating framework, physical/emotional hunger and fullness and body image.</p>
+          <p className="assessment-review-copy">We also review current food practices, determine the degree of interoceptive senses (internal cues of hunger and fullness), distribution of food throughout a normal day and an overview of nutrition education as it pertains to normal nutrition principles, physiological changes in metabolism and blood sugar, intuitive eating framework, physical/emotional hunger and fullness and body image.</p>
           <p>Goals are jointly determined and you&apos;ll leave the initial session with a concrete plan of action that is evaluated in follow-up sessions.</p>
 
           <aside className="assessment-resource-card">

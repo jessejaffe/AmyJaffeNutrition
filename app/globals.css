@@ -70,6 +70,7 @@ h2 em { color: var(--green); font-weight: 400; }
 .text-link { align-items: center; border-bottom: 1px solid rgba(36,29,32,.35); display: inline-flex; font-size: 12px; font-weight: 800; gap: 25px; letter-spacing: .12em; padding-bottom: 7px; text-transform: uppercase; }
 .text-link.light { border-color: rgba(255,255,255,.45); color: white; }
 .hero-actions .button, .hero-actions .text-link { font-size: 14px; }
+.hero-actions .text-link { font-size: 18px; }
 .hero-actions .button { padding: 22px 25px; }
 .hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 18px; padding: 24px 34px; position: absolute; right: 0; width: 440px; z-index: 2; }
 .hero-note p { font-size: 16px; line-height: 1.55; margin: 0; }
@@ -99,7 +100,7 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .about-copy > .approach-copy { color: #5f5458; font-family: Georgia, serif; font-size: clamp(22px, 1.8vw, 27px); line-height: 1.52; margin: 0; }
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 35px; }
 .credentials span { border: 1px solid rgba(181,22,117,.42); border-radius: 30px; color: var(--mulberry); font-size: 14px; font-weight: 800; letter-spacing: .045em; padding: 13px 18px; text-transform: uppercase; }
-.about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 14px; gap: 28px; }
+.about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 18px; gap: 28px; }
 .about-awards { border-top: 1px solid #d9d0ca; grid-area: recognition; min-width: 0; padding-top: 48px; }
 .about-awards-heading { align-items: end; column-gap: clamp(60px, 9vw, 145px); display: grid; grid-template-columns: minmax(320px, .82fr) 1fr; margin-bottom: 32px; }
 .about-awards-heading .eyebrow { font-size: clamp(15px, 1.3vw, 18px); letter-spacing: .18em; margin: 0; }
@@ -223,6 +224,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 11px; font-weight: 800; 
 .assessment-detail-heading h2 { font-size: clamp(48px, 5vw, 72px); }
 .assessment-detail-copy > p { color: #5f5559; font-size: 17px; line-height: 1.85; margin: 0 0 28px; max-width: 760px; }
 .assessment-detail-copy > p:first-child { color: var(--plum); font-family: Georgia, serif; font-size: clamp(25px, 2.3vw, 35px); line-height: 1.45; }
+.assessment-detail-copy > .assessment-review-copy { font-size: clamp(20px, 1.8vw, 24px); line-height: 1.7; }
 .assessment-resource-card { background: #e4eee7; border-top: 4px solid var(--green); margin-top: 58px; padding: 42px 44px 46px; }
 .assessment-resource-card .eyebrow { margin-bottom: 19px; }
 .assessment-resource-card h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(28px, 2.5vw, 39px); font-weight: 400; line-height: 1.15; margin: 0 0 22px; }
@@ -464,6 +466,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 11px; font-weight: 800; 
   .assessment-detail-heading h2 { font-size: 48px; }
   .assessment-detail-copy > p { font-size: 16px; line-height: 1.75; }
   .assessment-detail-copy > p:first-child { font-size: 26px; }
+  .assessment-detail-copy > .assessment-review-copy { font-size: 19px; }
   .assessment-resource-card { margin-top: 45px; padding: 34px 26px 37px; }
   .assessment-resource-links { align-items: stretch; flex-direction: column; }
   .assessment-resource-links a { justify-content: space-between; }
