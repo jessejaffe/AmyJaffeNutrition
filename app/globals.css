@@ -80,8 +80,8 @@ h2 em { color: var(--green); font-weight: 400; }
 .belief-strip p { margin: 0; }
 .belief-strip span { color: var(--mulberry); font-size: 13px; }
 .section { padding: 120px 8vw; }
-.about { align-items: center; column-gap: clamp(60px, 9vw, 145px); display: grid; grid-template-columns: minmax(320px, .82fr) 1fr; }
-.about-image-wrap { position: relative; }
+.about { align-items: start; column-gap: clamp(60px, 9vw, 145px); display: grid; grid-template-areas: "video copy" "recognition recognition"; grid-template-columns: minmax(320px, .82fr) 1fr; row-gap: 95px; }
+.about-image-wrap { grid-area: video; position: relative; }
 .about-video-frame { aspect-ratio: 3/4; background: var(--cream); overflow: hidden; position: relative; }
 .about-video-frame::before { border: 1px solid rgba(255,255,255,.75); content: ""; inset: 16px; pointer-events: none; position: absolute; z-index: 2; }
 .about-video-frame video { height: 100%; object-fit: cover; object-position: center; width: 100%; }
@@ -89,6 +89,7 @@ h2 em { color: var(--green); font-weight: 400; }
 .experience-badge strong { font-family: Georgia, serif; font-size: 37px; font-weight: 400; line-height: 1; }
 .experience-badge span { font-size: 9px; letter-spacing: .13em; line-height: 1.45; margin-top: 8px; text-transform: uppercase; }
 h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; }
+.about-copy { grid-area: copy; }
 .about-title span { color: var(--mulberry); display: block; font-size: clamp(54px, 5vw, 72px); font-weight: 400; line-height: .92; }
 .about-title em { color: var(--green); display: block; font-size: clamp(40px, 3.6vw, 52px); line-height: 1; margin-top: 8px; }
 .about-subheadline { color: var(--plum); font-family: Georgia, serif; font-size: clamp(26px, 2.5vw, 37px); line-height: 1.25; margin: 30px 0 0; }
@@ -99,13 +100,13 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 35px; }
 .credentials span { border: 1px solid rgba(181,22,117,.42); border-radius: 30px; color: var(--mulberry); font-size: 14px; font-weight: 800; letter-spacing: .045em; padding: 13px 18px; text-transform: uppercase; }
 .about-copy > .text-link { border-color: rgba(40,126,77,.42); color: var(--green); font-size: 14px; gap: 28px; }
-.about-awards { border-top: 1px solid #d9d0ca; margin-top: 45px; padding-top: 30px; }
-.about-awards-heading { margin-bottom: 22px; }
+.about-awards { border-top: 1px solid #d9d0ca; grid-area: recognition; min-width: 0; padding-top: 48px; }
+.about-awards-heading { align-items: end; column-gap: clamp(60px, 9vw, 145px); display: grid; grid-template-columns: minmax(320px, .82fr) 1fr; margin-bottom: 32px; }
 .about-awards-heading .eyebrow { font-size: clamp(15px, 1.3vw, 18px); letter-spacing: .18em; margin: 0; }
-.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(26px, 2.25vw, 34px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; margin: 11px 0 0; }
-.award-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
-.award-card { align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: flex; flex-direction: column; gap: 8px; margin: 0; min-width: 0; padding: 5px 5px 10px; text-align: center; }
-.award-image { align-items: center; aspect-ratio: 1; background: rgba(255,255,255,.72); display: flex; justify-content: center; overflow: hidden; width: 100%; }
+.about-awards-heading h3 { color: var(--plum); font-family: Georgia, serif; font-size: clamp(28px, 3vw, 43px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; margin: 0; }
+.award-grid { display: grid; gap: 15px; grid-template-columns: repeat(3, 1fr); }
+.award-card { align-content: start; align-items: center; background: rgba(247,240,231,.55); border: 1px solid #e4dbd4; display: grid; gap: 18px; grid-template-columns: 1fr; margin: 0; min-height: clamp(340px, 29vw, 420px); min-width: 0; padding: 14px 18px 20px; text-align: center; }
+.award-image { align-items: center; aspect-ratio: 1; background: rgba(255,255,255,.72); display: flex; justify-content: center; justify-self: center; overflow: hidden; width: min(100%, 318px); }
 .award-image img { height: 100%; object-fit: contain; width: 100%; }
 .award-card figcaption { align-items: center; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 0; }
 .award-card figcaption strong { color: var(--plum); font-family: Georgia, serif; font-size: 16px; font-weight: 400; line-height: 1.22; }
@@ -324,10 +325,6 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .testimonial-page-cta .button { margin-top: 42px; }
 
 @media (max-width: 1200px) {
-  .award-grid { grid-template-columns: 1fr; }
-  .award-card { align-content: center; grid-template-columns: 330px 1fr; max-width: 760px; min-height: 358px; }
-  .award-image { justify-self: stretch; width: auto; }
-  .award-card figcaption { align-items: flex-start; text-align: left; }
   .testimonials-hero-content { max-width: 55vw; }
   .testimonials-hero-portrait { height: min(32vw, 380px); right: 5vw; top: 220px; width: min(32vw, 380px); }
 }
@@ -347,8 +344,6 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .mobile-menu nav .mobile-social-links a { align-items: center; border: 1px solid rgba(91,33,72,.28); border-radius: 50%; display: flex; height: 38px; justify-content: center; width: 38px; }
   .mobile-social-links img { height: 20px; max-width: 21px; width: auto; }
   .about { gap: 70px; }
-  .award-grid { grid-template-columns: 1fr; }
-  .award-card { grid-template-columns: 330px 1fr; max-width: 700px; min-height: 358px; }
   .testimonial { gap: 6vw; }
   .testimonial-video-wrap { min-height: 590px; }
   .footer-grid { grid-template-columns: 160px minmax(300px, 1fr); }
@@ -378,13 +373,14 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
   .belief-strip p { margin: 0 11px; }
   .section { padding: 85px 24px; }
   .about, .section-heading-row, .expertise, .testimonial, .resources, .insurance, .contact { grid-template-columns: 1fr; }
+  .about { grid-template-areas: "video" "copy" "recognition"; }
   .about { gap: 75px; }
   .about-title span { font-size: 48px; }
   .about-title em { font-size: 38px; }
   .experience-badge { bottom: -48px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
   .about-awards { padding-top: 40px; }
-  .about-awards-heading { margin-bottom: 25px; }
+  .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 25px; }
   .award-grid { grid-template-columns: 1fr; }
   .award-card { margin: 0; max-width: 430px; min-height: 0; padding: 6px 6px 12px; width: 100%; }
   .award-image { width: min(100%, 320px); }
