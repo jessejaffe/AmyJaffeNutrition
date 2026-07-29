@@ -12,18 +12,24 @@ const services = [
     title: "Nutrition assessment",
     meta: "90 minutes",
     body: <p>A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together.</p>,
+    href: "services/nutrition-assessment/",
+    ariaLabel: "Learn more about the nutrition assessment",
   },
   {
     number: "02",
-    title: "Individual counseling",
+    title: "Nutrition counseling follow-up sessions",
     meta: "Ongoing support",
-    body: <p>Personalized, judgment-free sessions that build trust in your body and make room for food to feel easier.</p>,
+    body: <p>Goal-centered sessions that build on your assessment, celebrate progress, and use challenges to support meaningful change.</p>,
+    href: "services/follow-up-sessions/",
+    ariaLabel: "Learn more about nutrition counseling follow-up sessions",
   },
   {
     number: "03",
     title: "Telehealth sessions",
     meta: "Wherever you are",
     body: <p>Private video appointments for clients in Florida and beyond, with the same warm, collaborative care.</p>,
+    href: null,
+    ariaLabel: "Ask about telehealth sessions",
   },
 ];
 
@@ -188,8 +194,8 @@ export default function Home() {
           <p className="section-intro">There is no one-size-fits-all path to feeling at home in your body. We&apos;ll start with your story and build from there.</p>
         </div>
         <div className="service-list">
-          {services.map((service) => service.number === "01" ? (
-            <a className="service-card service-card-assessment" href="services/nutrition-assessment/" aria-label="Learn more about the nutrition assessment" key={service.number}>
+          {services.map((service) => service.href ? (
+            <a className="service-card service-card-detail" href={service.href} aria-label={service.ariaLabel} key={service.number}>
               <span className="service-number">{service.number}</span>
               <div><p className="service-meta">{service.meta}</p><h3>{service.title}</h3><div className="service-body">{service.body}</div></div>
               <span className="service-card-arrow" aria-hidden="true">↗</span>

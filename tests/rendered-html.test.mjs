@@ -64,6 +64,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /90 minutes/i);
   assert.match(html, /A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together\./i);
   assert.match(html, /href="services\/nutrition-assessment\/"[^>]*aria-label="Learn more about the nutrition assessment"/i);
+  assert.match(html, /Nutrition counseling follow-up sessions/i);
+  assert.match(html, /Goal-centered sessions that build on your assessment/i);
+  assert.match(html, /href="services\/follow-up-sessions\/"[^>]*aria-label="Learn more about nutrition counseling follow-up sessions"/i);
+  assert.doesNotMatch(html, /Individual counseling/i);
   assert.doesNotMatch(html, /The assessment includes a detailed medical history/i);
   assert.match(html, /<section class="expertise section" id="expertise">/i);
   assert.match(html, /Areas of[\s\S]*?expertise\./i);
@@ -187,11 +191,32 @@ test("server-renders the nutrition assessment detail page", async () => {
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
 });
 
+test("server-renders the nutrition counseling follow-up sessions page", async () => {
+  const response = await render("/services/follow-up-sessions");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /Ongoing, individualized support/i);
+  assert.match(html, /The follow-up sessions are based on the goals determined during the initial nutrition assessment\./i);
+  assert.match(html, /both successes and challenges are used to promote change/i);
+  assert.match(html, /Grocery outings/i);
+  assert.match(html, /Mindful meal outings/i);
+  assert.match(html, /Intuitive eating/i);
+  assert.match(html, /interoceptive awareness/i);
+  assert.match(html, /Food exposures/i);
+  assert.match(html, /facing your fears/i);
+  assert.equal((html.match(/class="follow-up-option-card"/g) ?? []).length, 4);
+  assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
+});
+
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
   const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
+  const followUp = await readFile(new URL("../dist/client/services/follow-up-sessions/index.html", import.meta.url), "utf8");
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
@@ -212,6 +237,16 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(assessment, /href="\.\.\/\.\.\/#services"/i);
   assert.doesNotMatch(assessment, /<script\b/i);
   assert.doesNotMatch(assessment, /modulepreload/i);
+  assert.match(followUp, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(followUp, /href="\.\.\/\.\.\/assets\//);
+  assert.match(followUp, /src="\.\.\/\.\.\/images\/amy-jaffe-logo\.avif"/i);
+  assert.match(followUp, /Grocery outings/i);
+  assert.match(followUp, /Mindful meal outings/i);
+  assert.match(followUp, /Intuitive eating/i);
+  assert.match(followUp, /Food exposures/i);
+  assert.match(followUp, /href="\.\.\/\.\.\/#services"/i);
+  assert.doesNotMatch(followUp, /<script\b/i);
+  assert.doesNotMatch(followUp, /modulepreload/i);
   assert.equal(notFound, index);
   await access(new URL("../dist/client/.nojekyll", import.meta.url));
 });

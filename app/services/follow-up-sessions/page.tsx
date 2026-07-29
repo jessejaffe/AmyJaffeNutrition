@@ -1,0 +1,148 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nutrition Counseling Follow-Up Sessions | Amy Jaffe Nutrition",
+  description: "Goal-centered nutrition counseling follow-up sessions with Amy Jaffe, including grocery outings, mindful meal outings, intuitive eating support, and food exposures.",
+};
+
+const socialLinks = [
+  { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "../../images/social-facebook.svg" },
+  { name: "Instagram", href: "https://www.instagram.com/stickynotesnutritiontherapist/", icon: "../../images/social-instagram.svg" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/amysjaffe/", icon: "../../images/social-linkedin.svg" },
+];
+
+const sessionOptions = [
+  {
+    number: "01",
+    title: "Grocery outings",
+    body: "When there is a need to provide a more hands-on, direct experience in a supermarket setting, the session is held at a local grocery store.",
+  },
+  {
+    number: "02",
+    title: "Mindful meal outings",
+    body: "There is a difference between discussing food, food habits, eating patterns, and related concerns and actually having support during a meal or snack. These sessions are typically held at local restaurants or cafés.",
+  },
+  {
+    number: "03",
+    title: "Intuitive eating",
+    body: "Intuitive eating is an evidence-based model, an integration between mind and body that works by either cultivating or removing obstacles to body awareness, known as interoceptive awareness. The way people respond to this awareness can provide a powerful portal for identifying their needs at any given time or in any situation.",
+  },
+  {
+    number: "04",
+    title: "Food exposures",
+    body: "Clients can bring challenging or forbidden foods to the session. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
+  },
+];
+
+export default function FollowUpSessionsPage() {
+  return (
+    <main className="assessment-page follow-up-page">
+      <header className="site-header">
+        <a className="brand" href="../../#home" aria-label="Amy Jaffe Nutrition home">
+          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /><i /></span>
+          <span><strong>Amy Jaffe</strong><small>Nutrition</small></span>
+        </a>
+
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          <a href="../../#about">About</a>
+          <a href="../../#services" aria-current="page">Services</a>
+          <a href="../../testimonials/">Testimonials</a>
+          <a href="../../#resources">Resources</a>
+          <div className="header-social-links" aria-label="Social media">
+            {socialLinks.map((social) => (
+              <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
+            ))}
+          </div>
+        </nav>
+
+        <a className="header-cta" href="../../#contact">Let&apos;s talk <span aria-hidden="true">↗</span></a>
+
+        <details className="mobile-menu">
+          <summary aria-label="Open navigation"><span /><span /></summary>
+          <nav aria-label="Mobile navigation">
+            <a href="../../#about">About</a><a href="../../#services" aria-current="page">Services</a>
+            <a href="../../testimonials/">Testimonials</a><a href="../../#resources">Resources</a>
+            <a href="../../#contact">Contact</a>
+            <div className="mobile-social-links" aria-label="Social media">
+              {socialLinks.map((social) => (
+                <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
+              ))}
+            </div>
+          </nav>
+        </details>
+      </header>
+
+      <section className="assessment-detail-hero follow-up-detail-hero">
+        <div className="assessment-detail-hero-content">
+          <a className="assessment-back-link" href="../../#services"><span aria-hidden="true">←</span> Back to services</a>
+          <p className="eyebrow light">Ongoing, individualized support</p>
+          <h1>Nutrition counseling<br /><em>follow-up sessions.</em></h1>
+          <p className="assessment-detail-lede">Each session builds on the goals we created together, with support shaped by your progress, successes, and challenges.</p>
+        </div>
+        <div className="assessment-detail-number" aria-hidden="true">02</div>
+      </section>
+
+      <section className="assessment-detail-content follow-up-detail-content">
+        <div className="assessment-detail-heading">
+          <p className="eyebrow">Follow-up sessions</p>
+          <h2>Progress shapes<br /><em>the next step.</em></h2>
+        </div>
+        <div className="assessment-detail-copy">
+          <p>The follow-up sessions are based on the goals determined during the initial nutrition assessment.</p>
+          <p className="assessment-review-copy">The direction of each session is based on progress toward goal completion; both successes and challenges are used to promote change.</p>
+          <p>The frequency of follow-up sessions is agreed upon in the first session, regularly assessed for necessity, and ultimately decreased as progress is achieved.</p>
+        </div>
+      </section>
+
+      <section className="follow-up-options-section">
+        <div className="section-heading-row">
+          <div>
+            <p className="eyebrow">Session options</p>
+            <h2>Support that meets you<br /><em>where life happens.</em></h2>
+          </div>
+          <p className="section-intro">Follow-up care can move beyond the office when hands-on, real-life support would be helpful.</p>
+        </div>
+
+        <div className="follow-up-options-grid">
+          {sessionOptions.map((option) => (
+            <article className="follow-up-option-card" key={option.title}>
+              <span className="follow-up-option-number">{option.number}</span>
+              <h3>{option.title}</h3>
+              <p>{option.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="assessment-detail-cta">
+        <p className="eyebrow light">Continue your progress</p>
+        <h2>Let&apos;s choose the support<br /><em>that fits you.</em></h2>
+        <a className="button button-cream" href="../../#contact">Request an appointment <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <footer>
+        <div className="footer-grid">
+          <a className="footer-brand" href="../../#home"><img src="../../images/amy-jaffe-logo.avif" alt="Amy Jaffe Nutrition" /></a>
+          <section className="footer-location" aria-labelledby="follow-up-footer-location-title">
+            <h2 id="follow-up-footer-location-title">Location</h2>
+            <div className="footer-map">
+              <iframe src="https://www.google.com/maps?q=1801%20NE%20123rd%20Street%2C%20Suite%20303%2C%20Miami%2C%20FL%2033181&amp;output=embed" title="Map of Amy Jaffe Nutrition in Miami" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+            </div>
+            <a className="footer-address" href="https://www.google.com/maps/dir/?api=1&amp;destination=1801%20NE%20123rd%20Street%2C%20Suite%20303%2C%20Miami%2C%20FL%2033181" target="_blank" rel="noreferrer" aria-label="Get directions to Amy Jaffe Nutrition">
+              <address>1801 NE 123rd Street, Suite 303<br />Miami, FL 33181</address><span aria-hidden="true">↗</span>
+            </a>
+          </section>
+          <div className="footer-summary">
+            <p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p>
+            <div className="social-links" aria-label="Social media">
+              {socialLinks.map((social) => (
+                <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <small className="footer-copyright">© {new Date().getFullYear()} Amy Jaffe Nutrition</small>
+      </footer>
+    </main>
+  );
+}

@@ -11,6 +11,7 @@ const routes = [
   { path: "/", output: "index.html", assetPrefix: "" },
   { path: "/testimonials", output: "testimonials/index.html", assetPrefix: "../" },
   { path: "/services/nutrition-assessment", output: "services/nutrition-assessment/index.html", assetPrefix: "../../" },
+  { path: "/services/follow-up-sessions", output: "services/follow-up-sessions/index.html", assetPrefix: "../../" },
 ];
 
 async function renderRoute({ path, output, assetPrefix }) {
