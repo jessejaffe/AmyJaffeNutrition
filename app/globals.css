@@ -324,6 +324,16 @@ footer small { color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .12
 .testimonial-page-cta h2 em { color: var(--green-soft); }
 .testimonial-page-cta .button { margin-top: 42px; }
 
+@media (min-width: 1500px) {
+  .about { grid-template-areas: "video copy" "video recognition"; grid-template-rows: auto 1fr; row-gap: 30px; }
+  .about-awards { align-self: start; padding-top: 24px; }
+  .about-awards-heading { display: block; margin-bottom: 22px; }
+  .about-awards-heading h3 { font-size: clamp(26px, 2.25vw, 34px); margin-top: 11px; }
+  .award-grid { gap: 12px; }
+  .award-card { display: flex; flex-direction: column; gap: 8px; min-height: 0; padding: 5px 5px 10px; }
+  .award-image { width: min(100%, clamp(180px, 12vw, 318px)); }
+}
+
 @media (max-width: 1200px) {
   .testimonials-hero-content { max-width: 55vw; }
   .testimonials-hero-portrait { height: min(32vw, 380px); right: 5vw; top: 220px; width: min(32vw, 380px); }
