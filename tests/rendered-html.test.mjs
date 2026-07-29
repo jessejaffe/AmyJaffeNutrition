@@ -44,6 +44,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /images\/award-businessrate-2026\.png/i);
   assert.match(html, /images\/award-businessrate-2025\.png/i);
   assert.match(html, /images\/award-marquis-whos-who-2025\.png/i);
+  assert.match(html, /images\/award-quality-business-2024\.avif/i);
+  assert.match(html, /Quality Business Award/i);
+  assert.match(html, /Winner · 2024/i);
+  assert.equal((html.match(/class="award-card"/g) ?? []).length, 4);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
@@ -212,6 +216,7 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/images/award-businessrate-2026.png", import.meta.url)),
     access(new URL("../public/images/award-businessrate-2025.png", import.meta.url)),
     access(new URL("../public/images/award-marquis-whos-who-2025.png", import.meta.url)),
+    access(new URL("../public/images/award-quality-business-2024.avif", import.meta.url)),
     access(new URL("../public/images/testimonials/testimonial-note-01.jpg", import.meta.url)),
     access(new URL("../public/images/testimonials/testimonial-note-08.jpg", import.meta.url)),
     access(new URL("../public/images/testimonials/testimonial-note-09.png", import.meta.url)),

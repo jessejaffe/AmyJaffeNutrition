@@ -166,6 +166,12 @@ export default function Home() {
               </div>
               <figcaption><strong>Honored Listee</strong><span>Marquis Who&apos;s Who · 2025</span></figcaption>
             </figure>
+            <figure className="award-card">
+              <div className="award-image">
+                <img src="images/award-quality-business-2024.avif" alt="Quality Business Awards 2024 Winner badge with a quality rating over 95 percent" />
+              </div>
+              <figcaption><strong>Quality Business Award</strong><span>Winner · 2024</span></figcaption>
+            </figure>
           </div>
         </div>
       </section>
