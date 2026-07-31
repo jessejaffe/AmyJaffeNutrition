@@ -19,8 +19,8 @@ const sessionOptions = [
   },
   {
     number: "02",
-    title: "Grocery outings",
-    body: "When there is a need to provide a more hands-on, direct experience in a supermarket setting, the session is held at a local grocery store, or we meet there together virtually.",
+    title: "Food exposures",
+    body: "Clients can bring challenging or forbidden foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
   },
   {
     number: "03",
@@ -29,8 +29,8 @@ const sessionOptions = [
   },
   {
     number: "04",
-    title: "Food exposures",
-    body: "Clients can bring challenging or forbidden foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
+    title: "Grocery outings",
+    body: "When there is a need to provide a more hands-on, direct experience in a supermarket setting, the session is held at a local grocery store, or we meet there together virtually.",
   },
 ];
 

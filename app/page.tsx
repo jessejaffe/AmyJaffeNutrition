@@ -188,6 +188,22 @@ export default function Home() {
         <p className="quote-caption">- Amy Jaffe</p>
       </section>
 
+      <section className="expertise section" id="expertise">
+        <div className="expertise-intro">
+          <p className="eyebrow">Specialized support</p>
+          <h2>Areas of<br /><em>expertise.</em></h2>
+          <p className="expertise-age"><span aria-hidden="true" />Ages 13 and up</p>
+        </div>
+        <ul className="expertise-list">
+          {expertiseAreas.map((area) => (
+            <li className="expertise-item" key={area}>
+              <span className="expertise-icon" aria-hidden="true">✦</span>
+              <strong>{area}</strong>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="services section" id="services">
         <div className="section-heading-row">
           <div><p className="eyebrow">Ways to work together</p><h2>Nutrition support that meets<br /><em>you where you are.</em></h2></div>
@@ -208,22 +224,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="expertise section" id="expertise">
-        <div className="expertise-intro">
-          <p className="eyebrow">Specialized support</p>
-          <h2>Areas of<br /><em>expertise.</em></h2>
-          <p className="expertise-age"><span aria-hidden="true" />Ages 13 and up</p>
-        </div>
-        <ul className="expertise-list">
-          {expertiseAreas.map((area) => (
-            <li className="expertise-item" key={area}>
-              <span className="expertise-icon" aria-hidden="true">✦</span>
-              <strong>{area}</strong>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section className="testimonial section" id="testimonials">

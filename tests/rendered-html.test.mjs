@@ -114,6 +114,8 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
     assert.ok(areaIndex > previousExpertiseIndex, `${area} should appear in alphabetical order`);
     previousExpertiseIndex = areaIndex;
   }
+  assert.ok(html.indexOf('class="quote-section"') < html.indexOf('class="expertise section"'), "Specialized support should follow the calories quote");
+  assert.ok(html.indexOf('class="expertise section"') < html.indexOf('class="services section"'), "Specialized support should come before services");
   assert.match(html, /Let&#x27;s make peace/);
   assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
   assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Initial%20Nutrition%20Assessment"/i);
@@ -212,7 +214,13 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /challenging or forbidden foods to the session, in person or virtually/i);
   assert.match(html, /facing your fears/i);
   assert.equal((html.match(/class="follow-up-option-card"/g) ?? []).length, 4);
-  assert.ok(html.indexOf("Intuitive eating") < html.indexOf("Grocery outings"), "Intuitive eating should be the first session option");
+  const optionOrder = ["Intuitive eating", "Food exposures", "Mindful meal outings", "Grocery outings"];
+  let previousOptionIndex = -1;
+  for (const option of optionOrder) {
+    const optionIndex = html.indexOf(option, previousOptionIndex + 1);
+    assert.ok(optionIndex > previousOptionIndex, `${option} should appear in the requested session order`);
+    previousOptionIndex = optionIndex;
+  }
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
 });
 
