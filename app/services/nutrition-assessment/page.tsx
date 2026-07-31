@@ -6,8 +6,8 @@ export const metadata: Metadata = {
 };
 
 const socialLinks = [
-  { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "../../images/social-facebook.svg" },
   { name: "Instagram", href: "https://www.instagram.com/stickynotesnutritiontherapist/", icon: "../../images/social-instagram.svg" },
+  { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "../../images/social-facebook.svg" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/amysjaffe/", icon: "../../images/social-linkedin.svg" },
 ];
 

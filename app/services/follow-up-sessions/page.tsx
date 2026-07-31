@@ -6,31 +6,31 @@ export const metadata: Metadata = {
 };
 
 const socialLinks = [
-  { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "../../images/social-facebook.svg" },
   { name: "Instagram", href: "https://www.instagram.com/stickynotesnutritiontherapist/", icon: "../../images/social-instagram.svg" },
+  { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "../../images/social-facebook.svg" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/amysjaffe/", icon: "../../images/social-linkedin.svg" },
 ];
 
 const sessionOptions = [
   {
     number: "01",
-    title: "Grocery outings",
-    body: "When there is a need to provide a more hands-on, direct experience in a supermarket setting, the session is held at a local grocery store.",
+    title: "Intuitive eating",
+    body: "Intuitive eating is an evidence-based model, an integration between mind and body that works by either cultivating or removing obstacles to body awareness, known as interoceptive awareness. The way people respond to this awareness can provide a powerful portal for identifying their needs at any given time or in any situation. The Intuitive Eating framework will guide our work together, helping you move from structure toward flexibility and greater freedom with food.",
   },
   {
     number: "02",
-    title: "Mindful meal outings",
-    body: "There is a difference between discussing food, food habits, eating patterns, and related concerns and actually having support during a meal or snack. These sessions are typically held at local restaurants or cafés.",
+    title: "Grocery outings",
+    body: "When there is a need to provide a more hands-on, direct experience in a supermarket setting, the session is held at a local grocery store, or we meet there together virtually.",
   },
   {
     number: "03",
-    title: "Intuitive eating",
-    body: "Intuitive eating is an evidence-based model, an integration between mind and body that works by either cultivating or removing obstacles to body awareness, known as interoceptive awareness. The way people respond to this awareness can provide a powerful portal for identifying their needs at any given time or in any situation.",
+    title: "Mindful meal outings",
+    body: "There is a difference between discussing food, food habits, eating patterns, and related concerns and actually having support during a meal or snack. These sessions are typically held at local restaurants or cafés, or we meet there together virtually.",
   },
   {
     number: "04",
     title: "Food exposures",
-    body: "Clients can bring challenging or forbidden foods to the session. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
+    body: "Clients can bring challenging or forbidden foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
   },
 ];
 

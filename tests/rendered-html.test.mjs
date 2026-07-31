@@ -205,9 +205,14 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /Mindful meal outings/i);
   assert.match(html, /Intuitive eating/i);
   assert.match(html, /interoceptive awareness/i);
+  assert.match(html, /framework will guide our work together, helping you move from structure toward flexibility and greater freedom with food/i);
+  assert.match(html, /local grocery store, or we meet there together virtually/i);
+  assert.match(html, /local restaurants or cafés, or we meet there together virtually/i);
   assert.match(html, /Food exposures/i);
+  assert.match(html, /challenging or forbidden foods to the session, in person or virtually/i);
   assert.match(html, /facing your fears/i);
   assert.equal((html.match(/class="follow-up-option-card"/g) ?? []).length, 4);
+  assert.ok(html.indexOf("Intuitive eating") < html.indexOf("Grocery outings"), "Intuitive eating should be the first session option");
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
 });
 
