@@ -352,12 +352,13 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .about-awards { align-self: start; padding-top: 24px; }
   .about-awards-heading { display: block; margin-bottom: 22px; }
   .about-awards-heading h3 { font-size: clamp(26px, 2.25vw, 34px); margin-top: 11px; }
-  .award-grid { gap: 12px; }
+  .award-grid { gap: 12px; grid-template-columns: repeat(2, 1fr); }
   .award-card { display: flex; flex-direction: column; gap: 8px; min-height: 0; padding: 5px 5px 10px; }
   .award-image { width: min(100%, clamp(180px, 12vw, 318px)); }
 }
 
 @media (max-width: 1200px) {
+  .award-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-hero-content { max-width: 55vw; }
   .testimonials-hero-portrait { height: min(32vw, 380px); right: 5vw; top: 220px; width: min(32vw, 380px); }
 }
@@ -414,7 +415,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .about-copy .large-copy { margin-top: 28px; }
   .about-awards { padding-top: 40px; }
   .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 25px; }
-  .award-grid { grid-template-columns: repeat(2, 1fr); }
+  .award-grid { grid-template-columns: 1fr; }
   .award-card { margin: 0; max-width: 430px; min-height: 0; padding: 6px 6px 12px; width: 100%; }
   .award-image { width: min(100%, 320px); }
   .award-card figcaption { align-items: center; text-align: center; }
