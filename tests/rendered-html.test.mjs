@@ -58,7 +58,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.equal((html.match(/class="award-card"/g) ?? []).length, 4);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
-  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731"/);
+  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-2"/);
   assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
@@ -234,7 +234,7 @@ test("exports a GitHub Pages-ready static site", async () => {
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
-  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731"/);
+  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-2"/);
   assert.doesNotMatch(index, /<script\b/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
@@ -287,6 +287,6 @@ test("ships the owned visual assets and no starter preview", async () => {
   const testimonialVideo = await stat(new URL("../public/video/client-testimonial.mp4", import.meta.url));
   assert.ok(testimonialVideo.size < 6 * 1024 * 1024, "client testimonial video should remain optimized for web playback");
   const meetAmyVideo = await stat(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url));
-  assert.ok(meetAmyVideo.size < 12 * 1024 * 1024, "Meet Amy video should remain optimized for web playback");
+  assert.ok(meetAmyVideo.size < 6 * 1024 * 1024, "Meet Amy video should remain optimized for web playback");
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
 });
