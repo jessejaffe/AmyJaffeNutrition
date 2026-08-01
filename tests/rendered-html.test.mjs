@@ -58,7 +58,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.equal((html.match(/class="award-card"/g) ?? []).length, 4);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
-  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-3"/);
+  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-4"/);
   assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
@@ -234,7 +234,7 @@ test("exports a GitHub Pages-ready static site", async () => {
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
-  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-3"/);
+  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-4"/);
   assert.doesNotMatch(index, /<script\b/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
