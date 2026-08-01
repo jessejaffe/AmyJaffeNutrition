@@ -229,7 +229,7 @@ export default function Home() {
       <section className="testimonial section" id="testimonials">
         <div className="testimonial-video-wrap">
           <video controls playsInline preload="metadata" poster="images/client-testimonial-poster.jpg" aria-label="Client testimonial">
-            <source src="video/client-testimonial.mp4" type="video/mp4" />
+            <source src="video/client-testimonial.mp4?v=20260731" type="video/mp4" />
           </video>
         </div>
         <div className="testimonial-copy">

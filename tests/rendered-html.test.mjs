@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
@@ -59,7 +59,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
-  assert.match(html, /src="video\/client-testimonial\.mp4"/);
+  assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
   assert.match(html, /90 minutes/i);
@@ -284,5 +284,7 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
+  const testimonialVideo = await stat(new URL("../public/video/client-testimonial.mp4", import.meta.url));
+  assert.ok(testimonialVideo.size < 6 * 1024 * 1024, "client testimonial video should remain optimized for web playback");
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
 });
