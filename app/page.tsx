@@ -237,7 +237,10 @@ export default function Home() {
           <div className="stars" aria-label="Five stars">★★★★★</div>
           <blockquote>“Amy helped me navigate my relationship with food, transforming it into a source of joy rather than anxiety. With her guidance, I&apos;ve learned to appreciate the rainbow of possibilities that healthy eating brings into our lives.”</blockquote>
           <p className="testimonial-name">Former client · Miami</p>
-          <a className="text-link light" href="#contact">Begin your own story <span>→</span></a>
+          <div className="testimonial-links">
+            <a className="text-link light" href="testimonials/">See more testimonials <span>→</span></a>
+            <a className="text-link light" href="#contact">Begin your own story <span>→</span></a>
+          </div>
         </div>
       </section>
 

@@ -154,13 +154,14 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .expertise-icon { color: var(--mulberry); font-size: 15px; line-height: 1; }
 .expertise-item strong { color: var(--plum); font-family: Georgia, serif; font-size: clamp(18px, 1.5vw, 23px); font-weight: 400; line-height: 1.18; }
 
-.testimonial { background: var(--green); color: white; display: grid; gap: 6vw; grid-template-columns: .76fr 1fr; padding-bottom: 0; padding-top: 0; }
-.testimonial-video-wrap { align-self: center; background: #1e4935; height: clamp(440px, 35vw, 500px); margin-left: -8vw; overflow: hidden; position: relative; }
-.testimonial-video-wrap video { height: 100%; object-fit: cover; object-position: center; width: 100%; }
+.testimonial { background: var(--green); color: white; display: grid; gap: clamp(40px, 6vw, 100px); grid-template-columns: clamp(360px, 34vw, 520px) minmax(0, 1fr); padding-bottom: 0; padding-left: 0; padding-top: 0; }
+.testimonial-video-wrap { align-self: center; aspect-ratio: 3/4; background: #173628; overflow: hidden; position: relative; width: 100%; }
+.testimonial-video-wrap video { height: 100%; object-fit: contain; object-position: center; width: 100%; }
 .testimonial-copy { align-self: center; padding: 38px 0; }
 .stars { color: var(--green-soft); font-size: 13px; letter-spacing: .45em; margin-bottom: 32px; }
 .testimonial-copy blockquote { font-family: Georgia, serif; font-size: clamp(22px, 1.9vw, 29px); font-style: italic; line-height: 1.36; margin: 0 0 23px; max-width: 680px; }
 .testimonial-name { color: #c7dfd2; font-size: 14px; font-weight: 800; letter-spacing: .13em; margin: 0 0 30px; text-transform: uppercase; }
+.testimonial-links { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 24px 38px; }
 
 .resources { align-items: start; display: grid; gap: 10vw; grid-template-columns: .8fr 1.1fr; }
 .resource-title { position: sticky; top: 40px; }
@@ -377,8 +378,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .mobile-menu nav .mobile-social-links a { align-items: center; background: var(--social-color); border: 1px solid transparent; border-radius: 50%; display: flex; height: 38px; justify-content: center; width: 38px; }
   .mobile-social-links img { filter: brightness(0) invert(1); height: 19px; max-width: 20px; width: auto; }
   .about { gap: 70px; }
-  .testimonial { gap: 6vw; }
-  .testimonial-video-wrap { height: 455px; }
+  .testimonial { gap: 5vw; }
   .footer-grid { grid-template-columns: 160px minmax(300px, 1fr); }
   .footer-summary { grid-column: 1/-1; }
   .footer-summary .social-links { padding-top: 16px; }
@@ -430,8 +430,9 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .expertise-item, .expertise-item:nth-child(-n+7) { border-right: 0; min-height: 64px; padding: 12px 0; }
   .expertise-item strong { font-size: 20px; }
   .testimonial { padding: 0; }
-  .testimonial-video-wrap { aspect-ratio: 4/3; height: auto; margin: 0; min-height: 0; }
+  .testimonial-video-wrap { aspect-ratio: 3/4; justify-self: center; max-width: 480px; min-height: 0; }
   .testimonial-copy { padding: 58px 24px 65px; }
+  .testimonial-links { flex-direction: column; gap: 24px; }
   .resource-title { position: static; }
   .resources { gap: 50px; }
   .insurance { gap: 15px; padding-bottom: 65px; padding-top: 65px; }

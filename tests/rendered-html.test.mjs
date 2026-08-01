@@ -60,6 +60,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4"/);
   assert.match(html, /src="video\/client-testimonial\.mp4"/);
+  assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
   assert.match(html, /90 minutes/i);
   assert.match(html, /A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together\./i);
