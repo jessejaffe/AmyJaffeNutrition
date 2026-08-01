@@ -49,9 +49,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.doesNotMatch(html, /HAES-aligned/i);
   assert.doesNotMatch(html, /other metrics|It&#x27;s about challenging your beliefs\.<\/blockquote>/i);
   assert.match(html, /<p class="quote-caption">- Amy Jaffe<\/p>/i);
-  assert.match(html, /images\/award-businessrate-2026\.png/i);
-  assert.match(html, /images\/award-businessrate-2025\.png/i);
-  assert.match(html, /images\/award-marquis-whos-who-2025\.png/i);
+  assert.match(html, /images\/award-businessrate-2026\.webp/i);
+  assert.match(html, /images\/award-businessrate-2025\.webp/i);
+  assert.match(html, /images\/award-marquis-whos-who-2025\.webp/i);
   assert.match(html, /images\/award-quality-business-2024\.avif/i);
   assert.match(html, /Quality Business Award/i);
   assert.match(html, /Winner · 2024/i);
@@ -271,9 +271,9 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/images/purple-flowers-breeze-poster.jpg", import.meta.url)),
     access(new URL("../public/images/amy-video-poster.jpg", import.meta.url)),
     access(new URL("../public/images/client-testimonial-poster.jpg", import.meta.url)),
-    access(new URL("../public/images/award-businessrate-2026.png", import.meta.url)),
-    access(new URL("../public/images/award-businessrate-2025.png", import.meta.url)),
-    access(new URL("../public/images/award-marquis-whos-who-2025.png", import.meta.url)),
+    access(new URL("../public/images/award-businessrate-2026.webp", import.meta.url)),
+    access(new URL("../public/images/award-businessrate-2025.webp", import.meta.url)),
+    access(new URL("../public/images/award-marquis-whos-who-2025.webp", import.meta.url)),
     access(new URL("../public/images/award-quality-business-2024.avif", import.meta.url)),
     access(new URL("../public/images/testimonials/testimonial-note-01.jpg", import.meta.url)),
     access(new URL("../public/images/testimonials/testimonial-note-08.jpg", import.meta.url)),
@@ -288,5 +288,11 @@ test("ships the owned visual assets and no starter preview", async () => {
   assert.ok(testimonialVideo.size < 6 * 1024 * 1024, "client testimonial video should remain optimized for web playback");
   const meetAmyVideo = await stat(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url));
   assert.ok(meetAmyVideo.size < 6 * 1024 * 1024, "Meet Amy video should remain optimized for web playback");
+  const awardImages = await Promise.all([
+    stat(new URL("../public/images/award-businessrate-2026.webp", import.meta.url)),
+    stat(new URL("../public/images/award-businessrate-2025.webp", import.meta.url)),
+    stat(new URL("../public/images/award-marquis-whos-who-2025.webp", import.meta.url)),
+  ]);
+  assert.ok(awardImages.reduce((total, image) => total + image.size, 0) < 150 * 1024, "recognition images should remain optimized for fast loading");
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
 });

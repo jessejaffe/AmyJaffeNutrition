@@ -156,19 +156,19 @@ export default function Home() {
           <div className="award-grid">
             <figure className="award-card">
               <div className="award-image">
-                <img src="images/award-businessrate-2026.png" alt="BusinessRate Best of 2026 Award Winner for Best Nutritionist in North Miami" />
+                <img src="images/award-businessrate-2026.webp" alt="BusinessRate Best of 2026 Award Winner for Best Nutritionist in North Miami" />
               </div>
               <figcaption><strong>Best Nutritionist in North Miami</strong><span>BusinessRate · 2026</span></figcaption>
             </figure>
             <figure className="award-card">
               <div className="award-image">
-                <img src="images/award-businessrate-2025.png" alt="BusinessRate Best of 2025 Nutritionist recognition for Amy Jaffe Nutrition" />
+                <img src="images/award-businessrate-2025.webp" alt="BusinessRate Best of 2025 Nutritionist recognition for Amy Jaffe Nutrition" />
               </div>
               <figcaption><strong>Best of BusinessRate</strong><span>North Miami · 2025</span></figcaption>
             </figure>
             <figure className="award-card">
               <div className="award-image">
-                <img src="images/award-marquis-whos-who-2025.png" alt="Marquis Who's Who Honored Listee 2025 badge" />
+                <img src="images/award-marquis-whos-who-2025.webp" alt="Marquis Who's Who Honored Listee 2025 badge" />
               </div>
               <figcaption><strong>Honored Listee</strong><span>Marquis Who&apos;s Who · 2025</span></figcaption>
             </figure>
