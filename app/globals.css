@@ -75,9 +75,11 @@ h2 em { color: var(--green); font-weight: 400; }
 .hero-actions .button, .hero-actions .text-link { font-size: 14px; }
 .hero-actions .text-link { font-size: 18px; }
 .hero-actions .button { padding: 22px 25px; }
-.hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 18px; padding: 24px 34px; position: absolute; right: 0; width: 440px; z-index: 2; }
+.hero-note { align-items: center; background: rgba(247,240,231,.95); bottom: 0; color: var(--ink); display: flex; gap: 18px; padding: 24px 34px; position: absolute; right: 0; width: 560px; z-index: 2; }
 .hero-note p { font-size: 16px; line-height: 1.55; margin: 0; }
 .hero-note strong { color: var(--plum); font-size: 18px; }
+.hero-note b { color: var(--ink); font-weight: 800; }
+.hero-note-schedule { display: block; }
 .note-dot { background: var(--status-green); border: 4px solid #d2eadc; border-radius: 50%; flex: 0 0 auto; height: 16px; width: 16px; }
 
 .belief-strip { align-items: center; background: var(--cream); color: var(--mulberry); display: flex; font-family: Georgia, serif; font-size: clamp(17px, 1.65vw, 25px); font-style: italic; font-weight: 700; gap: clamp(15px, 2.4vw, 42px); justify-content: center; padding: 30px 4vw; }
@@ -89,7 +91,8 @@ h2 em { color: var(--green); font-weight: 400; }
 .about-video-frame { aspect-ratio: 3/4; background: var(--cream); overflow: hidden; position: relative; }
 .about-video-frame::before { border: 1px solid rgba(255,255,255,.75); content: ""; inset: 16px; pointer-events: none; position: absolute; z-index: 2; }
 .about-video-frame video { height: 100%; object-fit: cover; object-position: center; width: 100%; }
-.experience-badge { align-items: center; background: var(--green); border: 5px solid var(--paper); border-radius: 50%; bottom: -42px; color: white; display: flex; flex-direction: column; height: 142px; justify-content: center; position: absolute; right: -42px; text-align: center; width: 142px; z-index: 3; }
+.about-video-welcome { color: var(--plum); font-family: Georgia, serif; font-size: clamp(25px, 2.3vw, 34px); font-style: italic; line-height: 1.2; margin: 21px 0 0; text-align: center; }
+.experience-badge { align-items: center; background: var(--green); border: 5px solid var(--paper); border-radius: 50%; bottom: 18px; color: white; display: flex; flex-direction: column; height: 142px; justify-content: center; position: absolute; right: 18px; text-align: center; width: 142px; z-index: 3; }
 .experience-badge strong { font-family: Georgia, serif; font-size: 37px; font-weight: 400; line-height: 1; }
 .experience-badge span { font-size: 13px; font-weight: 800; letter-spacing: .1em; line-height: 1.35; margin-top: 8px; text-transform: uppercase; }
 h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; }
@@ -236,6 +239,15 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
 .assessment-detail-cta h2 { color: white; }
 .assessment-detail-cta h2 em { color: var(--green-soft); }
 .assessment-detail-cta .button { margin-top: 42px; }
+.consultation-detail-hero { min-height: 700px; }
+.consultation-detail-hero .assessment-detail-lede { max-width: 760px; }
+.consultation-detail-mark { bottom: -95px; color: rgba(255,255,255,.08); font-family: Georgia, serif; font-size: clamp(330px, 42vw, 620px); line-height: 1; position: absolute; right: 3vw; z-index: 1; }
+.consultation-detail-copy > p:first-child { margin-bottom: 32px; }
+.consultation-detail-copy ul { border-bottom: 1px solid #d9d0ca; border-top: 1px solid #d9d0ca; list-style: none; margin: 40px 0 0; padding: 0; }
+.consultation-detail-copy li { align-items: center; border-bottom: 1px solid #d9d0ca; color: var(--plum); display: grid; font-family: Georgia, serif; font-size: clamp(20px, 1.7vw, 25px); gap: 15px; grid-template-columns: 20px 1fr; line-height: 1.45; padding: 19px 0; }
+.consultation-detail-copy li:last-child { border-bottom: 0; }
+.consultation-detail-copy li::before { color: var(--mulberry); content: "✦"; font-family: Arial, sans-serif; font-size: 14px; }
+.consultation-request .contact-intro > p:not(.eyebrow) { font-family: Georgia, serif; font-size: clamp(19px, 1.65vw, 23px); }
 
 .follow-up-detail-hero::before { background: radial-gradient(circle, rgba(214,165,100,.42) 0%, rgba(214,165,100,0) 68%); }
 .follow-up-detail-hero .assessment-back-link, .follow-up-detail-hero h1 em { color: #f3d6a9; }
@@ -387,6 +399,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 24px; }
   .hero .eyebrow { font-size: 16px; line-height: 1.45; }
   .hero-note { padding: 24px 28px; width: min(370px, calc(100% - 20px)); }
+  .hero-note p { font-size: 15px; }
+  .hero-note strong { font-size: 17px; }
   .belief-strip { flex-wrap: wrap; gap: 12px 0; padding: 23px 14px; }
   .belief-strip p { margin: 0 11px; }
   .section { padding: 85px 24px; }
@@ -395,7 +409,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .about { gap: 75px; }
   .about-title span { font-size: 48px; }
   .about-title em { font-size: 38px; }
-  .experience-badge { bottom: -48px; right: 16px; }
+  .experience-badge { bottom: 16px; right: 16px; }
   .about-copy .large-copy { margin-top: 28px; }
   .about-awards { padding-top: 40px; }
   .about-awards-heading { gap: 12px; grid-template-columns: 1fr; margin-bottom: 25px; }
@@ -481,6 +495,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .follow-up-option-card { min-height: 0; padding: 32px 27px 36px; }
   .follow-up-option-number { margin-bottom: 38px; }
   .follow-up-option-card p { font-size: 19px; }
+  .consultation-detail-hero { min-height: 720px; }
+  .consultation-detail-mark { bottom: -55px; font-size: 330px; right: -45px; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-video { display: none; } * { transition: none !important; } }

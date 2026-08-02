@@ -27,7 +27,8 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Nutrition counseling · South Florida &amp; telehealth/);
   assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles - delivered with care and compassion, curiosity, not judgment\./);
   assert.doesNotMatch(html, /that listens to you - not the numbers/);
-  assert.match(html, /In-person in South Florida and via secure telehealth/);
+  assert.match(html, /<b>In-person in South Florida<\/b> and via secure telehealth everywhere else\./);
+  assert.match(html, /Sessions are available to fit your life and schedule\./);
   assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
   assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
@@ -60,7 +61,8 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.equal((html.match(/class="award-card"/g) ?? []).length, 4);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
-  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-6"/);
+  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
+  assert.match(html, /I&#x27;m So Glad You&#x27;re Here/i);
   assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
@@ -121,7 +123,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.ok(html.indexOf('class="expertise section"') < html.indexOf('class="services section"'), "Specialized support should come before services");
   assert.match(html, /Let&#x27;s make peace/);
   assert.match(html, /Schedule a free, brief introductory call to see whether working together feels like the right fit\./i);
-  assert.match(html, /href="https:\/\/www\.amyjaffenutrition\.com\/free-disordered-eating-consultation"[^>]*>Sign up for a free, brief introductory call/i);
+  assert.match(html, /href="free-introductory-call\/"[^>]*>Sign up for a free, brief introductory call/i);
+  assert.match(html, /Our office is considered out of network for most insurance companies\./i);
+  assert.match(html, /We will help you understand your benefits and options\./i);
+  assert.match(html, /monthly Superbills for you to submit/i);
   assert.match(html, /Submitting opens your email app so you can send your request privately\./i);
   assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
   assert.doesNotMatch(html, /A gentler way forward|Start with[\s\S]*understanding|href="[^"]*#resources"/i);
@@ -238,16 +243,35 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
+test("server-renders the free introductory call page", async () => {
+  const response = await render("/free-introductory-call");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /A free, brief introduction/i);
+  assert.match(html, /A first step,[\s\S]*?without pressure\./i);
+  assert.match(html, /This introductory call is a welcoming place to begin\./i);
+  assert.match(html, /What brings you to nutrition counseling/i);
+  assert.match(html, /Your questions about scheduling, telehealth, and care/i);
+  assert.match(html, /Request my free call/i);
+  assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Free%20Introductory%20Call%20Request"/i);
+  assert.match(html, /Submitting opens your email app so you can send your request privately\./i);
+  assert.doesNotMatch(html, /free-disordered-eating-consultation/i);
+});
+
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
   const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
+  const consultation = await readFile(new URL("../dist/client/free-introductory-call/index.html", import.meta.url), "utf8");
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
   const followUp = await readFile(new URL("../dist/client/services/follow-up-sessions/index.html", import.meta.url), "utf8");
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
-  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-6"/);
+  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.doesNotMatch(index, /<script\b/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
@@ -258,6 +282,12 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(testimonials, /href="\.\.\/#about"/i);
   assert.doesNotMatch(testimonials, /<script\b/i);
   assert.doesNotMatch(testimonials, /modulepreload/i);
+  assert.match(consultation, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(consultation, /href="\.\.\/assets\//);
+  assert.match(consultation, /src="\.\.\/images\/amy-jaffe-logo\.avif"/i);
+  assert.match(consultation, /Request my free call/i);
+  assert.doesNotMatch(consultation, /<script\b/i);
+  assert.doesNotMatch(consultation, /modulepreload/i);
   assert.match(assessment, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(assessment, /href="\.\.\/\.\.\/assets\//);
   assert.match(assessment, /src="\.\.\/\.\.\/images\/amy-jaffe-logo\.avif"/i);

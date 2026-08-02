@@ -111,7 +111,11 @@ export default function Home() {
 
         <div className="hero-note" aria-label="Practice details">
           <span className="note-dot" />
-          <p><strong>Currently accepting new clients</strong><br />In-person in South Florida and via secure telehealth</p>
+          <p>
+            <strong>Currently accepting new clients</strong><br />
+            <b>In-person in South Florida</b> and via secure telehealth everywhere else.
+            <span className="hero-note-schedule">Sessions are available to fit your life and schedule.</span>
+          </p>
         </div>
 
       </section>
@@ -124,10 +128,11 @@ export default function Home() {
         <div className="about-image-wrap">
           <div className="about-video-frame">
             <video controls playsInline preload="metadata" poster="images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
-              <source src="video/nutritioncounselingflorida.mp4?v=20260731-6" type="video/mp4" />
+              <source src="video/nutritioncounselingflorida.mp4?v=20260802" type="video/mp4" />
             </video>
+            <div className="experience-badge"><strong>20+</strong><span>years of<br />experience</span></div>
           </div>
-          <div className="experience-badge"><strong>20+</strong><span>years of<br />experience</span></div>
+          <p className="about-video-welcome">I&apos;m So Glad You&apos;re Here</p>
         </div>
 
         <div className="about-copy">
@@ -242,7 +247,7 @@ export default function Home() {
         <p className="eyebrow">Insurance</p>
         <div>
           <h2>Simple, transparent care.</h2>
-          <p>Our office is out of network for most insurance companies. We can provide monthly superbills for you to submit, and any reimbursement goes directly to you or toward your deductible.</p>
+          <p>Our office is considered out of network for most insurance companies. We will help you understand your benefits and options. We can also provide monthly Superbills for you to submit, and any reimbursement goes directly to you or toward your deductible.</p>
         </div>
       </section>
 
@@ -251,7 +256,7 @@ export default function Home() {
           <p className="eyebrow light">Take the first step</p>
           <h2>Let&apos;s make peace<br /><em>with food.</em></h2>
           <p>Schedule a free, brief introductory call to see whether working together feels like the right fit.</p>
-          <a className="button button-cream contact-consult-link" href="https://www.amyjaffenutrition.com/free-disordered-eating-consultation">Sign up for a free, brief introductory call <span aria-hidden="true">↗</span></a>
+          <a className="button button-cream contact-consult-link" href="free-introductory-call/">Sign up for a free, brief introductory call <span aria-hidden="true">↗</span></a>
           <div className="contact-details">
             <a href="tel:3055866053">305-586-6053</a>
             <a href="mailto:amysjaffe@gmail.com">amysjaffe@gmail.com</a>
