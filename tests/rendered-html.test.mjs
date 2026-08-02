@@ -27,7 +27,8 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Nutrition counseling · South Florida &amp; telehealth/);
   assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles - delivered with care and compassion, curiosity, not judgment\./);
   assert.doesNotMatch(html, /that listens to you - not the numbers/);
-  assert.match(html, /<b>In-person in South Florida<\/b> and via secure telehealth everywhere else\./);
+  assert.match(html, /In-person in <b>South Florida<\/b> and via secure telehealth\./);
+  assert.doesNotMatch(html, /everywhere else/i);
   assert.match(html, /Sessions are available to fit your life and schedule\./);
   assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
@@ -63,6 +64,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.match(html, /I&#x27;m So Glad You&#x27;re Here/i);
+  assert.match(html, /class="about-welcome-logo" src="images\/amy-jaffe-logo\.avif" alt="Amy Jaffe"/i);
   assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
@@ -70,8 +72,11 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together\./i);
   assert.match(html, /href="services\/nutrition-assessment\/"[^>]*aria-label="Learn more about the nutrition assessment"/i);
   assert.match(html, /Nutrition counseling follow-up sessions/i);
+  assert.match(html, /30-60 minutes/i);
   assert.match(html, /Goal-centered sessions that build on your assessment/i);
   assert.match(html, /href="services\/follow-up-sessions\/"[^>]*aria-label="Learn more about nutrition counseling follow-up sessions"/i);
+  assert.equal((html.match(/class="service-card service-card-detail"/g) ?? []).length, 2);
+  assert.match(html, /<h3>Telehealth sessions<\/h3>[\s\S]*?Private video appointments for clients in Florida and beyond, with the same warm, collaborative care\./i);
   assert.doesNotMatch(html, /Individual counseling/i);
   assert.doesNotMatch(html, /The assessment includes a detailed medical history/i);
   assert.match(html, /<section class="expertise section" id="expertise">/i);
@@ -217,9 +222,10 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
 
   const html = await response.text();
   assert.match(html, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
-  assert.match(html, /Ongoing, individualized support/i);
+  assert.match(html, /30-60 minutes · individualized support/i);
   assert.match(html, /The follow-up sessions are based on the goals determined during the initial nutrition assessment\./i);
   assert.match(html, /both successes and challenges are used to promote change/i);
+  assert.match(html, /The frequency of follow-up sessions is agreed upon collaboratively, regularly assessed for necessity, and ultimately decreased as progress is achieved\./i);
   assert.match(html, /Grocery outings/i);
   assert.match(html, /Mindful meal outings/i);
   assert.match(html, /Intuitive eating/i);

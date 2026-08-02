@@ -74,7 +74,7 @@ export default function FollowUpSessionsPage() {
       <section className="assessment-detail-hero follow-up-detail-hero">
         <div className="assessment-detail-hero-content">
           <a className="assessment-back-link" href="../../#services"><span aria-hidden="true">←</span> Back to services</a>
-          <p className="eyebrow light">Ongoing, individualized support</p>
+          <p className="eyebrow light">30-60 minutes · individualized support</p>
           <h1>Nutrition counseling<br /><em>follow-up sessions.</em></h1>
           <p className="assessment-detail-lede">Each session builds on the goals we created together, with support shaped by your progress, successes, and challenges.</p>
         </div>
@@ -89,7 +89,7 @@ export default function FollowUpSessionsPage() {
         <div className="assessment-detail-copy">
           <p>The follow-up sessions are based on the goals determined during the initial nutrition assessment.</p>
           <p className="assessment-review-copy">The direction of each session is based on progress toward goal completion; both successes and challenges are used to promote change.</p>
-          <p>The frequency of follow-up sessions is agreed upon in the first session, regularly assessed for necessity, and ultimately decreased as progress is achieved.</p>
+          <p>The frequency of follow-up sessions is agreed upon collaboratively, regularly assessed for necessity, and ultimately decreased as progress is achieved.</p>
         </div>
       </section>
 
