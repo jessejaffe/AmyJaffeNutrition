@@ -105,7 +105,7 @@ export default function Home() {
           <span className="note-dot" />
           <p>
             <strong>Currently accepting new clients</strong><br />
-            In-person in <b>South Florida</b> and via secure telehealth.
+            In-person in <b>South Florida</b> and via secure telehealth with private video appointments for clients in Florida and beyond.
             <span className="hero-note-schedule">Sessions are available to fit your life and schedule.</span>
           </p>
         </div>
@@ -249,10 +249,6 @@ export default function Home() {
           <p className="eyebrow light">Take the first step</p>
           <h2>Let&apos;s make peace<br /><em>with food.</em></h2>
           <p>Schedule a free, brief introductory call to see whether working together feels like the right fit.</p>
-          <div className="contact-telehealth">
-            <h3>Telehealth sessions</h3>
-            <p>Private video appointments for clients in Florida and beyond, with the same warm, collaborative care.</p>
-          </div>
           <a className="button button-cream contact-consult-link" href="free-introductory-call/">Sign up for a free, brief introductory call <span aria-hidden="true">↗</span></a>
           <div className="contact-details">
             <a href="tel:3055866053">305-586-6053</a>

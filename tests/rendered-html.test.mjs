@@ -27,7 +27,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Nutrition counseling · South Florida &amp; telehealth/);
   assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles - delivered with care and compassion, curiosity, not judgment\./);
   assert.doesNotMatch(html, /that listens to you - not the numbers/);
-  assert.match(html, /In-person in <b>South Florida<\/b> and via secure telehealth\./);
+  assert.match(html, /In-person in <b>South Florida<\/b> and via secure telehealth with private video appointments for clients in Florida and beyond\./);
   assert.doesNotMatch(html, /everywhere else/i);
   assert.match(html, /Sessions are available to fit your life and schedule\./);
   assert.doesNotMatch(html, /[—–]/);
@@ -76,7 +76,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Goal-centered sessions that build on your assessment/i);
   assert.match(html, /href="services\/follow-up-sessions\/"[^>]*aria-label="Learn more about nutrition counseling follow-up sessions"/i);
   assert.equal((html.match(/class="service-card service-card-detail"/g) ?? []).length, 2);
-  assert.match(html, /<h3>Telehealth sessions<\/h3>[\s\S]*?Private video appointments for clients in Florida and beyond, with the same warm, collaborative care\./i);
+  assert.doesNotMatch(html, /class="contact-telehealth"|<h3>Telehealth sessions<\/h3>/i);
   assert.doesNotMatch(html, /Individual counseling/i);
   assert.doesNotMatch(html, /The assessment includes a detailed medical history/i);
   assert.match(html, /<section class="expertise section" id="expertise">/i);
