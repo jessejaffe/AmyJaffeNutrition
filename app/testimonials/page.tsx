@@ -19,14 +19,6 @@ type VisualTestimonial = {
   portraitAlt?: string;
 };
 
-type WrittenTestimonial = {
-  name: string;
-  paragraphs: string[];
-  image?: string;
-  imageAlt?: string;
-  role?: string;
-};
-
 type ClientHighlight = {
   name: string;
   highlight: string;
@@ -159,62 +151,6 @@ const clientTestimonials: ClientHighlight[] = [
   },
 ];
 
-const longerStories: WrittenTestimonial[] = [
-  {
-    name: "Irene C.",
-    paragraphs: [
-      "I want to thank Amy Jaffe RD, LD, MS, Nutritionist and Certified Intuitive Eating Specialist, from the Miami Resource and Counseling Center, for the exceptional and amazing services she provided in facing my nutritional and weight issues.",
-      "After following my physician's recommendations to be evaluated by a dietician since my weight, blood pressure, and A1C levels were rising and getting out of control, I was given Amy Jaffe's information and she was highly recommended. I must say I was very reluctant in making the appointment. Being in the health field I thought I knew everything I needed to know about losing the weight. I just needed to focus, eat lots of salads, limited carbs, little sugars, and lots of exercise. Simple! Boy was I wrong! I was schooled by Amy.",
-      "Reluctantly I went ahead and scheduled the appointment. As I was driving to the appointment, instead of looking forward, I was feeling overwhelmed in adding another appointment to my busy schedule, more driving around town, more sitting around in a cold, uncomfortable, packed and boring office setting with a TV set to repetitive medical news. I must admit I almost turned around a few times, but amazingly I made it to the appointment. I can say it was and still is one of the best decisions I have made in my life!",
-      "I was content with the office location and parking accessibility. As I entered the office I was stumped by the ambience. The waiting area was super cozy, with a non-clinical setting and definitely not intimidating at all. I enjoyed the soft, relaxing sounds of a waterfall scene playing on the TV and the fragrance of a beautiful bouquet of flowers sitting on the center table. The office staff was amazing, very professional and courteous. I felt my anxiety level decreasing.",
-      "Less than 10 minutes had passed when I heard a soft voice calling my name. It was Amy! She greeted me with a big smile and a soft handshake and directed me to her office, also cozy and non-intimidating, plus very homey.",
-      "During our initial visit Amy completed a nutritional assessment by gathering all my information about my nutrition, including my physical and emotional status, and developed a plan of action for me to follow on a weekly basis. I was stumped to learn that she uses a non-diet approach and introduced me to the 10 principles of Intuitive Eating: rejecting the diet mentality, honoring my hunger, making peace with food, challenging the food police, respecting my fullness, discovering the satisfaction factor, respecting my body, exercising, honoring my feelings, and honoring my health.",
-      "She also introduced me to the Recovery Record electronic app, where I logged my meals, snacks, thoughts, feelings and coping skills. By inviting her, she was able to access my logs and send me messages, reminders and encouragement throughout the week. She definitely helped me work toward greater body acceptance and a healthy relationship with food. She allowed me to take challenges at my own pace and get out of my comfort zone under her guidance. Every meeting with Amy brought an aha moment that freed me from my issues with food.",
-      "Through the weeks and months I spent with Amy, I always looked forward to our next sessions, following up on previous goals and setting new ones. Today I can say I am more conscious about what I eat and drink, not depriving myself of the foods I enjoy, especially napoleons, tres leches, tapas, arepas, patty-like croquettes, rice, beans, and all the delicious Cuban foods that I love. Amy is very knowledgeable about most of the ethnic cuisine in the Miami area, and that is a plus in a nutritionist who understands the different cuisines of the community.",
-      "I am very happy to report that my blood pressure and A1C levels have decreased to a manageable level and my weight has been decreasing slowly but steadily, having lost approximately 30 pounds in less than a year and a half. There have been easy days and a few hard days, but even on a hard day, intuitive eating is easier than a hard day dieting.",
-      "Leaving the best for last, let me tell you about my dietician. She is an amazing professional, super skilled in her profession, very supportive, down to earth, patient, warm, empathetic, creative, compassionate, inspiring, and an excellent listener. She always makes sure to have a kind word to say and is very accessible by text, email or phone. Amy has been amazing to me!",
-      "In conclusion, Amy, I love what you have done for me! You rock! You are the best!",
-    ],
-  },
-  {
-    name: "Morgan H.",
-    image: "testimonial-note-13.jpeg",
-    imageAlt: "Morgan H.",
-    paragraphs: [
-      "12 months ago I was caught in a never-ending cycle of bingeing and restricting, and I had a terrible relationship with my body. I had lived this way for years, and I 100% believed that recovery was not possible for me. My therapist kept encouraging me to meet with a nutritionist, but honestly, I was terrified. I didn't want to be put on a diet plan. I didn't want to be told I needed to gain or lose weight. I didn't want someone to know what I did or did not let myself eat.",
-      "But I did know that I couldn't live that life anymore. Something needed to change. So, I got the guts to schedule my first appointment with Amy. And I can honestly say that is the best thing I have ever done for myself. Amy introduced me to intuitive eating and it changed my life. She helped me break up with dieting and develop a positive relationship with food.",
-      "I started seeing Amy 12 months ago, and it has been 8 months since I last binged. 8 MONTHS!!!!! I would not be where I am today without the support of this woman. She helped me get my life back, and I am eternally grateful.",
-    ],
-  },
-  {
-    name: "Rachael P.",
-    image: "testimonial-note-14.jpg",
-    imageAlt: "Rachael P.",
-    paragraphs: [
-      "I worked with Amy Jaffe in the capacity of my registered dietician from April through November 2018. Initially we worked face-to-face while I was working in Miami; however, we continued meeting for weekly sessions on the telephone and FaceTime. Amy was always most attentive to my needs as an individual and was very quick to learn about my own personal circumstances: I suffer from anorexia, complex-PTSD, and dissociation.",
-      "Within a matter of weeks Amy had a concrete grasp of my various diagnoses and had become very adept at adjusting her approach to best meet my needs on any given day. She liaised frequently with my therapists and family members and communicated with me on a near-daily basis through text messages and an online recovery application for people with eating disorders. Amy's understanding of my unique needs and her continued support enabled me to continue setting and attaining achievable goals.",
-      "When I moved back to Houston, she provided a detailed handover for my new dietician, which helped with this transition in location and team members. Amy is a brilliantly skilled and knowledgeable dietician who really comprehends the brutal nature and psyche of an eating disorder and the psychological trauma this illness wreaks in people's lives. Yet, it was her constant dedication, kindness, and thoughtfulness that made my experience working with Amy such an important part of my recovery process.",
-      "I am really grateful to her for all her support in my journey and feel honored to have had the opportunity to work with such a personality. As the popular adage goes, every cloud has a silver lining. Having anorexia is more so a storm than a mere cloud, but Amy has been one of my silver linings in my journey to health, happiness, and fulfillment.",
-    ],
-  },
-  {
-    name: "Dr. Sammi Siegel",
-    role: "Licensed Mental Health Counselor",
-    image: "testimonial-note-15.jpeg",
-    imageAlt: "Dr. Sammi Siegel",
-    paragraphs: ["I can't do my job without Amy Jaffe! I would be remiss if I did not enlist the collaboration with her in working with my clients who struggle with their relationship with food. Having her working with my clients gives me the peace of mind that they are well taken care of for the nutrition piece so that I can focus on the psychotherapy aspects of eating disorder treatment. She is the peanut butter to my jelly, the yin to my yang."],
-  },
-  {
-    name: "Carlos C.",
-    image: "testimonial-note-16.jpg",
-    imageAlt: "Carlos C.",
-    paragraphs: [
-      "Several years ago, I was overweight with pain in my right knee. I wanted to reduce my weight but not follow a diet that might last some months only. Instead, I was looking for a long-term solution by changing my eating habits.",
-      "I met Amy at that moment, and I have to say that she was outstanding in helping me accomplish my goals. She knows how to help you change your eating habits in ways that later impact a healthy lifestyle. I highly recommend Amy for her professionalism and human quality.",
-    ],
-  },
-];
-
 export default function TestimonialsPage() {
   return (
     <main className="testimonials-page">
@@ -300,6 +236,21 @@ export default function TestimonialsPage() {
         <p className="google-review-source">Selected public reviews and owner responses from Google.</p>
       </section>
 
+      <section className="client-stories-section" id="in-their-words">
+        <div className="client-stories-heading">
+          <p>Care that stays with you.</p>
+          <h2>In their <em>words.</em></h2>
+        </div>
+        <div className="client-quote-cloud">
+          {clientTestimonials.map((testimonial) => (
+            <article className="client-quote-bubble" data-client={testimonial.name} key={testimonial.name}>
+              <blockquote>{testimonial.highlight}</blockquote>
+              <p className="client-quote-name">— {testimonial.name}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="testimonial-gallery-section">
         <div className="testimonial-page-heading">
           <p className="eyebrow">Notes and milestones</p>
@@ -317,39 +268,6 @@ export default function TestimonialsPage() {
                 </figure>
               )}
               <p>{testimonial.name}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="client-stories-section" id="in-their-words">
-        <div className="client-stories-heading">
-          <p>Care that stays with you.</p>
-          <h2>In their <em>words.</em></h2>
-        </div>
-        <div className="client-quote-cloud">
-          {clientTestimonials.map((testimonial) => (
-            <article className="client-quote-bubble" data-client={testimonial.name} key={testimonial.name}>
-              <blockquote>{testimonial.highlight}</blockquote>
-              <p className="client-quote-name">— {testimonial.name}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="long-stories-section">
-        <div className="testimonial-page-heading">
-          <p className="eyebrow">Recovery stories</p>
-          <h2>What changed<br /><em>along the way.</em></h2>
-        </div>
-        <div className="long-story-list">
-          {longerStories.map((story, index) => (
-            <article className={`long-story${story.image ? " has-client-photo" : ""}`} data-client={story.name} key={story.name}>
-              <header>
-                {story.image && <img src={`../images/testimonials/${story.image}`} alt={story.imageAlt} loading="lazy" />}
-                <span>{String(index + 1).padStart(2, "0")}</span><h3>{story.name}</h3>{story.role && <p>{story.role}</p>}
-              </header>
-              <blockquote>{story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</blockquote>
             </article>
           ))}
         </div>
