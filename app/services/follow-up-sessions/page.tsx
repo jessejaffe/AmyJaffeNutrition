@@ -14,7 +14,7 @@ const socialLinks = [
 const sessionOptions = [
   {
     number: "01",
-    title: "Intuitive eating",
+    title: "The Intuitive Eating framework",
     body: "Intuitive eating is an evidence-based model, an integration between mind and body that works by either cultivating or removing obstacles to body awareness, known as interoceptive awareness. The way people respond to this awareness can provide a powerful portal for identifying their needs at any given time or in any situation. The Intuitive Eating framework will guide our work together, helping you move from structure toward flexibility and greater freedom with food.",
   },
   {
@@ -96,7 +96,7 @@ export default function FollowUpSessionsPage() {
       <section className="follow-up-options-section">
         <div className="section-heading-row">
           <div>
-            <p className="eyebrow">The Intuitive Eating framework.</p>
+            <p className="eyebrow">Session options</p>
             <h2>Support that meets you<br /><em>where life happens.</em></h2>
           </div>
           <p className="section-intro">Follow-up care can move beyond the office when hands-on, real-life support would be helpful.</p>
