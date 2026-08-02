@@ -228,7 +228,6 @@ export default function TestimonialsPage() {
           <a href="../#about">About</a>
           <a href="../#services">Services</a>
           <a href="./" aria-current="page">Testimonials</a>
-          <a href="../#resources">Resources</a>
           <div className="header-social-links" aria-label="Social media">
             {socialLinks.map((social) => (
               <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
@@ -242,7 +241,7 @@ export default function TestimonialsPage() {
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             <a href="../#about">About</a><a href="../#services">Services</a>
-            <a href="./" aria-current="page">Testimonials</a><a href="../#resources">Resources</a>
+            <a href="./" aria-current="page">Testimonials</a>
             <a href="../#contact">Contact</a>
             <div className="mobile-social-links" aria-label="Social media">
               {socialLinks.map((social) => (
@@ -375,7 +374,7 @@ export default function TestimonialsPage() {
             </a>
           </section>
           <div className="footer-summary">
-            <p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p>
+            <p>Serving South Florida and telehealth clients with compassionate, expert nutrition care.</p>
             <div className="social-links" aria-label="Social media">
               {socialLinks.map((social) => (
                 <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>

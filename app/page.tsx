@@ -33,12 +33,6 @@ const services = [
   },
 ];
 
-const resources = [
-  ["Intuitive eating", "Reconnect with hunger, fullness, satisfaction, and the wisdom already within your body."],
-  ["Body image", "Move away from comparison and toward a more peaceful, respectful relationship with yourself."],
-  ["Eating support", "Compassionate nutrition care for disordered eating, chronic dieting, and food anxiety."],
-];
-
 const expertiseAreas = [
   "Bariatric Surgery",
   "Body Image",
@@ -72,7 +66,6 @@ export default function Home() {
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="testimonials/">Testimonials</a>
-          <a href="#resources">Resources</a>
           <div className="header-social-links" aria-label="Social media">
             {socialLinks.map((social) => (
               <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>
@@ -88,7 +81,7 @@ export default function Home() {
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             <a href="#about">About</a><a href="#services">Services</a>
-            <a href="testimonials/">Testimonials</a><a href="#resources">Resources</a>
+            <a href="testimonials/">Testimonials</a>
             <a href="#contact">Contact</a>
             <div className="mobile-social-links" aria-label="Social media">
               {socialLinks.map((social) => (
@@ -140,8 +133,9 @@ export default function Home() {
         <div className="about-copy">
           <h2 className="about-title"><span>Meet Amy Jaffe,</span><em>MS, RD, LD</em></h2>
           <p className="about-subheadline">Providing evidence-based care that considers your <em>whole person.</em></p>
-          <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
+          <p className="large-copy">I&apos;m a Nationally Registered, State-Licensed Dietitian/Nutritionist.</p>
           <p className="approach-copy">My approach is highly individualized and comprehensive. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
+          <p className="body-peace-copy">&quot;You can&apos;t be at peace with food while at war with your body.&quot;<span>We will address both.</span></p>
           <div className="credentials">
             <span>Nationally Registered and Licensed Nutritionist/Dietitian</span><span>Certified Intuitive Eating Specialist</span>
           </div>
@@ -244,17 +238,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="resources section" id="resources">
-        <div className="resource-title"><p className="eyebrow">A gentler way forward</p><h2>Start with<br /><em>understanding.</em></h2></div>
-        <div className="resource-list">
-          {resources.map(([title, body], index) => (
-            <article key={title}>
-              <span>0{index + 1}</span><div><h3>{title}</h3><p>{body}</p></div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="insurance section">
         <p className="eyebrow">Insurance</p>
         <div>
@@ -267,7 +250,8 @@ export default function Home() {
         <div className="contact-intro">
           <p className="eyebrow light">Take the first step</p>
           <h2>Let&apos;s make peace<br /><em>with food.</em></h2>
-          <p>Schedule a free, brief introductory conversation to see whether working together feels like the right fit.</p>
+          <p>Schedule a free, brief introductory call to see whether working together feels like the right fit.</p>
+          <a className="button button-cream contact-consult-link" href="https://www.amyjaffenutrition.com/free-disordered-eating-consultation">Sign up for a free, brief introductory call <span aria-hidden="true">↗</span></a>
           <div className="contact-details">
             <a href="tel:3055866053">305-586-6053</a>
             <a href="mailto:amysjaffe@gmail.com">amysjaffe@gmail.com</a>
@@ -312,7 +296,7 @@ export default function Home() {
           </section>
 
           <div className="footer-summary">
-            <p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p>
+            <p>Serving South Florida and telehealth clients with compassionate, expert nutrition care.</p>
             <div className="social-links" aria-label="Social media">
               {socialLinks.map((social) => (
                 <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>

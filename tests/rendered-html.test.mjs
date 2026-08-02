@@ -37,7 +37,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.doesNotMatch(html, /A life beyond diets/);
   assert.match(html, /<h2 class="about-title"><span>Meet Amy Jaffe,<\/span><em>MS, RD, LD<\/em><\/h2>/i);
   assert.match(html, /<p class="about-subheadline">Providing evidence-based care that considers your/i);
+  assert.match(html, /I&#x27;m a Nationally Registered, State-Licensed Dietitian\/Nutritionist\./i);
   assert.match(html, /My approach is highly individualized and comprehensive\./i);
+  assert.match(html, /&quot;You can&#x27;t be at peace with food while at war with your body\.&quot;<span>We will address both\.<\/span>/i);
   assert.doesNotMatch(html, /Care that sees the whole person|highly individualized and holistic/i);
   assert.doesNotMatch(html, /RDN, LDN/i);
   assert.match(html, /Honored for care in our community\./i);
@@ -118,6 +120,11 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.ok(html.indexOf('class="quote-section"') < html.indexOf('class="expertise section"'), "Specialized support should follow the calories quote");
   assert.ok(html.indexOf('class="expertise section"') < html.indexOf('class="services section"'), "Specialized support should come before services");
   assert.match(html, /Let&#x27;s make peace/);
+  assert.match(html, /Schedule a free, brief introductory call to see whether working together feels like the right fit\./i);
+  assert.match(html, /href="https:\/\/www\.amyjaffenutrition\.com\/free-disordered-eating-consultation"[^>]*>Sign up for a free, brief introductory call/i);
+  assert.match(html, /Submitting opens your email app so you can send your request privately\./i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /A gentler way forward|Start with[\s\S]*understanding|href="[^"]*#resources"/i);
   assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
   assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Initial%20Nutrition%20Assessment"/i);
   assert.match(html, /method="post"/i);
@@ -175,6 +182,8 @@ test("server-renders the complete testimonials page", async () => {
   assert.doesNotMatch(html, /quote-number/i);
   assert.doesNotMatch(html, /testimonial-image-gallery/i);
   assert.doesNotMatch(html, /rainbow of possibilities/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
 test("server-renders the nutrition assessment detail page", async () => {
@@ -192,6 +201,8 @@ test("server-renders the nutrition assessment detail page", async () => {
   assert.match(html, /href="https:\/\/www\.recoveryrecord\.com\/"[^>]*>Recovery Record/i);
   assert.match(html, /href="https:\/\/www\.nourishly\.com\/"[^>]*>Nourishly/i);
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
 test("server-renders the nutrition counseling follow-up sessions page", async () => {
@@ -223,6 +234,8 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
     previousOptionIndex = optionIndex;
   }
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
 test("exports a GitHub Pages-ready static site", async () => {
