@@ -139,7 +139,7 @@ export default function Home() {
 
         <div className="about-copy">
           <h2 className="about-title"><span>Meet Amy Jaffe,</span><em>MS, RD, LD</em></h2>
-          <p className="about-subheadline">Providing care that considers your <em>whole person.</em></p>
+          <p className="about-subheadline">Providing evidence-based care that considers your <em>whole person.</em></p>
           <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
           <p className="approach-copy">My approach is highly individualized and comprehensive. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
           <div className="credentials">
