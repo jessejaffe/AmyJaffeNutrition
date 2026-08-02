@@ -20,7 +20,7 @@ const sessionOptions = [
   {
     number: "02",
     title: "Food exposures",
-    body: "Clients can bring challenging or forbidden foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
+    body: "Clients can bring challenging or “forbidden” foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
   },
   {
     number: "03",
@@ -96,7 +96,7 @@ export default function FollowUpSessionsPage() {
       <section className="follow-up-options-section">
         <div className="section-heading-row">
           <div>
-            <p className="eyebrow">Session options</p>
+            <p className="eyebrow">The Intuitive Eating framework.</p>
             <h2>Support that meets you<br /><em>where life happens.</em></h2>
           </div>
           <p className="section-intro">Follow-up care can move beyond the office when hands-on, real-life support would be helpful.</p>
@@ -111,12 +111,6 @@ export default function FollowUpSessionsPage() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="assessment-detail-cta">
-        <p className="eyebrow light">Continue your progress</p>
-        <h2>Let&apos;s choose the support<br /><em>that fits you.</em></h2>
-        <a className="button button-cream" href="../../#contact">Request an appointment <span aria-hidden="true">↗</span></a>
       </section>
 
       <footer>

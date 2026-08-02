@@ -257,6 +257,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
 .follow-up-detail-hero .assessment-detail-lede { max-width: 760px; }
 .follow-up-detail-content { padding-bottom: 115px; }
 .follow-up-options-section { background: #f4eee6; padding: 110px 8vw 125px; }
+.follow-up-options-section h2 { font-size: clamp(39px, 4vw, 58px); }
 .follow-up-options-grid { display: grid; gap: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .follow-up-option-card { background: #e4eee7; border-top: 4px solid var(--green); min-height: 430px; padding: 38px 40px 42px; }
 .follow-up-option-card:nth-child(2) { background: #f3e4ce; border-top-color: var(--gold); }

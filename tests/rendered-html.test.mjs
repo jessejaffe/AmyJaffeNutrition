@@ -221,6 +221,7 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /The follow-up sessions are based on the goals determined during the initial nutrition assessment\./i);
   assert.match(html, /both successes and challenges are used to promote change/i);
   assert.match(html, /The frequency of follow-up sessions is agreed upon collaboratively, regularly assessed for necessity, and ultimately decreased as progress is achieved\./i);
+  assert.match(html, /The Intuitive Eating framework\./i);
   assert.match(html, /Grocery outings/i);
   assert.match(html, /Mindful meal outings/i);
   assert.match(html, /Intuitive eating/i);
@@ -229,9 +230,10 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /local grocery store, or we meet there together virtually/i);
   assert.match(html, /local restaurants or cafés, or we meet there together virtually/i);
   assert.match(html, /Food exposures/i);
-  assert.match(html, /challenging or forbidden foods to the session, in person or virtually/i);
+  assert.match(html, /challenging or “forbidden” foods to the session, in person or virtually/i);
   assert.match(html, /facing your fears/i);
   assert.equal((html.match(/class="follow-up-option-card"/g) ?? []).length, 4);
+  assert.doesNotMatch(html, /Continue your progress|class="assessment-detail-cta"/i);
   const optionOrder = ["Intuitive eating", "Food exposures", "Mindful meal outings", "Grocery outings"];
   let previousOptionIndex = -1;
   for (const option of optionOrder) {
