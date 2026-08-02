@@ -185,7 +185,7 @@ test("server-renders the nutrition assessment detail page", async () => {
   const html = await response.text();
   assert.match(html, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /Initial session · 90 minutes/i);
-  assert.match(html, /The assessment includes a detailed medical history/i);
+  assert.match(html, /The assessment includes a detailed medical history, prior eating patterns, weight issues, physical activity, food and body challenges\./i);
   assert.match(html, /class="assessment-review-copy"/i);
   assert.match(html, /interoceptive senses \(internal cues of hunger and fullness\)/i);
   assert.match(html, /concrete plan of action that is evaluated in follow-up sessions/i);
