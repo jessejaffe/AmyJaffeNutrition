@@ -14,13 +14,13 @@ const socialLinks = [
 const sessionOptions = [
   {
     number: "01",
-    title: "Intuitive eating",
+    title: "The Intuitive Eating framework",
     body: "Intuitive eating is an evidence-based model, an integration between mind and body that works by either cultivating or removing obstacles to body awareness, known as interoceptive awareness. The way people respond to this awareness can provide a powerful portal for identifying their needs at any given time or in any situation. The Intuitive Eating framework will guide our work together, helping you move from structure toward flexibility and greater freedom with food.",
   },
   {
     number: "02",
     title: "Food exposures",
-    body: "Clients can bring challenging or forbidden foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
+    body: "Clients can bring challenging or “forbidden” foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
   },
   {
     number: "03",
@@ -47,7 +47,6 @@ export default function FollowUpSessionsPage() {
           <a href="../../#about">About</a>
           <a href="../../#services" aria-current="page">Services</a>
           <a href="../../testimonials/">Testimonials</a>
-          <a href="../../#resources">Resources</a>
           <div className="header-social-links" aria-label="Social media">
             {socialLinks.map((social) => (
               <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
@@ -61,7 +60,7 @@ export default function FollowUpSessionsPage() {
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             <a href="../../#about">About</a><a href="../../#services" aria-current="page">Services</a>
-            <a href="../../testimonials/">Testimonials</a><a href="../../#resources">Resources</a>
+            <a href="../../testimonials/">Testimonials</a>
             <a href="../../#contact">Contact</a>
             <div className="mobile-social-links" aria-label="Social media">
               {socialLinks.map((social) => (
@@ -75,7 +74,7 @@ export default function FollowUpSessionsPage() {
       <section className="assessment-detail-hero follow-up-detail-hero">
         <div className="assessment-detail-hero-content">
           <a className="assessment-back-link" href="../../#services"><span aria-hidden="true">←</span> Back to services</a>
-          <p className="eyebrow light">Ongoing, individualized support</p>
+          <p className="eyebrow light">30-60 minutes · individualized support</p>
           <h1>Nutrition counseling<br /><em>follow-up sessions.</em></h1>
           <p className="assessment-detail-lede">Each session builds on the goals we created together, with support shaped by your progress, successes, and challenges.</p>
         </div>
@@ -90,7 +89,7 @@ export default function FollowUpSessionsPage() {
         <div className="assessment-detail-copy">
           <p>The follow-up sessions are based on the goals determined during the initial nutrition assessment.</p>
           <p className="assessment-review-copy">The direction of each session is based on progress toward goal completion; both successes and challenges are used to promote change.</p>
-          <p>The frequency of follow-up sessions is agreed upon in the first session, regularly assessed for necessity, and ultimately decreased as progress is achieved.</p>
+          <p>The frequency of follow-up sessions is agreed upon collaboratively, regularly assessed for necessity, and ultimately decreased as progress is achieved.</p>
         </div>
       </section>
 
@@ -133,7 +132,7 @@ export default function FollowUpSessionsPage() {
             </a>
           </section>
           <div className="footer-summary">
-            <p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p>
+            <p>Serving South Florida and telehealth clients with compassionate, expert nutrition care.</p>
             <div className="social-links" aria-label="Social media">
               {socialLinks.map((social) => (
                 <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>

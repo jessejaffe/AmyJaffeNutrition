@@ -24,7 +24,6 @@ export default function NutritionAssessmentPage() {
           <a href="../../#about">About</a>
           <a href="../../#services" aria-current="page">Services</a>
           <a href="../../testimonials/">Testimonials</a>
-          <a href="../../#resources">Resources</a>
           <div className="header-social-links" aria-label="Social media">
             {socialLinks.map((social) => (
               <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
@@ -38,7 +37,7 @@ export default function NutritionAssessmentPage() {
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             <a href="../../#about">About</a><a href="../../#services" aria-current="page">Services</a>
-            <a href="../../testimonials/">Testimonials</a><a href="../../#resources">Resources</a>
+            <a href="../../testimonials/">Testimonials</a>
             <a href="../../#contact">Contact</a>
             <div className="mobile-social-links" aria-label="Social media">
               {socialLinks.map((social) => (
@@ -65,7 +64,7 @@ export default function NutritionAssessmentPage() {
           <h2>A complete picture,<br /><em>not just numbers.</em></h2>
         </div>
         <div className="assessment-detail-copy">
-          <p>The assessment includes a detailed medical history, history of eating patterns, weight and diet trends.</p>
+          <p>The assessment includes a detailed medical history, prior eating patterns, weight issues, physical activity, food and body challenges.</p>
           <p className="assessment-review-copy">We also review current food practices, determine the degree of interoceptive senses (internal cues of hunger and fullness), distribution of food throughout a normal day and an overview of nutrition education as it pertains to normal nutrition principles, physiological changes in metabolism and blood sugar, intuitive eating framework, physical/emotional hunger and fullness and body image.</p>
           <p>Goals are jointly determined and you&apos;ll leave the initial session with a concrete plan of action that is evaluated in follow-up sessions.</p>
 
@@ -100,7 +99,7 @@ export default function NutritionAssessmentPage() {
             </a>
           </section>
           <div className="footer-summary">
-            <p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p>
+            <p>Serving South Florida and telehealth clients with compassionate, expert nutrition care.</p>
             <div className="social-links" aria-label="Social media">
               {socialLinks.map((social) => (
                 <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>

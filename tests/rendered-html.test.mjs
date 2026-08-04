@@ -27,7 +27,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Nutrition counseling · South Florida &amp; telehealth/);
   assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles - delivered with care and compassion, curiosity, not judgment\./);
   assert.doesNotMatch(html, /that listens to you - not the numbers/);
-  assert.match(html, /In-person in South Florida and via secure telehealth/);
+  assert.match(html, /In-person in <b>South Florida<\/b> and via secure telehealth with private video appointments for clients in Florida and beyond\./);
+  assert.doesNotMatch(html, /everywhere else/i);
+  assert.match(html, /Sessions are available to fit your life and schedule\./);
   assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
   assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
@@ -36,8 +38,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Eating disorder recovery\..*GLP-1 support\..*Less food fear\..*More body trust\./s);
   assert.doesNotMatch(html, /A life beyond diets/);
   assert.match(html, /<h2 class="about-title"><span>Meet Amy Jaffe,<\/span><em>MS, RD, LD<\/em><\/h2>/i);
-  assert.match(html, /<p class="about-subheadline">Providing care that considers your/i);
+  assert.match(html, /<p class="about-subheadline">Providing evidence-based care that considers your/i);
+  assert.match(html, /I&#x27;m a Nationally Registered, State-Licensed Dietitian\/Nutritionist\./i);
   assert.match(html, /My approach is highly individualized and comprehensive\./i);
+  assert.match(html, /&quot;You can&#x27;t be at peace with food while at war with your body\.&quot;<span>We will address both\.<\/span>/i);
   assert.doesNotMatch(html, /Care that sees the whole person|highly individualized and holistic/i);
   assert.doesNotMatch(html, /RDN, LDN/i);
   assert.match(html, /Honored for care in our community\./i);
@@ -58,7 +62,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.equal((html.match(/class="award-card"/g) ?? []).length, 4);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
-  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-6"/);
+  assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
+  assert.match(html, /I&#x27;m So Glad You&#x27;re Here/i);
+  assert.match(html, /class="about-welcome-logo" src="images\/amy-jaffe-logo\.avif" alt="Amy Jaffe"/i);
   assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
@@ -66,8 +72,11 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /A thoughtful look at your health, eating patterns, and goals - followed by a practical plan created together\./i);
   assert.match(html, /href="services\/nutrition-assessment\/"[^>]*aria-label="Learn more about the nutrition assessment"/i);
   assert.match(html, /Nutrition counseling follow-up sessions/i);
+  assert.match(html, /30-60 minutes/i);
   assert.match(html, /Goal-centered sessions that build on your assessment/i);
   assert.match(html, /href="services\/follow-up-sessions\/"[^>]*aria-label="Learn more about nutrition counseling follow-up sessions"/i);
+  assert.equal((html.match(/class="service-card service-card-detail"/g) ?? []).length, 2);
+  assert.doesNotMatch(html, /class="contact-telehealth"|<h3>Telehealth sessions<\/h3>/i);
   assert.doesNotMatch(html, /Individual counseling/i);
   assert.doesNotMatch(html, /The assessment includes a detailed medical history/i);
   assert.match(html, /<section class="expertise section" id="expertise">/i);
@@ -117,7 +126,15 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   }
   assert.ok(html.indexOf('class="quote-section"') < html.indexOf('class="expertise section"'), "Specialized support should follow the calories quote");
   assert.ok(html.indexOf('class="expertise section"') < html.indexOf('class="services section"'), "Specialized support should come before services");
+  assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /Let&#x27;s make peace/);
+  assert.match(html, /Schedule a free, brief introductory call to see whether working together feels like the right fit\./i);
+  assert.match(html, /href="free-introductory-call\/"[^>]*>Sign up for a free, brief introductory call/i);
+  assert.match(html, /Our office is considered out of network for most insurance companies\./i);
+  assert.match(html, /We will help you understand your benefits and options\./i);
+  assert.match(html, /monthly Superbills for you to submit/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /A gentler way forward|Start with[\s\S]*understanding|href="[^"]*#resources"/i);
   assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
   const homepageForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
   assert.match(homepageForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
@@ -130,9 +147,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(homepageForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
   assert.match(homepageForm, /<textarea(?=[^>]*name="Support request")(?=[^>]*required)/i);
   assert.match(homepageForm, /do not include private medical details/i);
-  assert.doesNotMatch(homepageForm, /name="Phone"|type="tel"/i);
-  assert.doesNotMatch(homepageForm, /name="_captcha"/i);
-  assert.match(html, /href="free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
+  assert.doesNotMatch(homepageForm, /name="Phone"|type="tel"|name="_captcha"/i);
   assert.match(html, /Map of Amy Jaffe Nutrition in Miami/i);
   assert.match(html, /1801 NE 123rd Street, Suite 303/);
   assert.match(html, /google\.com\/maps\/dir\/\?api=1/i);
@@ -155,12 +170,7 @@ test("server-renders the complete testimonials page", async () => {
   assert.match(html, /Mark E\./);
   assert.match(html, /Help, support &amp; laughing at my bad jokes\./i);
   assert.match(html, /Becky/);
-  assert.match(html, /Irene C\./);
-  assert.match(html, /Morgan H\./);
-  assert.match(html, /Rachael P\./);
-  assert.match(html, /Dr\. Sammi Siegel/);
-  assert.match(html, /Carlos C\./);
-  assert.match(html, /She helped me get my life back/i);
+  assert.match(html, /Care that stays with you\./i);
   assert.match(html, /Kind words,[\s\S]*?answered with care/i);
   assert.match(html, /class="google-brand-heading" aria-label="Google Reviews"/i);
   assert.match(html, /google-blue">G<\/span><span class="google-red">o<\/span><span class="google-yellow">o<\/span><span class="google-blue">g<\/span><span class="google-green">l<\/span><span class="google-red">e<\/span>/i);
@@ -171,19 +181,21 @@ test("server-renders the complete testimonials page", async () => {
   assert.match(html, /Amy was such a light and joy to work with/i);
   assert.match(html, /0x88d9b798d570deaf:0xdb7f0e34ff8acdc/i);
   assert.equal((html.match(/class="google-review-card"/g) ?? []).length, 5);
+  assert.ok(html.indexOf('class="google-reviews-section"') < html.indexOf('class="client-stories-section"'), "Care that stays with you should follow Google reviews");
+  assert.ok(html.indexOf('class="client-stories-section"') < html.indexOf('class="testimonial-gallery-section"'), "Care that stays with you should appear before the note gallery");
+  assert.equal((html.match(/class="client-quote-bubble"/g) ?? []).length, 11);
   assert.match(html, /data-client="Abbey Griffith"[\s\S]*?testimonial-note-01\.jpg[\s\S]*?testimonial-note-02\.jpeg/i);
   assert.match(html, /data-client="Michelle"[\s\S]*?testimonial-note-03\.jpeg[\s\S]*?testimonial-note-04\.jpeg/i);
   assert.match(html, /data-client="Karen"[\s\S]*?testimonial-note-07\.jpeg/i);
   assert.match(html, /data-client="Maria"[\s\S]*?testimonial-note-09\.png[\s\S]*?testimonial-note-08\.jpg/i);
-  assert.match(html, /data-client="Morgan H\."[\s\S]*?testimonial-note-13\.jpeg/i);
-  assert.match(html, /data-client="Rachael P\."[\s\S]*?testimonial-note-14\.jpg/i);
-  assert.match(html, /data-client="Dr\. Sammi Siegel"[\s\S]*?testimonial-note-15\.jpeg/i);
-  assert.match(html, /data-client="Carlos C\."[\s\S]*?testimonial-note-16\.jpg/i);
-  assert.equal((html.match(/<img[^>]+src="\.\.\/images\/testimonials\/testimonial-note-/g) ?? []).length, 14);
+  assert.equal((html.match(/<img[^>]+src="\.\.\/images\/testimonials\/testimonial-note-/g) ?? []).length, 10);
+  assert.doesNotMatch(html, /<p class="eyebrow">Recovery stories<\/p>|class="long-stories-section"/i);
   assert.doesNotMatch(html, /client-quote-card/i);
   assert.doesNotMatch(html, /quote-number/i);
   assert.doesNotMatch(html, /testimonial-image-gallery/i);
   assert.doesNotMatch(html, /rainbow of possibilities/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
 test("server-renders the nutrition assessment detail page", async () => {
@@ -194,7 +206,7 @@ test("server-renders the nutrition assessment detail page", async () => {
   const html = await response.text();
   assert.match(html, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /Initial session · 90 minutes/i);
-  assert.match(html, /The assessment includes a detailed medical history/i);
+  assert.match(html, /The assessment includes a detailed medical history, prior eating patterns, weight issues, physical activity, food and body challenges\./i);
   assert.match(html, /class="assessment-review-copy"/i);
   assert.match(html, /interoceptive senses \(internal cues of hunger and fullness\)/i);
   assert.match(html, /concrete plan of action that is evaluated in follow-up sessions/i);
@@ -202,6 +214,8 @@ test("server-renders the nutrition assessment detail page", async () => {
   assert.match(html, /href="https:\/\/www\.nourishly\.com\/"[^>]*>Nourishly/i);
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
   assert.match(html, /href="\.\.\/\.\.\/free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
 test("server-renders the nutrition counseling follow-up sessions page", async () => {
@@ -211,9 +225,12 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
 
   const html = await response.text();
   assert.match(html, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
-  assert.match(html, /Ongoing, individualized support/i);
+  assert.match(html, /30-60 minutes · individualized support/i);
   assert.match(html, /The follow-up sessions are based on the goals determined during the initial nutrition assessment\./i);
   assert.match(html, /both successes and challenges are used to promote change/i);
+  assert.match(html, /The frequency of follow-up sessions is agreed upon collaboratively, regularly assessed for necessity, and ultimately decreased as progress is achieved\./i);
+  assert.match(html, /<p class="eyebrow">Session options<\/p>/i);
+  assert.match(html, /<h3>The Intuitive Eating framework<\/h3>/i);
   assert.match(html, /Grocery outings/i);
   assert.match(html, /Mindful meal outings/i);
   assert.match(html, /Intuitive eating/i);
@@ -222,10 +239,10 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /local grocery store, or we meet there together virtually/i);
   assert.match(html, /local restaurants or cafés, or we meet there together virtually/i);
   assert.match(html, /Food exposures/i);
-  assert.match(html, /challenging or forbidden foods to the session, in person or virtually/i);
+  assert.match(html, /challenging or “forbidden” foods to the session, in person or virtually/i);
   assert.match(html, /facing your fears/i);
   assert.equal((html.match(/class="follow-up-option-card"/g) ?? []).length, 4);
-  const optionOrder = ["Intuitive eating", "Food exposures", "Mindful meal outings", "Grocery outings"];
+  const optionOrder = ["The Intuitive Eating framework", "Food exposures", "Mindful meal outings", "Grocery outings"];
   let previousOptionIndex = -1;
   for (const option of optionOrder) {
     const optionIndex = html.indexOf(option, previousOptionIndex + 1);
@@ -235,17 +252,24 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
   assert.match(html, /href="\.\.\/\.\.\/free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
   assert.ok(html.indexOf('class="follow-up-options-section"') < html.indexOf('class="assessment-detail-cta"'), "The introductory-call CTA should remain directly after follow-up options");
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.doesNotMatch(html, /href="[^"]*#resources"/i);
 });
 
-test("server-renders the free introductory call request page", async () => {
+test("server-renders the free introductory call page", async () => {
   const response = await render("/free-introductory-call");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   assert.match(html, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
-  assert.match(html, /Free introductory[\s\S]*?call\./i);
-  const introCallForm = html.match(/<form class="contact-form intro-call-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
+  assert.match(html, /A free, brief introduction/i);
+  assert.match(html, /A first step,[\s\S]*?without pressure\./i);
+  assert.match(html, /This introductory call is a welcoming place to begin\./i);
+  assert.match(html, /What brings you to nutrition counseling/i);
+  assert.match(html, /Your questions about scheduling, telehealth, and care/i);
+  assert.match(html, /Request my free call/i);
+  const introCallForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
   assert.match(introCallForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
   assert.match(introCallForm, /method="post"/i);
   assert.match(introCallForm, /name="_subject" value="Website inquiry - Free introductory call"/i);
@@ -258,28 +282,22 @@ test("server-renders the free introductory call request page", async () => {
   assert.match(introCallForm, /name="Short note"/i);
   assert.match(introCallForm, /do not include private medical details/i);
   assert.doesNotMatch(introCallForm, /name="_captcha"/i);
+  assert.doesNotMatch(html, /free-disordered-eating-consultation/i);
 });
 
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
   const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
-  const introCall = await readFile(new URL("../dist/client/free-introductory-call/index.html", import.meta.url), "utf8");
+  const consultation = await readFile(new URL("../dist/client/free-introductory-call/index.html", import.meta.url), "utf8");
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
   const followUp = await readFile(new URL("../dist/client/services/follow-up-sessions/index.html", import.meta.url), "utf8");
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
-  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-6"/);
+  assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.doesNotMatch(index, /<script\b/i);
   assert.doesNotMatch(index, /modulepreload/i);
-  assert.match(index, /href="free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
-  assert.match(introCall, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
-  assert.match(introCall, /href="\.\.\/assets\//);
-  assert.match(introCall, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
-  assert.match(introCall, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
-  assert.doesNotMatch(introCall, /<script\b/i);
-  assert.doesNotMatch(introCall, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(testimonials, /href="\.\.\/assets\//);
   assert.match(testimonials, /src="\.\.\/images\/testimonials\/testimonial-note-01\.jpg"/i);
@@ -288,6 +306,14 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(testimonials, /href="\.\.\/#about"/i);
   assert.doesNotMatch(testimonials, /<script\b/i);
   assert.doesNotMatch(testimonials, /modulepreload/i);
+  assert.match(consultation, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(consultation, /href="\.\.\/assets\//);
+  assert.match(consultation, /src="\.\.\/images\/amy-jaffe-logo\.avif"/i);
+  assert.match(consultation, /Request my free call/i);
+  assert.match(consultation, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(consultation, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
+  assert.doesNotMatch(consultation, /<script\b/i);
+  assert.doesNotMatch(consultation, /modulepreload/i);
   assert.match(assessment, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(assessment, /href="\.\.\/\.\.\/assets\//);
   assert.match(assessment, /src="\.\.\/\.\.\/images\/amy-jaffe-logo\.avif"/i);

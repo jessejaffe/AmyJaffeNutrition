@@ -16,25 +16,11 @@ const services = [
   {
     number: "02",
     title: "Nutrition counseling follow-up sessions",
-    meta: "Ongoing support",
+    meta: "30-60 minutes",
     body: <p>Goal-centered sessions that build on your assessment, celebrate progress, and use challenges to support meaningful change.</p>,
     href: "services/follow-up-sessions/",
     ariaLabel: "Learn more about nutrition counseling follow-up sessions",
   },
-  {
-    number: "03",
-    title: "Telehealth sessions",
-    meta: "Wherever you are",
-    body: <p>Private video appointments for clients in Florida and beyond, with the same warm, collaborative care.</p>,
-    href: null,
-    ariaLabel: "Ask about telehealth sessions",
-  },
-];
-
-const resources = [
-  ["Intuitive eating", "Reconnect with hunger, fullness, satisfaction, and the wisdom already within your body."],
-  ["Body image", "Move away from comparison and toward a more peaceful, respectful relationship with yourself."],
-  ["Eating support", "Compassionate nutrition care for disordered eating, chronic dieting, and food anxiety."],
 ];
 
 const expertiseAreas = [
@@ -70,7 +56,6 @@ export default function Home() {
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="testimonials/">Testimonials</a>
-          <a href="#resources">Resources</a>
           <div className="header-social-links" aria-label="Social media">
             {socialLinks.map((social) => (
               <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>
@@ -86,7 +71,7 @@ export default function Home() {
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             <a href="#about">About</a><a href="#services">Services</a>
-            <a href="testimonials/">Testimonials</a><a href="#resources">Resources</a>
+            <a href="testimonials/">Testimonials</a>
             <a href="#contact">Contact</a>
             <div className="mobile-social-links" aria-label="Social media">
               {socialLinks.map((social) => (
@@ -116,7 +101,11 @@ export default function Home() {
 
         <div className="hero-note" aria-label="Practice details">
           <span className="note-dot" />
-          <p><strong>Currently accepting new clients</strong><br />In-person in South Florida and via secure telehealth</p>
+          <p>
+            <strong>Currently accepting new clients</strong><br />
+            In-person in <b>South Florida</b> and via secure telehealth with private video appointments for clients in Florida and beyond.
+            <span className="hero-note-schedule">Sessions are available to fit your life and schedule.</span>
+          </p>
         </div>
 
       </section>
@@ -129,17 +118,20 @@ export default function Home() {
         <div className="about-image-wrap">
           <div className="about-video-frame">
             <video controls playsInline preload="metadata" poster="images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
-              <source src="video/nutritioncounselingflorida.mp4?v=20260731-6" type="video/mp4" />
+              <source src="video/nutritioncounselingflorida.mp4?v=20260802" type="video/mp4" />
             </video>
+            <div className="experience-badge"><strong>20+</strong><span>years of<br />experience</span></div>
           </div>
-          <div className="experience-badge"><strong>20+</strong><span>years of<br />experience</span></div>
+          <p className="about-video-welcome">I&apos;m So Glad You&apos;re Here</p>
+          <img className="about-welcome-logo" src="images/amy-jaffe-logo.avif" alt="Amy Jaffe" />
         </div>
 
         <div className="about-copy">
           <h2 className="about-title"><span>Meet Amy Jaffe,</span><em>MS, RD, LD</em></h2>
-          <p className="about-subheadline">Providing care that considers your <em>whole person.</em></p>
-          <p className="large-copy">I&apos;m a nationally registered, state-licensed dietitian/nutritionist and Certified Intuitive Eating Specialist.</p>
+          <p className="about-subheadline">Providing evidence-based care that considers your <em>whole person.</em></p>
+          <p className="large-copy">I&apos;m a Nationally Registered, State-Licensed Dietitian/Nutritionist.</p>
           <p className="approach-copy">My approach is highly individualized and comprehensive. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
+          <p className="body-peace-copy">&quot;You can&apos;t be at peace with food while at war with your body.&quot;<span>We will address both.</span></p>
           <div className="credentials">
             <span>Nationally Registered and Licensed Nutritionist/Dietitian</span><span>Certified Intuitive Eating Specialist</span>
           </div>
@@ -242,33 +234,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="resources section" id="resources">
-        <div className="resource-title"><p className="eyebrow">A gentler way forward</p><h2>Start with<br /><em>understanding.</em></h2></div>
-        <div className="resource-list">
-          {resources.map(([title, body], index) => (
-            <article key={title}>
-              <span>0{index + 1}</span><div><h3>{title}</h3><p>{body}</p></div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="insurance section">
         <p className="eyebrow">Insurance</p>
         <div>
           <h2>Simple, transparent care.</h2>
-          <p>Our office is out of network for most insurance companies. We can provide monthly superbills for you to submit, and any reimbursement goes directly to you or toward your deductible.</p>
-        </div>
-      </section>
-
-      <section className="intro-call-cta" aria-labelledby="intro-call-cta-title">
-        <div>
-          <p className="eyebrow">A simple first step</p>
-          <h2 id="intro-call-cta-title">Start with a free<br /><em>introductory call.</em></h2>
-        </div>
-        <div>
-          <p>We&apos;ll make space for your questions and see whether working together feels like the right fit.</p>
-          <a className="button button-plum" href="free-introductory-call/">Sign up for a free introductory call <span aria-hidden="true">↗</span></a>
+          <p>Our office is considered out of network for most insurance companies. We will help you understand your benefits and options. We can also provide monthly Superbills for you to submit, and any reimbursement goes directly to you or toward your deductible.</p>
         </div>
       </section>
 
@@ -276,7 +246,8 @@ export default function Home() {
         <div className="contact-intro">
           <p className="eyebrow light">Take the first step</p>
           <h2>Let&apos;s make peace<br /><em>with food.</em></h2>
-          <p>Have a general question about working together? Send a note and Amy will be in touch.</p>
+          <p>Schedule a free, brief introductory call to see whether working together feels like the right fit.</p>
+          <a className="button button-cream contact-consult-link" href="free-introductory-call/">Sign up for a free, brief introductory call <span aria-hidden="true">↗</span></a>
           <div className="contact-details">
             <a href="tel:3055866053">305-586-6053</a>
             <a href="mailto:amysjaffe@gmail.com">amysjaffe@gmail.com</a>
@@ -326,7 +297,7 @@ export default function Home() {
           </section>
 
           <div className="footer-summary">
-            <p>Serving Miami and telehealth clients with compassionate, non-diet nutrition care.</p>
+            <p>Serving South Florida and telehealth clients with compassionate, expert nutrition care.</p>
             <div className="social-links" aria-label="Social media">
               {socialLinks.map((social) => (
                 <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}>
