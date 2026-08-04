@@ -117,7 +117,7 @@ export default function FollowUpSessionsPage() {
       <section className="assessment-detail-cta">
         <p className="eyebrow light">Continue your progress</p>
         <h2>Let&apos;s choose the support<br /><em>that fits you.</em></h2>
-        <a className="button button-cream" href="../../#contact">Request an appointment <span aria-hidden="true">↗</span></a>
+        <a className="button button-cream" href="../../free-introductory-call/">Sign up for a free introductory call <span aria-hidden="true">↗</span></a>
       </section>
 
       <footer>

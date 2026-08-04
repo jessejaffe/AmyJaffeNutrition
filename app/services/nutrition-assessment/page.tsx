@@ -84,7 +84,7 @@ export default function NutritionAssessmentPage() {
       <section className="assessment-detail-cta">
         <p className="eyebrow light">Ready to begin?</p>
         <h2>Let&apos;s create your<br /><em>next steps together.</em></h2>
-        <a className="button button-cream" href="../../#contact">Request an appointment <span aria-hidden="true">↗</span></a>
+        <a className="button button-cream" href="../../free-introductory-call/">Sign up for a free introductory call <span aria-hidden="true">↗</span></a>
       </section>
 
       <footer>

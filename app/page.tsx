@@ -1,5 +1,3 @@
-const appointmentHref = "mailto:amysjaffe@gmail.com?subject=Initial%20Nutrition%20Assessment";
-
 const socialLinks = [
   { name: "Instagram", href: "https://www.instagram.com/stickynotesnutritiontherapist/", icon: "images/social-instagram.svg" },
   { name: "Facebook", href: "https://www.facebook.com/nutritionstickynotesAmyJaffe", icon: "images/social-facebook.svg" },
@@ -263,24 +261,40 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="intro-call-cta" aria-labelledby="intro-call-cta-title">
+        <div>
+          <p className="eyebrow">A simple first step</p>
+          <h2 id="intro-call-cta-title">Start with a free<br /><em>introductory call.</em></h2>
+        </div>
+        <div>
+          <p>We&apos;ll make space for your questions and see whether working together feels like the right fit.</p>
+          <a className="button button-plum" href="free-introductory-call/">Sign up for a free introductory call <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
       <section className="contact" id="contact">
         <div className="contact-intro">
           <p className="eyebrow light">Take the first step</p>
           <h2>Let&apos;s make peace<br /><em>with food.</em></h2>
-          <p>Schedule a free, brief introductory conversation to see whether working together feels like the right fit.</p>
+          <p>Have a general question about working together? Send a note and Amy will be in touch.</p>
           <div className="contact-details">
             <a href="tel:3055866053">305-586-6053</a>
             <a href="mailto:amysjaffe@gmail.com">amysjaffe@gmail.com</a>
             <p>1801 NE 123rd Street, Suite 303<br />Miami, FL 33181</p>
           </div>
         </div>
-        <form className="contact-form" action={appointmentHref} method="post" encType="text/plain">
+        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post">
+          <input type="hidden" name="_subject" value="Website inquiry - General homepage form" />
+          <input type="hidden" name="Form type" value="General homepage inquiry" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_url" value="https://jessejaffe.github.io/AmyJaffeNutrition/" />
+          <div className="form-honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
           <label>First name<input type="text" name="First name" autoComplete="given-name" required /></label>
           <label>Last name<input type="text" name="Last name" autoComplete="family-name" required /></label>
-          <label className="full">Email<input type="email" name="Reply-to email" autoComplete="email" required /></label>
-          <label className="full">What would you like support with?<textarea name="Support requested" rows={3} required /></label>
-          <button type="submit">Request an appointment <span>↗</span></button>
-          <small>Submitting opens your email app so you can send your request privately.</small>
+          <label className="full">Email<input type="email" name="email" autoComplete="email" required /></label>
+          <label className="full">What would you like support with?<textarea name="Support request" rows={3} placeholder="Please keep this message general and do not include private medical details." required /></label>
+          <button type="submit">Send general inquiry <span>↗</span></button>
+          <small>Please do not include private medical details in this form.</small>
         </form>
       </section>
 

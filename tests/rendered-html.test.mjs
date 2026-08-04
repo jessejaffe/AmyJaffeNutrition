@@ -119,11 +119,20 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.ok(html.indexOf('class="expertise section"') < html.indexOf('class="services section"'), "Specialized support should come before services");
   assert.match(html, /Let&#x27;s make peace/);
   assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
-  assert.match(html, /action="mailto:amysjaffe@gmail\.com\?subject=Initial%20Nutrition%20Assessment"/i);
-  assert.match(html, /method="post"/i);
-  assert.match(html, /enctype="text\/plain"/i);
-  assert.match(html, /name="Reply-to email"/i);
-  assert.match(html, /name="Support requested"[^>]*required/i);
+  const homepageForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
+  assert.match(homepageForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(homepageForm, /method="post"/i);
+  assert.match(homepageForm, /name="_subject" value="Website inquiry - General homepage form"/i);
+  assert.match(homepageForm, /name="Form type" value="General homepage inquiry"/i);
+  assert.match(homepageForm, /name="_template" value="table"/i);
+  assert.match(homepageForm, /name="_url" value="https:\/\/jessejaffe\.github\.io\/AmyJaffeNutrition\/"/i);
+  assert.match(homepageForm, /name="_honey"/i);
+  assert.match(homepageForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
+  assert.match(homepageForm, /<textarea(?=[^>]*name="Support request")(?=[^>]*required)/i);
+  assert.match(homepageForm, /do not include private medical details/i);
+  assert.doesNotMatch(homepageForm, /name="Phone"|type="tel"/i);
+  assert.doesNotMatch(homepageForm, /name="_captcha"/i);
+  assert.match(html, /href="free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
   assert.match(html, /Map of Amy Jaffe Nutrition in Miami/i);
   assert.match(html, /1801 NE 123rd Street, Suite 303/);
   assert.match(html, /google\.com\/maps\/dir\/\?api=1/i);
@@ -192,6 +201,7 @@ test("server-renders the nutrition assessment detail page", async () => {
   assert.match(html, /href="https:\/\/www\.recoveryrecord\.com\/"[^>]*>Recovery Record/i);
   assert.match(html, /href="https:\/\/www\.nourishly\.com\/"[^>]*>Nourishly/i);
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
+  assert.match(html, /href="\.\.\/\.\.\/free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
 });
 
 test("server-renders the nutrition counseling follow-up sessions page", async () => {
@@ -223,12 +233,38 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
     previousOptionIndex = optionIndex;
   }
   assert.match(html, /href="\.\.\/\.\.\/#services"[^>]*>.*Back to services/i);
+  assert.match(html, /href="\.\.\/\.\.\/free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
+  assert.ok(html.indexOf('class="follow-up-options-section"') < html.indexOf('class="assessment-detail-cta"'), "The introductory-call CTA should remain directly after follow-up options");
+});
+
+test("server-renders the free introductory call request page", async () => {
+  const response = await render("/free-introductory-call");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /Free introductory[\s\S]*?call\./i);
+  const introCallForm = html.match(/<form class="contact-form intro-call-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
+  assert.match(introCallForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(introCallForm, /method="post"/i);
+  assert.match(introCallForm, /name="_subject" value="Website inquiry - Free introductory call"/i);
+  assert.match(introCallForm, /name="Form type" value="Free introductory call request"/i);
+  assert.match(introCallForm, /name="_template" value="table"/i);
+  assert.match(introCallForm, /name="_url" value="https:\/\/jessejaffe\.github\.io\/AmyJaffeNutrition\/free-introductory-call\/"/i);
+  assert.match(introCallForm, /name="_honey"/i);
+  assert.match(introCallForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
+  assert.match(introCallForm, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
+  assert.match(introCallForm, /name="Short note"/i);
+  assert.match(introCallForm, /do not include private medical details/i);
+  assert.doesNotMatch(introCallForm, /name="_captcha"/i);
 });
 
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
   const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
+  const introCall = await readFile(new URL("../dist/client/free-introductory-call/index.html", import.meta.url), "utf8");
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
   const followUp = await readFile(new URL("../dist/client/services/follow-up-sessions/index.html", import.meta.url), "utf8");
 
@@ -237,6 +273,13 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260731-6"/);
   assert.doesNotMatch(index, /<script\b/i);
   assert.doesNotMatch(index, /modulepreload/i);
+  assert.match(index, /href="free-introductory-call\/"[^>]*>Sign up for a free introductory call/i);
+  assert.match(introCall, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(introCall, /href="\.\.\/assets\//);
+  assert.match(introCall, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(introCall, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
+  assert.doesNotMatch(introCall, /<script\b/i);
+  assert.doesNotMatch(introCall, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(testimonials, /href="\.\.\/assets\//);
   assert.match(testimonials, /src="\.\.\/images\/testimonials\/testimonial-note-01\.jpg"/i);
