@@ -16,12 +16,38 @@ async function render(path = "/") {
   );
 }
 
+function assertFooterSitemap(html, pathPrefix) {
+  assert.match(html, /<nav class="footer-sitemap" aria-labelledby="footer-sitemap-title">[\s\S]*?<h2 id="footer-sitemap-title">Sitemap<\/h2>[\s\S]*?<ul>/i);
+
+  const links = [
+    ["Home", "#home"],
+    ["About Amy", "#about"],
+    ["Areas of Expertise", "#expertise"],
+    ["Services", "#services"],
+    ["Testimonials", "testimonials/"],
+    ["Nutrition Assessment", "services/nutrition-assessment/"],
+    ["Follow-Up Sessions", "services/follow-up-sessions/"],
+    ["Free Introductory Call", "free-introductory-call/"],
+    ["Contact", "#contact"],
+  ];
+
+  for (const [label, href] of links) {
+    assert.match(html, new RegExp(`<a href="${pathPrefix}${href}">${label}<\\/a>`, "i"));
+  }
+
+  assert.match(html, /Map of Amy Jaffe Nutrition in Miami/i);
+  assert.match(html, /1801 NE 123rd Street, Suite 303/i);
+  assert.match(html, /Serving South Florida and telehealth clients with compassionate, expert nutrition care\./i);
+  assert.match(html, /aria-label="Instagram"[\s\S]*?aria-label="Facebook"[\s\S]*?aria-label="LinkedIn"/i);
+}
+
 test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  assertFooterSitemap(html, "");
   assert.match(html, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(html, /Food can feel/);
   assert.match(html, /Nutrition counseling · South Florida &amp; telehealth/);
@@ -161,6 +187,7 @@ test("server-renders the complete testimonials page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  assertFooterSitemap(html, "../");
   assert.match(html, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /Stories of trust,/i);
   assert.match(html, /Amy helped me navigate my relationship with food, transforming it into a source of joy rather than anxiety\./i);
@@ -204,6 +231,7 @@ test("server-renders the nutrition assessment detail page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  assertFooterSitemap(html, "../../");
   assert.match(html, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /Initial session · 90 minutes/i);
   assert.match(html, /The assessment includes a detailed medical history, prior eating patterns, weight issues, physical activity, food and body challenges\./i);
@@ -224,6 +252,7 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  assertFooterSitemap(html, "../../");
   assert.match(html, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /30-60 minutes · individualized support/i);
   assert.match(html, /The follow-up sessions are based on the goals determined during the initial nutrition assessment\./i);
@@ -262,6 +291,7 @@ test("server-renders the free introductory call page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  assertFooterSitemap(html, "../");
   assert.match(html, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(html, /A free, brief introduction/i);
   assert.match(html, /A first step,[\s\S]*?without pressure\./i);

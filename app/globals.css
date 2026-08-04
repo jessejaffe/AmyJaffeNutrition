@@ -192,25 +192,29 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .form-honeypot { display: none; }
 
 footer { background: #8a8a88; color: white; padding: 58px 8vw 28px; }
-.footer-grid { align-items: start; display: grid; gap: clamp(38px, 5vw, 78px); grid-template-columns: 190px minmax(320px, 480px) minmax(220px, 1fr); }
-.footer-brand { width: 175px; }
+.footer-grid { align-items: start; display: grid; gap: clamp(38px, 5vw, 78px); grid-template-columns: minmax(180px, .85fr) minmax(185px, .8fr) minmax(300px, 1.45fr); }
+.footer-intro { display: flex; flex-direction: column; min-height: 100%; }
+.footer-brand { display: inline-block; margin-bottom: 38px; width: 175px; }
 .footer-brand img { filter: none; opacity: 1; width: 100%; }
 footer p { color: #f3f1f2; font-family: Georgia, serif; font-size: 15px; margin: 0 0 13px; }
 footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.footer-location h2 { color: white; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .18em; margin: 0 0 16px; text-transform: uppercase; }
+.footer-location h2, .footer-sitemap h2 { color: white; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .18em; margin: 0 0 16px; text-transform: uppercase; }
+.footer-sitemap ul { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.footer-sitemap a { border-bottom: 1px solid transparent; color: #f3f1f2; font-family: Georgia, serif; font-size: 16px; line-height: 1.35; transition: border-color .2s ease, color .2s ease; }
+.footer-sitemap a:hover, .footer-sitemap a:focus-visible { border-color: white; color: white; }
 .footer-map { aspect-ratio: 16/9; background: #747472; overflow: hidden; width: 100%; }
 .footer-map iframe { border: 0; display: block; height: 100%; width: 100%; }
 .footer-address { align-items: center; border-bottom: 1px solid rgba(255,255,255,.34); display: flex; gap: 24px; justify-content: space-between; padding: 16px 0 14px; transition: border-color .2s ease, color .2s ease; }
 .footer-address:hover, .footer-address:focus-visible { border-color: white; color: white; }
 .footer-address address { color: white; font-family: Georgia, serif; font-size: 14px; font-style: normal; line-height: 1.55; }
 .footer-address span { font-size: 18px; }
-.footer-summary { display: flex; flex-direction: column; min-height: 100%; }
+.footer-summary { margin-top: auto; }
 .footer-summary p { font-size: clamp(18px, 1.8vw, 25px); line-height: 1.45; max-width: 430px; }
-.footer-summary .social-links { margin-top: auto; padding-top: 32px; }
+.footer-summary .social-links { padding-top: 24px; }
 .footer-copyright { border-top: 1px solid rgba(255,255,255,.24); display: block; margin-top: 42px; padding-top: 22px; }
 .social-links { display: flex; gap: 13px; }
 .social-links a { align-items: center; background: var(--social-color); border: 1px solid transparent; border-radius: 50%; display: flex; height: 52px; justify-content: center; transition: filter .2s ease, transform .2s ease; width: 52px; }
-.social-links a:hover { filter: brightness(1.08); transform: translateY(-2px); }
+.social-links a:hover, .social-links a:focus-visible { filter: brightness(1.08); transform: translateY(-2px); }
 .social-links img { filter: brightness(0) invert(1); height: 23px; max-width: 25px; opacity: 1; width: auto; }
 
 .assessment-page { overflow: hidden; }
@@ -369,8 +373,8 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .about { gap: 70px; }
   .testimonial { gap: 6vw; }
   .testimonial-video-wrap { height: 520px; }
-  .footer-grid { grid-template-columns: 160px minmax(300px, 1fr); }
-  .footer-summary { grid-column: 1/-1; }
+  .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .footer-location { grid-column: 1/-1; max-width: 680px; }
   .footer-summary .social-links { padding-top: 16px; }
   .google-reviews-heading { grid-template-columns: 1fr 320px; }
   .visual-testimonial-grid { gap: 20px; }
@@ -432,8 +436,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   footer { padding: 45px 24px 25px; }
   .footer-grid { gap: 38px; grid-template-columns: 1fr; }
   .footer-brand { width: 145px; }
-  .footer-summary { grid-column: auto; }
-  .footer-location { max-width: 520px; width: 100%; }
+  .footer-location { grid-column: auto; max-width: 520px; width: 100%; }
   .footer-copyright { margin-top: 34px; }
   .testimonials-hero { min-height: 760px; padding: 160px 24px 120px; }
   .testimonials-hero h1 { font-size: clamp(56px, 17vw, 76px); }

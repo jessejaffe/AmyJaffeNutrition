@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SiteFooter from "../../components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Nutrition Assessment | Amy Jaffe Nutrition",
@@ -86,29 +87,7 @@ export default function NutritionAssessmentPage() {
         <a className="button button-cream" href="../../free-introductory-call/">Sign up for a free introductory call <span aria-hidden="true">↗</span></a>
       </section>
 
-      <footer>
-        <div className="footer-grid">
-          <a className="footer-brand" href="../../#home"><img src="../../images/amy-jaffe-logo.avif" alt="Amy Jaffe Nutrition" /></a>
-          <section className="footer-location" aria-labelledby="assessment-footer-location-title">
-            <h2 id="assessment-footer-location-title">Location</h2>
-            <div className="footer-map">
-              <iframe src="https://www.google.com/maps?q=1801%20NE%20123rd%20Street%2C%20Suite%20303%2C%20Miami%2C%20FL%2033181&amp;output=embed" title="Map of Amy Jaffe Nutrition in Miami" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
-            </div>
-            <a className="footer-address" href="https://www.google.com/maps/dir/?api=1&amp;destination=1801%20NE%20123rd%20Street%2C%20Suite%20303%2C%20Miami%2C%20FL%2033181" target="_blank" rel="noreferrer" aria-label="Get directions to Amy Jaffe Nutrition">
-              <address>1801 NE 123rd Street, Suite 303<br />Miami, FL 33181</address><span aria-hidden="true">↗</span>
-            </a>
-          </section>
-          <div className="footer-summary">
-            <p>Serving South Florida and telehealth clients with compassionate, expert nutrition care.</p>
-            <div className="social-links" aria-label="Social media">
-              {socialLinks.map((social) => (
-                <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.name} key={social.name}><img src={social.icon} alt="" /></a>
-              ))}
-            </div>
-          </div>
-        </div>
-        <small className="footer-copyright">© {new Date().getFullYear()} Amy Jaffe Nutrition</small>
-      </footer>
+      <SiteFooter pathPrefix="../../" />
     </main>
   );
 }
