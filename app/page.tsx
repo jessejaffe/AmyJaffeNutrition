@@ -258,7 +258,6 @@ export default function Home() {
           <input type="hidden" name="_subject" value="Website inquiry - General homepage form" />
           <input type="hidden" name="Form type" value="General homepage inquiry" />
           <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_url" value="https://jessejaffe.github.io/AmyJaffeNutrition/" />
           <div className="form-honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
           <label>First name<input type="text" name="First name" autoComplete="given-name" required /></label>
           <label>Last name<input type="text" name="Last name" autoComplete="family-name" required /></label>

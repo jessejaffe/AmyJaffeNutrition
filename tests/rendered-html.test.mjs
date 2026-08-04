@@ -142,7 +142,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(homepageForm, /name="_subject" value="Website inquiry - General homepage form"/i);
   assert.match(homepageForm, /name="Form type" value="General homepage inquiry"/i);
   assert.match(homepageForm, /name="_template" value="table"/i);
-  assert.match(homepageForm, /name="_url" value="https:\/\/jessejaffe\.github\.io\/AmyJaffeNutrition\/"/i);
+  assert.doesNotMatch(homepageForm, /name="_url"/i);
   assert.match(homepageForm, /name="_honey"/i);
   assert.match(homepageForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
   assert.match(homepageForm, /<textarea(?=[^>]*name="Support request")(?=[^>]*required)/i);
@@ -275,7 +275,7 @@ test("server-renders the free introductory call page", async () => {
   assert.match(introCallForm, /name="_subject" value="Website inquiry - Free introductory call"/i);
   assert.match(introCallForm, /name="Form type" value="Free introductory call request"/i);
   assert.match(introCallForm, /name="_template" value="table"/i);
-  assert.match(introCallForm, /name="_url" value="https:\/\/jessejaffe\.github\.io\/AmyJaffeNutrition\/free-introductory-call\/"/i);
+  assert.doesNotMatch(introCallForm, /name="_url"/i);
   assert.match(introCallForm, /name="_honey"/i);
   assert.match(introCallForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
   assert.match(introCallForm, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
