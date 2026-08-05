@@ -399,7 +399,7 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .hero-actions .button { justify-content: space-between; max-width: 390px; padding: 19px 21px; width: 100%; }
   .hero-actions .text-link { font-size: 14px; }
   .hero .eyebrow { font-size: 14px; line-height: 1.45; margin-bottom: 17px; max-width: 480px; }
-  .hero-note { align-items: flex-start; bottom: auto; gap: 13px; margin: 0 16px; padding: 20px 21px; position: relative; right: auto; width: auto; }
+  .hero-note { align-items: flex-start; bottom: auto; gap: 13px; margin: 0 16px 0 auto; padding: 18px 20px; position: relative; right: auto; width: min(350px, calc(100% - 48px)); }
   .hero-note .note-dot { margin-top: 5px; }
   .hero-note p { font-size: 14px; line-height: 1.48; }
   .hero-note strong { font-size: 16px; }
