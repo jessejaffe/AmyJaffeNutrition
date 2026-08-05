@@ -389,18 +389,24 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .brand strong { font-size: 20px; }
   .brand small { font-size: 12px; }
   .brand-mark { transform: scale(.84); transform-origin: left; width: 28px; }
-  .hero { min-height: 900px; }
-  .hero-wash { background: linear-gradient(90deg, rgba(57,19,45,.95) 0%, rgba(70,25,53,.78) 58%, rgba(70,25,53,.22) 100%); }
-  .hero-content { left: 24px; right: 24px; top: 47%; transform: translateY(-44%); }
-  .hero h1 { font-size: clamp(60px, 18vw, 82px); }
-  .hero-lede { font-size: 17px; line-height: 1.5; margin: 28px 0; }
-  .hero-actions { align-items: flex-start; flex-direction: column; gap: 24px; }
-  .hero .eyebrow { font-size: 16px; line-height: 1.45; }
-  .hero-note { padding: 24px 28px; width: min(370px, calc(100% - 20px)); }
-  .hero-note p { font-size: 15px; }
-  .hero-note strong { font-size: 17px; }
-  .belief-strip { flex-wrap: wrap; gap: 12px 0; padding: 23px 14px; }
-  .belief-strip p { margin: 0 11px; }
+  .hero { background-color: #4a203b; min-height: 0; padding-bottom: 20px; }
+  .hero-video { height: 345px; object-position: center 54%; }
+  .hero-wash { background: linear-gradient(180deg, rgba(57,19,45,.04) 72px, rgba(57,19,45,.08) 185px, rgba(57,19,45,.82) 285px, #4a203b 345px); }
+  .hero-content { left: auto; max-width: none; padding: 350px 24px 30px; position: relative; right: auto; top: auto; transform: none; }
+  .hero h1 { font-size: clamp(50px, 14.5vw, 68px); line-height: .9; }
+  .hero-lede { font-size: 16px; line-height: 1.52; margin: 22px 0 24px; max-width: 530px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: 17px; }
+  .hero-actions .button { justify-content: space-between; max-width: 390px; padding: 19px 21px; width: 100%; }
+  .hero-actions .text-link { font-size: 14px; }
+  .hero .eyebrow { font-size: 14px; line-height: 1.45; margin-bottom: 17px; max-width: 480px; }
+  .hero-note { align-items: flex-start; bottom: auto; gap: 13px; margin: 0 16px; padding: 20px 21px; position: relative; right: auto; width: auto; }
+  .hero-note .note-dot { margin-top: 5px; }
+  .hero-note p { font-size: 14px; line-height: 1.48; }
+  .hero-note strong { font-size: 16px; }
+  .hero-note-schedule { margin-top: 4px; }
+  .belief-strip { display: grid; gap: 12px 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 25px 20px; text-align: center; }
+  .belief-strip p { margin: 0; }
+  .belief-strip span { display: none; }
   .section { padding: 85px 24px; }
   .about, .section-heading-row, .expertise, .testimonial, .insurance, .contact { grid-template-columns: 1fr; }
   .about { grid-template-areas: "video" "copy" "recognition"; }
