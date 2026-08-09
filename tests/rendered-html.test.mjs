@@ -69,7 +69,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /<p class="about-subheadline">Providing evidence-based care that considers your/i);
   assert.match(html, /I&#x27;m a Nationally Registered, State-Licensed Dietitian\/Nutritionist\./i);
   assert.match(html, /My approach is highly individualized and comprehensive\./i);
-  assert.match(html, /&quot;You can&#x27;t be at peace with food while at war with your body\.&quot;<span>We will address both\.<\/span>/i);
+  assert.match(html, /<strong>&quot;You can&#x27;t be at peace with food while at war with your body\.&quot;<\/strong><span>We will address both\.<\/span>/i);
   assert.doesNotMatch(html, /Care that sees the whole person|highly individualized and holistic/i);
   assert.doesNotMatch(html, /RDN, LDN/i);
   assert.match(html, /Honored for care in our community\./i);

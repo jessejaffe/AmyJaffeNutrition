@@ -135,7 +135,7 @@ export default function Home() {
           <p className="about-subheadline">Providing evidence-based care that considers your <em>whole person.</em></p>
           <p className="large-copy">I&apos;m a Nationally Registered, State-Licensed Dietitian/Nutritionist.</p>
           <p className="approach-copy">My approach is highly individualized and comprehensive. We work collaboratively - never from a place of judgment or rigid rules - to help you develop a healthier relationship with food and your body.</p>
-          <p className="body-peace-copy">&quot;You can&apos;t be at peace with food while at war with your body.&quot;<span>We will address both.</span></p>
+          <p className="body-peace-copy"><strong>&quot;You can&apos;t be at peace with food while at war with your body.&quot;</strong><span>We will address both.</span></p>
           <div className="credentials">
             <span>Nationally Registered and Licensed Nutritionist/Dietitian</span><span>Certified Intuitive Eating Specialist</span>
           </div>
