@@ -88,7 +88,7 @@ export default function Home() {
 
       <section className="hero" id="home">
         <video className="hero-video" autoPlay muted loop playsInline preload="auto" disablePictureInPicture poster="images/purple-flowers-breeze-poster.jpg" aria-hidden="true">
-          <source src="video/purple-flowers-breeze-slow.mp4?v=20260809" type="video/mp4" />
+          <source src="video/purple-flowers-breeze-slow.mp4?v=20260809-2" type="video/mp4" />
         </video>
         <button className="hero-video-play" type="button" hidden>Play flower video</button>
         <script src="scripts/hero-video.js" defer data-static-script="true" />

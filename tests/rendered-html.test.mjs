@@ -59,7 +59,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
   assert.match(html, /<video[^>]*class="hero-video"[^>]*autoplay[^>]*muted[^>]*loop[^>]*playsinline[^>]*preload="auto"/i);
-  assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4\?v=20260809"/);
+  assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4\?v=20260809-2"/);
   assert.match(html, /src="scripts\/hero-video\.js"[^>]*data-static-script/i);
   assert.match(html, /Request an appointment/);
   assert.match(html, /href="testimonials\/">Testimonials<\/a>/i);
@@ -392,6 +392,8 @@ test("ships the owned visual assets and no starter preview", async () => {
   assert.ok(testimonialVideo.size < 6 * 1024 * 1024, "client testimonial video should remain optimized for web playback");
   const meetAmyVideo = await stat(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url));
   assert.ok(meetAmyVideo.size < 6 * 1024 * 1024, "Meet Amy video should remain optimized for web playback");
+  const heroVideo = await readFile(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url));
+  assert.ok(heroVideo.indexOf(Buffer.from("moov")) < heroVideo.indexOf(Buffer.from("mdat")), "hero video should be optimized for immediate mobile playback");
   const awardImages = await Promise.all([
     stat(new URL("../public/images/award-businessrate-2026.webp", import.meta.url)),
     stat(new URL("../public/images/award-businessrate-2025.webp", import.meta.url)),

@@ -502,4 +502,4 @@ footer small { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; 
   .consultation-detail-mark { bottom: -55px; font-size: 330px; right: -45px; }
 }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-video { display: none; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-video:not(.hero-video-user-enabled) { display: none; } * { transition: none !important; } }
