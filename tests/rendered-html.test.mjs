@@ -182,6 +182,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /google\.com\/maps\/dir\/\?api=1/i);
   assert.match(html, /property="og:image" content="https:\/\/www\.amyjaffenutrition\.com\/og\.png"/i);
   assert.match(html, /rel="canonical" href="https:\/\/www\.amyjaffenutrition\.com\/"/i);
+  assert.match(html, /name="google-site-verification" content="ICtjOUbHVHPZLTb70ac7b9JWeTnHWktjZ-N6nXPPjBI"/i);
   assert.match(html, /type="application\/ld\+json"[^>]*data-static-script/i);
   assert.match(html, /"@id":"https:\/\/www\.amyjaffenutrition\.com\/#business"/i);
   assert.match(html, /"telephone":"\+1-305-586-6053"/i);

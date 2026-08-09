@@ -17,6 +17,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: { google: "ICtjOUbHVHPZLTb70ac7b9JWeTnHWktjZ-N6nXPPjBI" },
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "Amy Jaffe Nutrition",
