@@ -4,6 +4,15 @@ import SiteFooter from "../components/SiteFooter";
 export const metadata: Metadata = {
   title: "Client Testimonials | Amy Jaffe Nutrition",
   description: "Client stories, Google reviews, and Amy's responses about compassionate, non-diet nutrition care and eating disorder recovery.",
+  alternates: { canonical: "/testimonials/" },
+  openGraph: {
+    title: "Client Testimonials | Amy Jaffe Nutrition",
+    description: "Client stories, Google reviews, and Amy's responses about compassionate, non-diet nutrition care and eating disorder recovery.",
+    url: "/testimonials/",
+    siteName: "Amy Jaffe Nutrition",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Amy Jaffe Nutrition - A healthier relationship with food" }],
+  },
 };
 
 const socialLinks = [

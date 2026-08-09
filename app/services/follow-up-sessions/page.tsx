@@ -4,6 +4,15 @@ import SiteFooter from "../../components/SiteFooter";
 export const metadata: Metadata = {
   title: "Nutrition Counseling Follow-Up Sessions | Amy Jaffe Nutrition",
   description: "Goal-centered nutrition counseling follow-up sessions with Amy Jaffe, including grocery outings, mindful meal outings, intuitive eating support, and food exposures.",
+  alternates: { canonical: "/services/follow-up-sessions/" },
+  openGraph: {
+    title: "Nutrition Counseling Follow-Up Sessions | Amy Jaffe Nutrition",
+    description: "Goal-centered nutrition counseling follow-up sessions with Amy Jaffe, including grocery outings, mindful meal outings, intuitive eating support, and food exposures.",
+    url: "/services/follow-up-sessions/",
+    siteName: "Amy Jaffe Nutrition",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Amy Jaffe Nutrition - A healthier relationship with food" }],
+  },
 };
 
 const socialLinks = [

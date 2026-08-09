@@ -4,6 +4,15 @@ import SiteFooter from "../../components/SiteFooter";
 export const metadata: Metadata = {
   title: "Nutrition Assessment | Amy Jaffe Nutrition",
   description: "What to expect during a 90-minute initial nutrition assessment with Amy Jaffe.",
+  alternates: { canonical: "/services/nutrition-assessment/" },
+  openGraph: {
+    title: "Nutrition Assessment | Amy Jaffe Nutrition",
+    description: "What to expect during a 90-minute initial nutrition assessment with Amy Jaffe.",
+    url: "/services/nutrition-assessment/",
+    siteName: "Amy Jaffe Nutrition",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Amy Jaffe Nutrition - A healthier relationship with food" }],
+  },
 };
 
 const socialLinks = [

@@ -4,6 +4,15 @@ import SiteFooter from "../components/SiteFooter";
 export const metadata: Metadata = {
   title: "Free Introductory Call | Amy Jaffe Nutrition",
   description: "Request a free, brief introductory call with Amy Jaffe to see whether nutrition counseling feels like the right fit.",
+  alternates: { canonical: "/free-introductory-call/" },
+  openGraph: {
+    title: "Free Introductory Call | Amy Jaffe Nutrition",
+    description: "Request a free, brief introductory call with Amy Jaffe to see whether nutrition counseling feels like the right fit.",
+    url: "/free-introductory-call/",
+    siteName: "Amy Jaffe Nutrition",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Amy Jaffe Nutrition - A healthier relationship with food" }],
+  },
 };
 
 const socialLinks = [

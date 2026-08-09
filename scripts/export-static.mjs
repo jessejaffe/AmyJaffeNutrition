@@ -56,8 +56,11 @@ async function renderRoute({ path, output, assetPrefix }) {
 }
 
 const [homepage] = await Promise.all(routes.map(renderRoute));
+const notFound = homepage
+  .replace(/<title>[\s\S]*?<\/title>/i, "<title>Page Not Found | Amy Jaffe Nutrition</title>")
+  .replace(/<head>/i, '<head><meta name="robots" content="noindex,follow">');
 await Promise.all([
-  writeFile(new URL("404.html", outputDirectory), homepage),
+  writeFile(new URL("404.html", outputDirectory), notFound),
   writeFile(new URL(".nojekyll", outputDirectory), ""),
 ]);
 

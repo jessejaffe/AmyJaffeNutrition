@@ -181,6 +181,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /1801 NE 123rd Street, Suite 303/);
   assert.match(html, /google\.com\/maps\/dir\/\?api=1/i);
   assert.match(html, /property="og:image" content="https:\/\/www\.amyjaffenutrition\.com\/og\.png"/i);
+  assert.match(html, /rel="canonical" href="https:\/\/www\.amyjaffenutrition\.com\/"/i);
+  assert.match(html, /type="application\/ld\+json"[^>]*data-static-script/i);
+  assert.match(html, /"@id":"https:\/\/www\.amyjaffenutrition\.com\/#business"/i);
+  assert.match(html, /"telephone":"\+1-305-586-6053"/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton|A note from Amy/i);
 });
 
@@ -192,6 +196,7 @@ test("server-renders the complete testimonials page", async () => {
   const html = await response.text();
   assertFooterSitemap(html, "../");
   assert.match(html, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /rel="canonical" href="https:\/\/www\.amyjaffenutrition\.com\/testimonials\/"/i);
   assert.match(html, /Stories of trust,/i);
   assert.match(html, /Amy helped me navigate my relationship with food, transforming it into a source of joy rather than anxiety\./i);
   assert.match(html, /images\/client-testimonial-poster\.jpg/i);
@@ -236,6 +241,7 @@ test("server-renders the nutrition assessment detail page", async () => {
   const html = await response.text();
   assertFooterSitemap(html, "../../");
   assert.match(html, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /rel="canonical" href="https:\/\/www\.amyjaffenutrition\.com\/services\/nutrition-assessment\/"/i);
   assert.match(html, /Initial session · 90 minutes/i);
   assert.match(html, /The assessment includes a detailed medical history, prior eating patterns, weight issues, physical activity, food and body challenges\./i);
   assert.match(html, /class="assessment-review-copy"/i);
@@ -257,6 +263,7 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   const html = await response.text();
   assertFooterSitemap(html, "../../");
   assert.match(html, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /rel="canonical" href="https:\/\/www\.amyjaffenutrition\.com\/services\/follow-up-sessions\/"/i);
   assert.match(html, /30-60 minutes · individualized support/i);
   assert.match(html, /The follow-up sessions are based on the goals determined during the initial nutrition assessment\./i);
   assert.match(html, /both successes and challenges are used to promote change/i);
@@ -296,6 +303,7 @@ test("server-renders the free introductory call page", async () => {
   const html = await response.text();
   assertFooterSitemap(html, "../");
   assert.match(html, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /rel="canonical" href="https:\/\/www\.amyjaffenutrition\.com\/free-introductory-call\/"/i);
   assert.match(html, /A free, brief introduction/i);
   assert.match(html, /A first step,[\s\S]*?without pressure\./i);
   assert.match(html, /This introductory call is a welcoming place to begin\./i);
@@ -321,6 +329,8 @@ test("server-renders the free introductory call page", async () => {
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
+  const robots = await readFile(new URL("../dist/client/robots.txt", import.meta.url), "utf8");
+  const sitemap = await readFile(new URL("../dist/client/sitemap.xml", import.meta.url), "utf8");
   const testimonials = await readFile(new URL("../dist/client/testimonials/index.html", import.meta.url), "utf8");
   const consultation = await readFile(new URL("../dist/client/free-introductory-call/index.html", import.meta.url), "utf8");
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
@@ -338,7 +348,7 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(testimonials, /26 Google reviews/i);
   assert.match(testimonials, /Amy Jaffe Nutrition replied/i);
   assert.match(testimonials, /href="\.\.\/#about"/i);
-  assert.doesNotMatch(testimonials, /<script\b/i);
+  assert.doesNotMatch(testimonials, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(testimonials, /modulepreload/i);
   assert.match(consultation, /<title>Free Introductory Call \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(consultation, /href="\.\.\/assets\//);
@@ -346,13 +356,13 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(consultation, /Request my free call/i);
   assert.match(consultation, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
   assert.match(consultation, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
-  assert.doesNotMatch(consultation, /<script\b/i);
+  assert.doesNotMatch(consultation, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(consultation, /modulepreload/i);
   assert.match(assessment, /<title>Nutrition Assessment \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(assessment, /href="\.\.\/\.\.\/assets\//);
   assert.match(assessment, /src="\.\.\/\.\.\/images\/amy-jaffe-logo\.avif"/i);
   assert.match(assessment, /href="\.\.\/\.\.\/#services"/i);
-  assert.doesNotMatch(assessment, /<script\b/i);
+  assert.doesNotMatch(assessment, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(assessment, /modulepreload/i);
   assert.match(followUp, /<title>Nutrition Counseling Follow-Up Sessions \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(followUp, /href="\.\.\/\.\.\/assets\//);
@@ -362,9 +372,13 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(followUp, /Intuitive eating/i);
   assert.match(followUp, /Food exposures/i);
   assert.match(followUp, /href="\.\.\/\.\.\/#services"/i);
-  assert.doesNotMatch(followUp, /<script\b/i);
+  assert.doesNotMatch(followUp, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(followUp, /modulepreload/i);
-  assert.equal(notFound, index);
+  assert.match(notFound, /<title>Page Not Found \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(notFound, /<meta name="robots" content="noindex,follow">/i);
+  assert.match(robots, /Sitemap: https:\/\/www\.amyjaffenutrition\.com\/sitemap\.xml/i);
+  assert.match(sitemap, /<loc>https:\/\/www\.amyjaffenutrition\.com\/services\/nutrition-assessment\/<\/loc>/i);
+  assert.equal((sitemap.match(/<url>/g) ?? []).length, 5);
   await access(new URL("../dist/client/.nojekyll", import.meta.url));
 });
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.amyjaffenutrition.com/sitemap.xml
