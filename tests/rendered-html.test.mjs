@@ -53,12 +53,14 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(html, /Nutrition counseling · South Florida &amp; telehealth/);
   assert.match(html, /Find freedom from eating disorders, diets, food rules, and body struggles - delivered with care and compassion, curiosity, not judgment\./);
   assert.doesNotMatch(html, /that listens to you - not the numbers/);
-  assert.match(html, /In-person in <b>South Florida<\/b> and via secure telehealth with private video appointments for clients in Florida and beyond\./);
+  assert.match(html, /In-person in <b>South Florida<\/b> and via secure telehealth for clients in Florida and beyond\./);
   assert.doesNotMatch(html, /everywhere else/i);
   assert.match(html, /Sessions are available to fit your life and schedule\./);
   assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /poster="images\/purple-flowers-breeze-poster\.jpg"/);
-  assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4"/);
+  assert.match(html, /<video[^>]*class="hero-video"[^>]*autoplay[^>]*muted[^>]*loop[^>]*playsinline[^>]*preload="auto"/i);
+  assert.match(html, /src="video\/purple-flowers-breeze-slow\.mp4\?v=20260809"/);
+  assert.match(html, /src="scripts\/hero-video\.js"[^>]*data-static-script/i);
   assert.match(html, /Request an appointment/);
   assert.match(html, /href="testimonials\/">Testimonials<\/a>/i);
   assert.match(html, /Eating disorder recovery\..*GLP-1 support\..*Less food fear\..*More body trust\./s);
@@ -154,8 +156,9 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.ok(html.indexOf('class="expertise section"') < html.indexOf('class="services section"'), "Specialized support should come before services");
   assert.doesNotMatch(html, /[—–]/);
   assert.match(html, /Let&#x27;s make peace/);
-  assert.match(html, /Schedule a free, brief introductory call to see whether working together feels like the right fit\./i);
-  assert.match(html, /href="free-introductory-call\/"[^>]*>Sign up for a free, brief introductory call/i);
+  assert.match(html, /Schedule a free introductory call to see whether working together feels like the right fit\./i);
+  assert.match(html, /href="free-introductory-call\/"[^>]*>Schedule a free introductory call/i);
+  assert.doesNotMatch(html, /Sign up for a free|free, brief introductory call/i);
   assert.match(html, /Our office is considered out of network for most insurance companies\./i);
   assert.match(html, /We will help you understand your benefits and options\./i);
   assert.match(html, /monthly Superbills for you to submit/i);
@@ -268,7 +271,7 @@ test("server-renders the nutrition counseling follow-up sessions page", async ()
   assert.match(html, /local grocery store, or we meet there together virtually/i);
   assert.match(html, /local restaurants or cafés, or we meet there together virtually/i);
   assert.match(html, /Food exposures/i);
-  assert.match(html, /challenging or “forbidden” foods to the session, in person or virtually/i);
+  assert.match(html, /fear or “forbidden” foods to the session, in person or virtually/i);
   assert.match(html, /facing your fears/i);
   assert.equal((html.match(/class="follow-up-option-card"/g) ?? []).length, 4);
   const optionOrder = ["The Intuitive Eating framework", "Food exposures", "Mindful meal outings", "Grocery outings"];
@@ -326,7 +329,8 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
-  assert.doesNotMatch(index, /<script\b/i);
+  assert.match(index, /<script[^>]*src="scripts\/hero-video\.js"[^>]*data-static-script/i);
+  assert.doesNotMatch(index, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(testimonials, /href="\.\.\/assets\//);
@@ -381,6 +385,7 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/video/nutritioncounselingflorida.mp4", import.meta.url)),
     access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
+    access(new URL("../public/scripts/hero-video.js", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
   const testimonialVideo = await stat(new URL("../public/video/client-testimonial.mp4", import.meta.url));

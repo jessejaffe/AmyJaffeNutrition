@@ -87,9 +87,11 @@ export default function Home() {
       </header>
 
       <section className="hero" id="home">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="images/purple-flowers-breeze-poster.jpg" aria-hidden="true">
-          <source src="video/purple-flowers-breeze-slow.mp4" type="video/mp4" />
+        <video className="hero-video" autoPlay muted loop playsInline preload="auto" disablePictureInPicture poster="images/purple-flowers-breeze-poster.jpg" aria-hidden="true">
+          <source src="video/purple-flowers-breeze-slow.mp4?v=20260809" type="video/mp4" />
         </video>
+        <button className="hero-video-play" type="button" hidden>Play flower video</button>
+        <script src="scripts/hero-video.js" defer data-static-script="true" />
         <div className="hero-wash" />
         <div className="hero-content">
           <p className="eyebrow light">Nutrition counseling · South Florida &amp; telehealth</p>
@@ -105,7 +107,7 @@ export default function Home() {
           <span className="note-dot" />
           <p>
             <strong>Currently accepting new clients</strong><br />
-            In-person in <b>South Florida</b> and via secure telehealth with private video appointments for clients in Florida and beyond.
+            In-person in <b>South Florida</b> and via secure telehealth for clients in Florida and beyond.
             <span className="hero-note-schedule">Sessions are available to fit your life and schedule.</span>
           </p>
         </div>
@@ -248,8 +250,8 @@ export default function Home() {
         <div className="contact-intro">
           <p className="eyebrow light">Take the first step</p>
           <h2>Let&apos;s make peace<br /><em>with food.</em></h2>
-          <p>Schedule a free, brief introductory call to see whether working together feels like the right fit.</p>
-          <a className="button button-cream contact-consult-link" href="free-introductory-call/">Sign up for a free, brief introductory call <span aria-hidden="true">↗</span></a>
+          <p>Schedule a free introductory call to see whether working together feels like the right fit.</p>
+          <a className="button button-cream contact-consult-link" href="free-introductory-call/">Schedule a free introductory call <span aria-hidden="true">↗</span></a>
           <div className="contact-details">
             <a href="tel:3055866053">305-586-6053</a>
             <a href="mailto:amysjaffe@gmail.com">amysjaffe@gmail.com</a>

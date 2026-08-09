@@ -21,7 +21,7 @@ const sessionOptions = [
   {
     number: "02",
     title: "Food exposures",
-    body: "Clients can bring challenging or “forbidden” foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
+    body: "Clients can bring fear or “forbidden” foods to the session, in person or virtually. Exposure means “facing your fears” and is the opposite of avoidance. When we avoid a food that we fear, the fear only gets stronger: by avoiding, we do not get to learn anything about our ability to cope.",
   },
   {
     number: "03",

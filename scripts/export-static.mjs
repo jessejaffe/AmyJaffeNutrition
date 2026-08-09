@@ -32,10 +32,22 @@ async function renderRoute({ path, output, assetPrefix }) {
 
   // These brochure pages do not need client-side JavaScript. Removing hydration
   // scripts keeps each static copy reliable and makes the download much smaller.
+  // Retain the small, dependency-free mobile video helper used by the homepage.
+  const staticScripts = [];
+  html = html.replace(/<script\b[^>]*\bdata-static-script(?:=["'][^"']*["'])?[^>]*>[\s\S]*?<\/script>/gi, (script) => {
+    const placeholder = `__AMY_STATIC_SCRIPT_${staticScripts.length}__`;
+    staticScripts.push(script);
+    return placeholder;
+  });
+
   html = html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/<link\b(?=[^>]*\brel=["']modulepreload["'])[^>]*>/gi, "")
     .replace(/(["'])\/(assets|images|video)\//g, `$1${assetPrefix}$2/`);
+
+  staticScripts.forEach((script, index) => {
+    html = html.replace(`__AMY_STATIC_SCRIPT_${index}__`, script);
+  });
 
   const outputUrl = new URL(output, outputDirectory);
   await mkdir(new URL("./", outputUrl), { recursive: true });
