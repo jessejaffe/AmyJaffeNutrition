@@ -95,7 +95,7 @@ export default function FreeIntroductoryCallPage() {
             <p>In-person in South Florida<br />and via secure telehealth</p>
           </div>
         </div>
-        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post">
+        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post" data-analytics-form-id="free-introductory-call" data-ph-no-autocapture="true">
           <input type="hidden" name="_subject" value="Website inquiry - Free introductory call" />
           <input type="hidden" name="Form type" value="Free introductory call request" />
           <input type="hidden" name="_template" value="table" />

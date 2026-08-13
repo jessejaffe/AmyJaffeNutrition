@@ -121,7 +121,7 @@ export default function Home() {
       <section className="about section" id="about">
         <div className="about-image-wrap">
           <div className="about-video-frame">
-            <video controls playsInline preload="metadata" poster="images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe">
+            <video controls playsInline preload="metadata" poster="images/amy-video-poster.jpg" aria-label="Meet Amy Jaffe" data-analytics-video-id="meet-amy" data-analytics-video-title="Meet Amy Jaffe">
               <source src="video/nutritioncounselingflorida.mp4?v=20260802" type="video/mp4" />
             </video>
             <div className="experience-badge"><strong>20+</strong><span>years of<br />experience</span></div>
@@ -222,7 +222,7 @@ export default function Home() {
 
       <section className="testimonial section" id="testimonials">
         <div className="testimonial-video-wrap">
-          <video controls playsInline preload="metadata" poster="images/client-testimonial-poster.jpg" aria-label="Client testimonial">
+          <video controls playsInline preload="metadata" poster="images/client-testimonial-poster.jpg" aria-label="Client testimonial" data-analytics-video-id="client-testimonial" data-analytics-video-title="Client testimonial">
             <source src="video/client-testimonial.mp4?v=20260731" type="video/mp4" />
           </video>
         </div>
@@ -258,7 +258,7 @@ export default function Home() {
             <p>1801 NE 123rd Street, Suite 303<br />Miami, FL 33181</p>
           </div>
         </div>
-        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post">
+        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post" data-analytics-form-id="homepage-general-inquiry" data-ph-no-autocapture="true">
           <input type="hidden" name="_subject" value="Website inquiry - General homepage form" />
           <input type="hidden" name="Form type" value="General homepage inquiry" />
           <input type="hidden" name="_template" value="table" />

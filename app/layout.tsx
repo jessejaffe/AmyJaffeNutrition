@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Analytics from "./components/Analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <Analytics />
         {children}
         <script
           type="application/ld+json"

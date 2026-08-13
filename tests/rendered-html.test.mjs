@@ -90,10 +90,12 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.equal((html.match(/class="award-card"/g) ?? []).length, 4);
   assert.match(html, /<strong>20\+<\/strong><span>years of/i);
   assert.match(html, /poster="images\/amy-video-poster\.jpg"/);
+  assert.match(html, /data-analytics-video-id="meet-amy"/i);
   assert.match(html, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.match(html, /I&#x27;m So Glad You&#x27;re Here/i);
   assert.match(html, /class="about-welcome-logo" src="images\/amy-jaffe-logo\.avif" alt="Amy Jaffe"/i);
   assert.match(html, /src="video\/client-testimonial\.mp4\?v=20260731"/);
+  assert.match(html, /data-analytics-video-id="client-testimonial"/i);
   assert.match(html, /href="testimonials\/">See more testimonials/i);
   assert.match(html, /Nutrition assessment/i);
   assert.match(html, /90 minutes/i);
@@ -168,6 +170,8 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   const homepageForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
   assert.match(homepageForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
   assert.match(homepageForm, /method="post"/i);
+  assert.match(homepageForm, /data-analytics-form-id="homepage-general-inquiry"/i);
+  assert.match(homepageForm, /data-ph-no-autocapture="true"/i);
   assert.match(homepageForm, /name="_subject" value="Website inquiry - General homepage form"/i);
   assert.match(homepageForm, /name="Form type" value="General homepage inquiry"/i);
   assert.match(homepageForm, /name="_template" value="table"/i);
@@ -314,6 +318,8 @@ test("server-renders the free introductory call page", async () => {
   const introCallForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
   assert.match(introCallForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
   assert.match(introCallForm, /method="post"/i);
+  assert.match(introCallForm, /data-analytics-form-id="free-introductory-call"/i);
+  assert.match(introCallForm, /data-ph-no-autocapture="true"/i);
   assert.match(introCallForm, /name="_subject" value="Website inquiry - Free introductory call"/i);
   assert.match(introCallForm, /name="Form type" value="Free introductory call request"/i);
   assert.match(introCallForm, /name="_template" value="table"/i);
