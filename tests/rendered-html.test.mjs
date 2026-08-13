@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
+import { buildDashboard, normalizeRange } from "../server/analytics-server.mjs";
 
 const templateRoot = new URL("../", import.meta.url);
 
@@ -333,6 +334,42 @@ test("server-renders the free introductory call page", async () => {
   assert.doesNotMatch(html, /free-disordered-eating-consultation/i);
 });
 
+test("server-renders the private analytics dashboard shell", async () => {
+  const response = await render("/analytics");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<title>Site Analytics \| Amy Jaffe Nutrition<\/title>/i);
+  assert.match(html, /name="robots" content="noindex, nofollow, noarchive, nocache"/i);
+  assert.match(html, /Site <em>pulse\.<\/em>/i);
+  assert.match(html, /Traffic[\s\S]*?Inquiries[\s\S]*?Video performance/i);
+  assert.match(html, /src="\/scripts\/analytics-dashboard\.js"[^>]*data-static-script/i);
+  assert.doesNotMatch(html, /phx_/i);
+});
+
+test("shapes dashboard results without exposing event details", async () => {
+  const responses = [
+    [[12, 7, 3, 2, 4]],
+    [["2026-08-13", 7, 12]],
+    [["/", 9], ["/testimonials/", 3]],
+    [["homepage-general-inquiry", 3, 2]],
+    [["meet-amy", "Meet Amy Jaffe", 4, 4, 2, 80, 4, 3, 2]],
+    [["Direct", 5], ["google.com", 2]],
+  ];
+  let index = 0;
+  const dashboard = await buildDashboard(7, async () => responses[index++]);
+  assert.equal(dashboard.summary.visitors, 7);
+  assert.equal(dashboard.summary.form_submissions, 2);
+  assert.equal(dashboard.summary.inquiry_rate, 28.6);
+  assert.equal(dashboard.forms[0].completion_rate, 66.7);
+  assert.equal(dashboard.videos[0].average_watch_seconds, 20);
+  assert.equal(dashboard.videos[0].completion_rate, 50);
+  assert.equal(dashboard.trend.length, 7);
+  assert.deepEqual(dashboard.sources[0], { label: "Direct", value: 5 });
+  assert.equal(normalizeRange("90"), 90);
+  assert.equal(normalizeRange("365"), 30);
+  assert.equal(JSON.stringify(dashboard).includes("phx_"), false);
+});
+
 test("exports a GitHub Pages-ready static site", async () => {
   const index = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
   const notFound = await readFile(new URL("../dist/client/404.html", import.meta.url), "utf8");
@@ -342,11 +379,13 @@ test("exports a GitHub Pages-ready static site", async () => {
   const consultation = await readFile(new URL("../dist/client/free-introductory-call/index.html", import.meta.url), "utf8");
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
   const followUp = await readFile(new URL("../dist/client/services/follow-up-sessions/index.html", import.meta.url), "utf8");
+  const analytics = await readFile(new URL("../dist/client/analytics/index.html", import.meta.url), "utf8");
 
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.match(index, /<script[^>]*src="scripts\/hero-video\.js"[^>]*data-static-script/i);
+  assert.match(index, /<script[^>]*src="\/scripts\/site-analytics\.js"[^>]*data-static-script/i);
   assert.doesNotMatch(index, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
@@ -381,6 +420,9 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(followUp, /href="\.\.\/\.\.\/#services"/i);
   assert.doesNotMatch(followUp, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(followUp, /modulepreload/i);
+  assert.match(analytics, /Site <em>pulse\.<\/em>/i);
+  assert.match(analytics, /src="\/scripts\/analytics-dashboard\.js"[^>]*data-static-script/i);
+  assert.doesNotMatch(analytics, /phx_/i);
   assert.match(notFound, /<title>Page Not Found \| Amy Jaffe Nutrition<\/title>/i);
   assert.match(notFound, /<meta name="robots" content="noindex,follow">/i);
   assert.match(robots, /Sitemap: https:\/\/www\.amyjaffenutrition\.com\/sitemap\.xml/i);
@@ -407,6 +449,8 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/video/client-testimonial.mp4", import.meta.url)),
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
     access(new URL("../public/scripts/hero-video.js", import.meta.url)),
+    access(new URL("../public/scripts/site-analytics.js", import.meta.url)),
+    access(new URL("../public/scripts/analytics-dashboard.js", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
   const testimonialVideo = await stat(new URL("../public/video/client-testimonial.mp4", import.meta.url));

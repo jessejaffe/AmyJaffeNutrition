@@ -13,6 +13,7 @@ const routes = [
   { path: "/free-introductory-call", output: "free-introductory-call/index.html", assetPrefix: "../" },
   { path: "/services/nutrition-assessment", output: "services/nutrition-assessment/index.html", assetPrefix: "../../" },
   { path: "/services/follow-up-sessions", output: "services/follow-up-sessions/index.html", assetPrefix: "../../" },
+  { path: "/analytics", output: "analytics/index.html", assetPrefix: "../" },
 ];
 
 async function renderRoute({ path, output, assetPrefix }) {

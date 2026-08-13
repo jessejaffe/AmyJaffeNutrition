@@ -1,0 +1,21 @@
+[Unit]
+Description=Amy Jaffe Nutrition analytics dashboard API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/amy-jaffe-analytics
+EnvironmentFile=/etc/amy-jaffe-analytics.env
+ExecStart=/usr/bin/node /opt/amy-jaffe-analytics/server/analytics-server.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
