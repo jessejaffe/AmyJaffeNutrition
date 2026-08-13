@@ -1,7 +1,7 @@
 import http from "node:http";
 import { pathToFileURL } from "node:url";
 
-const PORT = Number(process.env.ANALYTICS_PORT || 3010);
+const PORT = Number(process.env.ANALYTICS_PORT || 43127);
 const POSTHOG_HOST = process.env.POSTHOG_HOST || "https://us.posthog.com";
 const POSTHOG_PERSONAL_API_KEY = process.env.POSTHOG_PERSONAL_API_KEY;
 const POSTHOG_PROJECT_TOKEN = process.env.POSTHOG_PROJECT_TOKEN;
@@ -223,7 +223,7 @@ const server = http.createServer(async (request, response) => {
 
   if (request.method === "GET" && url.pathname === "/health") {
     response.writeHead(200, { "Content-Type": "application/json" });
-    response.end(JSON.stringify({ status: "ok" }));
+    response.end(JSON.stringify({ status: "ok", service: "amy-jaffe-analytics" }));
     return;
   }
 
