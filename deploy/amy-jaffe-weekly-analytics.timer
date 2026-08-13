@@ -1,0 +1,11 @@
+[Unit]
+Description=Send Amy Jaffe Nutrition analytics every Monday
+
+[Timer]
+OnCalendar=Mon *-*-* 09:00:00 America/New_York
+Persistent=true
+AccuracySec=1m
+Unit=amy-jaffe-weekly-analytics.service
+
+[Install]
+WantedBy=timers.target

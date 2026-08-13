@@ -2,8 +2,23 @@ import assert from "node:assert/strict";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 import { buildDashboard, normalizeRange } from "../server/analytics-server.mjs";
+import { formatWeeklyReport, reportPeriod, sendWeeklyReport } from "../server/weekly-analytics-email.mjs";
 
 const templateRoot = new URL("../", import.meta.url);
+
+const weeklyDashboardFixture = {
+  summary: { visitors: 120, pageviews: 245, form_submissions: 6, inquiry_rate: 5 },
+  forms: [
+    { title: "General inquiry", submitted: 4, started: 8, completion_rate: 50 },
+    { title: "Free introductory call", submitted: 2, started: 5, completion_rate: 40 },
+  ],
+  videos: [
+    { title: "Meet Amy Jaffe", unique_viewers: 20, average_watch_seconds: 72, completion_rate: 35 },
+    { title: "Client testimonial", unique_viewers: 12, average_watch_seconds: 45, completion_rate: 25 },
+  ],
+  pages: [{ label: "/", value: 180 }],
+  sources: [{ label: "Direct", value: 75 }],
+};
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -368,6 +383,38 @@ test("shapes dashboard results without exposing event details", async () => {
   assert.equal(normalizeRange("90"), 90);
   assert.equal(normalizeRange("365"), 30);
   assert.equal(JSON.stringify(dashboard).includes("phx_"), false);
+});
+
+test("formats a concise seven-day analytics email", () => {
+  const now = new Date("2026-08-10T13:00:00Z");
+  const report = formatWeeklyReport(weeklyDashboardFixture, now);
+  assert.equal(reportPeriod(now), "Aug 3, 2026 – Aug 10, 2026");
+  assert.match(report._subject, /Amy Jaffe Nutrition weekly analytics/);
+  assert.equal(report.Visitors, "120");
+  assert.equal(report["Page views"], "245");
+  assert.equal(report.Inquiries, "6");
+  assert.equal(report["Inquiry rate"], "5%");
+  assert.match(report["Form activity"], /General inquiry: 4 submitted/);
+  assert.match(report["Video performance"], /Meet Amy Jaffe: 20 unique viewers, 1m 12s average watch/);
+  assert.match(report["Private dashboard"], /\/analytics\/$/);
+});
+
+test("sends the weekly report through the site's existing email relay", async () => {
+  let request;
+  const result = await sendWeeklyReport({
+    now: new Date("2026-08-10T13:00:00Z"),
+    getDashboard: async () => weeklyDashboardFixture,
+    send: async (url, options) => {
+      request = { url, options };
+      return new Response(JSON.stringify({ success: true, message: "Form submitted successfully" }), { status: 200 });
+    },
+  });
+  const body = JSON.parse(request.options.body);
+  assert.match(request.url, /^https:\/\/formsubmit\.co\/ajax\//);
+  assert.equal(request.options.method, "POST");
+  assert.equal(body.Visitors, "120");
+  assert.equal(body._template, "table");
+  assert.equal(result.recipient, "amysjaffe@gmail.com");
 });
 
 test("exports a GitHub Pages-ready static site", async () => {
