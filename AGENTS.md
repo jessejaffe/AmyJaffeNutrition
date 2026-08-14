@@ -23,9 +23,12 @@
 
 ## Production release
 
-The public production domain is `https://www.amyjaffenutrition.com`.
-GitHub's `main` branch triggers the GitHub Pages workflow, and the primary
-site is served by Nginx on the Hetzner host at `157.90.162.50`.
+The public production domain is `https://www.amyjaffenutrition.com`. The
+primary site is served by Nginx on the Hetzner host at `157.90.162.50`.
+Pushing `main` also triggers the historical GitHub Pages workflow, but GitHub
+Pages is currently disabled for this repository. That workflow is not a
+production release gate; do not enable Pages as part of a routine release
+without explicit authorization.
 
 Before beginning an authorized release, establish a fresh GitHub baseline with
 `git fetch origin main` and confirm that local `main` is not behind
@@ -35,8 +38,8 @@ discarding or overwriting them.
 After the checks pass:
 
 1. Commit the validated source and push `main` to `origin`. Confirm the
-   remote branch points at the pushed commit and wait for the GitHub Pages
-   workflow to finish successfully.
+   remote branch points at the pushed commit. A failed GitHub Pages run is
+   expected while Pages remains disabled and does not affect Hetzner.
 2. Build the exact commit locally with `npm run build:pages` (or reuse the
    checked build only when the source has not changed). Confirm that
    `dist/client/index.html` exists.
