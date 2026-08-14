@@ -169,6 +169,14 @@ def build_report(data: dict[str, Any], now: datetime, dashboard_url: str) -> tup
     source_rows = titled_rows(data.get("sources"), "visitors")
     lines.extend(source_rows or ["  No traffic sources recorded."])
 
+    lines.extend(["", "TRAFFIC BY COUNTRY"])
+    country_rows = titled_rows(data.get("countries"), "visitors")
+    lines.extend(country_rows or ["  No country data recorded."])
+
+    lines.extend(["", "U.S. TRAFFIC BY STATE"])
+    state_rows = titled_rows(data.get("us_states"), "visitors")
+    lines.extend(state_rows or ["  No U.S. state data recorded."])
+
     if integer(summary.get("visitors")) < 10:
         lines.extend(
             [

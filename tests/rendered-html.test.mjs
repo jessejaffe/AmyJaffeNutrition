@@ -354,6 +354,8 @@ test("shapes dashboard results without exposing event details", async () => {
     [["homepage-general-inquiry", 3, 2]],
     [["meet-amy", "Meet Amy Jaffe", 4, 4, 2, 80, 4, 3, 2]],
     [["Direct", 5], ["google.com", 2]],
+    [["United States", 5], ["Canada", 2]],
+    [["Florida", 3], ["New York", 2]],
   ];
   let index = 0;
   const dashboard = await buildDashboard(7, async () => responses[index++]);
@@ -365,6 +367,8 @@ test("shapes dashboard results without exposing event details", async () => {
   assert.equal(dashboard.videos[0].completion_rate, 50);
   assert.equal(dashboard.trend.length, 7);
   assert.deepEqual(dashboard.sources[0], { label: "Direct", value: 5 });
+  assert.deepEqual(dashboard.countries[0], { label: "United States", value: 5 });
+  assert.deepEqual(dashboard.us_states[0], { label: "Florida", value: 3 });
   assert.equal(normalizeRange("90"), 90);
   assert.equal(normalizeRange("365"), 30);
   assert.equal(JSON.stringify(dashboard).includes("phx_"), false);

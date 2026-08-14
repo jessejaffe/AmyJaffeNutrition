@@ -54,6 +54,8 @@ class WeeklyAnalyticsEmailTests(unittest.TestCase):
             ],
             "pages": [{"label": "/", "value": 71}],
             "sources": [{"label": "Direct", "value": 30}],
+            "countries": [{"label": "United States", "value": 30}, {"label": "Canada", "value": 4}],
+            "us_states": [{"label": "Florida", "value": 16}, {"label": "New York", "value": 9}],
         }
 
     def test_builds_complete_report(self):
@@ -72,7 +74,20 @@ class WeeklyAnalyticsEmailTests(unittest.TestCase):
         self.assertIn("Average watch time: 1m 5s", report)
         self.assertIn("Total watch time: 1h 1m 1s", report)
         self.assertIn("Reached 25% / 50% / 75%: 9 / 7 / 5", report)
+        self.assertIn("TRAFFIC BY COUNTRY", report)
+        self.assertIn("United States: 30 visitors", report)
+        self.assertIn("U.S. TRAFFIC BY STATE", report)
+        self.assertIn("Florida: 16 visitors", report)
         self.assertIn("Private dashboard:", report)
+
+    def test_marks_missing_geography_as_unavailable(self):
+        data = {"range_days": 7, "summary": {}}
+        _, report = MODULE.build_report(
+            data, self.now, "https://www.amyjaffenutrition.com/analytics/"
+        )
+
+        self.assertIn("No country data recorded.", report)
+        self.assertIn("No U.S. state data recorded.", report)
 
     def test_builds_email_headers(self):
         message = MODULE.build_message(

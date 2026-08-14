@@ -109,7 +109,7 @@ export async function buildDashboard(days, query = posthogQuery) {
     `),
   ]);
 
-  const [formRows, videoRows, sourceRows] = await Promise.all([
+  const [formRows, videoRows, sourceRows, countryRows, stateRows] = await Promise.all([
     query("amy_dashboard_forms", `
       SELECT
         properties.form_id AS form_id,
@@ -147,6 +147,31 @@ export async function buildDashboard(days, query = posthogQuery) {
       FROM events
       WHERE timestamp >= now() - ${interval} AND event = '$pageview'
       GROUP BY source
+      ORDER BY visitors DESC
+      LIMIT 8
+    `),
+    query("amy_dashboard_countries", `
+      SELECT
+        nullIf(toString(properties.$geoip_country_name), '') AS country,
+        uniq(distinct_id) AS visitors
+      FROM events
+      WHERE timestamp >= now() - ${interval}
+        AND event = '$pageview'
+        AND notEmpty(toString(properties.$geoip_country_name))
+      GROUP BY country
+      ORDER BY visitors DESC
+      LIMIT 8
+    `),
+    query("amy_dashboard_us_states", `
+      SELECT
+        nullIf(toString(properties.$geoip_subdivision_1_name), '') AS state,
+        uniq(distinct_id) AS visitors
+      FROM events
+      WHERE timestamp >= now() - ${interval}
+        AND event = '$pageview'
+        AND properties.$geoip_country_code = 'US'
+        AND notEmpty(toString(properties.$geoip_subdivision_1_name))
+      GROUP BY state
       ORDER BY visitors DESC
       LIMIT 8
     `),
@@ -204,6 +229,8 @@ export async function buildDashboard(days, query = posthogQuery) {
     trend: fillDailyTrend(trendRows, days),
     pages: pageRows.map((row) => ({ label: String(row[0] || "/"), value: number(row[1]) })),
     sources: sourceRows.map((row) => ({ label: String(row[0] || "Direct"), value: number(row[1]) })),
+    countries: countryRows.map((row) => ({ label: String(row[0] || "Unknown"), value: number(row[1]) })),
+    us_states: stateRows.map((row) => ({ label: String(row[0] || "Unknown"), value: number(row[1]) })),
     forms,
     videos,
   };
