@@ -99,6 +99,7 @@ export default function FreeIntroductoryCallPage() {
           <input type="hidden" name="_subject" value="Website inquiry - Free introductory call" />
           <input type="hidden" name="Form type" value="Free introductory call request" />
           <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="Submitted at (Eastern Time)" />
           <div className="form-honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
           <label>First name<input type="text" name="First name" autoComplete="given-name" required /></label>
           <label>Last name<input type="text" name="Last name" autoComplete="family-name" required /></label>

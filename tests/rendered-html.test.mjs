@@ -176,6 +176,7 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(homepageForm, /name="_subject" value="Website inquiry - General homepage form"/i);
   assert.match(homepageForm, /name="Form type" value="General homepage inquiry"/i);
   assert.match(homepageForm, /name="_template" value="table"/i);
+  assert.match(homepageForm, /name="Submitted at \(Eastern Time\)"/i);
   assert.doesNotMatch(homepageForm, /name="_url"/i);
   assert.match(homepageForm, /name="_honey"/i);
   assert.match(homepageForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
@@ -324,6 +325,7 @@ test("server-renders the free introductory call page", async () => {
   assert.match(introCallForm, /name="_subject" value="Website inquiry - Free introductory call"/i);
   assert.match(introCallForm, /name="Form type" value="Free introductory call request"/i);
   assert.match(introCallForm, /name="_template" value="table"/i);
+  assert.match(introCallForm, /name="Submitted at \(Eastern Time\)"/i);
   assert.doesNotMatch(introCallForm, /name="_url"/i);
   assert.match(introCallForm, /name="_honey"/i);
   assert.match(introCallForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
@@ -390,6 +392,7 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.match(index, /<script[^>]*src="scripts\/hero-video\.js"[^>]*data-static-script/i);
   assert.match(index, /<script[^>]*src="\/scripts\/site-analytics\.js"[^>]*data-static-script/i);
+  assert.match(index, /<script[^>]*src="\/scripts\/form-submission-time\.js"[^>]*data-static-script/i);
   assert.doesNotMatch(index, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
@@ -454,6 +457,7 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
     access(new URL("../public/scripts/hero-video.js", import.meta.url)),
     access(new URL("../public/scripts/site-analytics.js", import.meta.url)),
+    access(new URL("../public/scripts/form-submission-time.js", import.meta.url)),
     access(new URL("../public/scripts/analytics-dashboard.js", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
@@ -470,4 +474,15 @@ test("ships the owned visual assets and no starter preview", async () => {
   ]);
   assert.ok(awardImages.reduce((total, image) => total + image.size, 0) < 150 * 1024, "recognition images should remain optimized for fast loading");
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
+});
+
+test("captures both FormSubmit timestamps in Eastern Time", async () => {
+  const script = await readFile(new URL("../public/scripts/form-submission-time.js", import.meta.url), "utf8");
+
+  assert.match(script, /Submitted at \(Eastern Time\)/);
+  assert.match(script, /America\/New_York/);
+  assert.match(script, /timeZoneName:\s*["']short["']/);
+  assert.match(script, /homepage-general-inquiry/);
+  assert.match(script, /free-introductory-call/);
+  assert.match(script, /document\.addEventListener\(["']submit["']/);
 });
