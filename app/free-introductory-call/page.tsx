@@ -95,15 +95,22 @@ export default function FreeIntroductoryCallPage() {
             <p>In-person in South Florida<br />and via secure telehealth</p>
           </div>
         </div>
-        <form className="contact-form" action="/api/inquiries/introductory-call" method="post" data-analytics-form-id="free-introductory-call" data-ph-no-autocapture="true">
+        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post" data-analytics-form-id="free-introductory-call" data-ph-no-autocapture="true">
+          <input type="hidden" name="_subject" value="Website inquiry - Free introductory call" />
+          <input type="hidden" name="Form type" value="Free introductory call request" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="Submitted at (Eastern Time)" />
           <div className="form-honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
-          <label>First name<input type="text" name="First name" autoComplete="given-name" maxLength={100} required /></label>
-          <label>Last name<input type="text" name="Last name" autoComplete="family-name" maxLength={100} required /></label>
-          <label className="full">Email<input type="email" name="email" autoComplete="email" maxLength={254} required /></label>
-          <label className="full">Preferred phone number<input type="tel" name="Phone" autoComplete="tel" maxLength={60} required /></label>
-          <label className="full">A short note (optional)<textarea name="Short note" rows={3} maxLength={2000} placeholder="Please keep this message general and do not include private medical details." /></label>
+          <label>First name<input type="text" name="First name" autoComplete="given-name" required /></label>
+          <label>Last name<input type="text" name="Last name" autoComplete="family-name" required /></label>
+          <label className="full">Email<input type="email" name="email" autoComplete="email" required /></label>
+          <label className="full">Preferred phone number<input type="tel" name="Phone" autoComplete="tel" required /></label>
+          <label className="full">A short note (optional)<textarea name="Short note" rows={3} placeholder="Please keep this message general and do not include private medical details." /></label>
           <button type="submit">Request my free call <span aria-hidden="true">↗</span></button>
-          <small>Please do not include private medical details in this form.</small>
+          <small>
+            You can also <a href="mailto:amysjaffe@gmail.com?subject=Free%20introductory%20call%20request">email Amy to request a call</a>.
+            <br />Please do not include private medical details in this form.
+          </small>
         </form>
       </section>
 

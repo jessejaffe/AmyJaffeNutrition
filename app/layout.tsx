@@ -85,6 +85,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <script src="/scripts/site-analytics.js" defer data-static-script="true" />
+        <script src="/scripts/form-submission-time.js" defer data-static-script="true" />
         <script
           type="application/ld+json"
           data-static-script="true"
