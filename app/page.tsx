@@ -258,16 +258,12 @@ export default function Home() {
             <p>1801 NE 123rd Street, Suite 303<br />Miami, FL 33181</p>
           </div>
         </div>
-        <form className="contact-form" action="https://formsubmit.co/amysjaffe@gmail.com" method="post" data-analytics-form-id="homepage-general-inquiry" data-ph-no-autocapture="true">
-          <input type="hidden" name="_subject" value="Website inquiry - General homepage form" />
-          <input type="hidden" name="Form type" value="General homepage inquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="Submitted at (Eastern Time)" />
+        <form className="contact-form" action="/api/inquiries/general" method="post" data-analytics-form-id="homepage-general-inquiry" data-ph-no-autocapture="true">
           <div className="form-honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
-          <label>First name<input type="text" name="First name" autoComplete="given-name" required /></label>
-          <label>Last name<input type="text" name="Last name" autoComplete="family-name" required /></label>
-          <label className="full">Email<input type="email" name="email" autoComplete="email" required /></label>
-          <label className="full">What would you like support with?<textarea name="Support request" rows={3} placeholder="Please keep this message general and do not include private medical details." required /></label>
+          <label>First name<input type="text" name="First name" autoComplete="given-name" maxLength={100} required /></label>
+          <label>Last name<input type="text" name="Last name" autoComplete="family-name" maxLength={100} required /></label>
+          <label className="full">Email<input type="email" name="email" autoComplete="email" maxLength={254} required /></label>
+          <label className="full">What would you like support with?<textarea name="Support request" rows={3} maxLength={2000} placeholder="Please keep this message general and do not include private medical details." required /></label>
           <button type="submit">Send general inquiry <span>↗</span></button>
           <small>Please do not include private medical details in this form.</small>
         </form>

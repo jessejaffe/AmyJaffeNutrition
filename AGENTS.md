@@ -2,9 +2,8 @@
 
 ## Scope and safety
 
-- This is Amy Jaffe Nutrition's public brochure site. Preserve the existing
-  static-site architecture and the current FormSubmit integrations unless a
-  change explicitly calls for something different.
+- This is Amy Jaffe Nutrition's public brochure site. The pages are static.
+  The contact forms post to a first-party inquiry email service.
 - Do not publish, change DNS, alter the Nginx configuration, or send a form
   submission without explicit authorization for that action.
 - Keep real inquiries out of test runs. If a production-form test is
@@ -68,3 +67,19 @@ If a production probe fails, restore the previous release by atomically
 repointing the same symlink to the previous known-good release, then probe it
 again. Do not remove old releases during the deployment; retain them for
 rollback until a separately authorized cleanup.
+
+## Inquiry email releases
+
+- `server/inquiry_server.py` runs through `amy-jaffe-inquiries.service` from
+  `/opt/amy-jaffe-inquiries`. Deploy and restart only that unit for changes to
+  email processing. Store its mail settings in the root-only environment file
+  `/etc/amy-jaffe-inquiries.env`.
+- Deploy the static site when form markup changes. If form routes also change,
+  deploy the matching inquiry code and the site-specific Nginx config first.
+  Preserve the prior config, run `nginx -t` before reloading Nginx, and verify
+  readiness at `http://127.0.0.1:43128/api/inquiries/thanks` before switching the
+  website release. No analytics restart, database work, or release jobs are needed
+  for inquiry changes.
+- Probe both live form actions after a route change. For an authorized test,
+  confirm that the live browser reaches the success page and that the service
+  logs SMTP acceptance. Confirm inbox receipt with the mailbox owner.

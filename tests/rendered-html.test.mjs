@@ -169,15 +169,10 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.doesNotMatch(html, /A gentler way forward|Start with[\s\S]*understanding|href="[^"]*#resources"/i);
   assert.doesNotMatch(html, /class="hero-stamp"|NON-DIET CARE · HAES/i);
   const homepageForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
-  assert.match(homepageForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(homepageForm, /action="\/api\/inquiries\/general"/i);
   assert.match(homepageForm, /method="post"/i);
   assert.match(homepageForm, /data-analytics-form-id="homepage-general-inquiry"/i);
   assert.match(homepageForm, /data-ph-no-autocapture="true"/i);
-  assert.match(homepageForm, /name="_subject" value="Website inquiry - General homepage form"/i);
-  assert.match(homepageForm, /name="Form type" value="General homepage inquiry"/i);
-  assert.match(homepageForm, /name="_template" value="table"/i);
-  assert.match(homepageForm, /name="Submitted at \(Eastern Time\)"/i);
-  assert.doesNotMatch(homepageForm, /name="_url"/i);
   assert.match(homepageForm, /name="_honey"/i);
   assert.match(homepageForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
   assert.match(homepageForm, /<textarea(?=[^>]*name="Support request")(?=[^>]*required)/i);
@@ -318,15 +313,10 @@ test("server-renders the free introductory call page", async () => {
   assert.match(html, /Your questions about scheduling, telehealth, and care/i);
   assert.match(html, /Request my free call/i);
   const introCallForm = html.match(/<form class="contact-form"[\s\S]*?<\/form>/i)?.[0] ?? "";
-  assert.match(introCallForm, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(introCallForm, /action="\/api\/inquiries\/introductory-call"/i);
   assert.match(introCallForm, /method="post"/i);
   assert.match(introCallForm, /data-analytics-form-id="free-introductory-call"/i);
   assert.match(introCallForm, /data-ph-no-autocapture="true"/i);
-  assert.match(introCallForm, /name="_subject" value="Website inquiry - Free introductory call"/i);
-  assert.match(introCallForm, /name="Form type" value="Free introductory call request"/i);
-  assert.match(introCallForm, /name="_template" value="table"/i);
-  assert.match(introCallForm, /name="Submitted at \(Eastern Time\)"/i);
-  assert.doesNotMatch(introCallForm, /name="_url"/i);
   assert.match(introCallForm, /name="_honey"/i);
   assert.match(introCallForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
   assert.match(introCallForm, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
@@ -392,7 +382,7 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);
   assert.match(index, /<script[^>]*src="scripts\/hero-video\.js"[^>]*data-static-script/i);
   assert.match(index, /<script[^>]*src="\/scripts\/site-analytics\.js"[^>]*data-static-script/i);
-  assert.match(index, /<script[^>]*src="\/scripts\/form-submission-time\.js"[^>]*data-static-script/i);
+  assert.match(index, /action="\/api\/inquiries\/general"/i);
   assert.doesNotMatch(index, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(index, /modulepreload/i);
   assert.match(testimonials, /<title>Client Testimonials \| Amy Jaffe Nutrition<\/title>/i);
@@ -407,7 +397,7 @@ test("exports a GitHub Pages-ready static site", async () => {
   assert.match(consultation, /href="\.\.\/assets\//);
   assert.match(consultation, /src="\.\.\/images\/amy-jaffe-logo\.avif"/i);
   assert.match(consultation, /Request my free call/i);
-  assert.match(consultation, /action="https:\/\/formsubmit\.co\/amysjaffe@gmail\.com"/i);
+  assert.match(consultation, /action="\/api\/inquiries\/introductory-call"/i);
   assert.match(consultation, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
   assert.doesNotMatch(consultation, /<script(?![^>]*data-static-script)[^>]*>/i);
   assert.doesNotMatch(consultation, /modulepreload/i);
@@ -457,7 +447,6 @@ test("ships the owned visual assets and no starter preview", async () => {
     access(new URL("../public/video/purple-flowers-breeze-slow.mp4", import.meta.url)),
     access(new URL("../public/scripts/hero-video.js", import.meta.url)),
     access(new URL("../public/scripts/site-analytics.js", import.meta.url)),
-    access(new URL("../public/scripts/form-submission-time.js", import.meta.url)),
     access(new URL("../public/scripts/analytics-dashboard.js", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
@@ -474,15 +463,4 @@ test("ships the owned visual assets and no starter preview", async () => {
   ]);
   assert.ok(awardImages.reduce((total, image) => total + image.size, 0) < 150 * 1024, "recognition images should remain optimized for fast loading");
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
-});
-
-test("captures both FormSubmit timestamps in Eastern Time", async () => {
-  const script = await readFile(new URL("../public/scripts/form-submission-time.js", import.meta.url), "utf8");
-
-  assert.match(script, /Submitted at \(Eastern Time\)/);
-  assert.match(script, /America\/New_York/);
-  assert.match(script, /timeZoneName:\s*["']short["']/);
-  assert.match(script, /homepage-general-inquiry/);
-  assert.match(script, /free-introductory-call/);
-  assert.match(script, /document\.addEventListener\(["']submit["']/);
 });
