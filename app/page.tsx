@@ -269,10 +269,7 @@ export default function Home() {
           <label className="full">Email<input type="email" name="email" autoComplete="email" required /></label>
           <label className="full">What would you like support with?<textarea name="Support request" rows={3} placeholder="Please keep this message general and do not include private medical details." required /></label>
           <button type="submit">Send general inquiry <span>↗</span></button>
-          <small>
-            You can also <a href="mailto:amysjaffe@gmail.com?subject=Website%20inquiry">email Amy directly</a>.
-            <br />Please do not include private medical details in this form.
-          </small>
+          <small>Please do not include private medical details in this form.</small>
         </form>
       </section>
 

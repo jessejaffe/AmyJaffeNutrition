@@ -182,7 +182,6 @@ test("server-renders the Amy Jaffe Nutrition homepage", async () => {
   assert.match(homepageForm, /name="email"[^>]*type="email"|type="email"[^>]*name="email"/i);
   assert.match(homepageForm, /<textarea(?=[^>]*name="Support request")(?=[^>]*required)/i);
   assert.match(homepageForm, /do not include private medical details/i);
-  assert.match(homepageForm, /href="mailto:amysjaffe@gmail\.com\?subject=Website%20inquiry">email Amy directly</i);
   assert.doesNotMatch(homepageForm, /name="Phone"|type="tel"|name="_captcha"/i);
   assert.match(html, /Map of Amy Jaffe Nutrition in Miami/i);
   assert.match(html, /1801 NE 123rd Street, Suite 303/);
@@ -333,7 +332,6 @@ test("server-renders the free introductory call page", async () => {
   assert.match(introCallForm, /<input(?=[^>]*name="Phone")(?=[^>]*required)/i);
   assert.match(introCallForm, /name="Short note"/i);
   assert.match(introCallForm, /do not include private medical details/i);
-  assert.match(introCallForm, /href="mailto:amysjaffe@gmail\.com\?subject=Free%20introductory%20call%20request">email Amy to request a call</i);
   assert.doesNotMatch(introCallForm, /name="_captcha"/i);
   assert.doesNotMatch(html, /free-disordered-eating-consultation/i);
 });

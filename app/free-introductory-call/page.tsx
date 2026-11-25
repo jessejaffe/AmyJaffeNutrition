@@ -107,10 +107,7 @@ export default function FreeIntroductoryCallPage() {
           <label className="full">Preferred phone number<input type="tel" name="Phone" autoComplete="tel" required /></label>
           <label className="full">A short note (optional)<textarea name="Short note" rows={3} placeholder="Please keep this message general and do not include private medical details." /></label>
           <button type="submit">Request my free call <span aria-hidden="true">↗</span></button>
-          <small>
-            You can also <a href="mailto:amysjaffe@gmail.com?subject=Free%20introductory%20call%20request">email Amy to request a call</a>.
-            <br />Please do not include private medical details in this form.
-          </small>
+          <small>Please do not include private medical details in this form.</small>
         </form>
       </section>
 
