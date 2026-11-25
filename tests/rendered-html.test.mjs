@@ -378,7 +378,14 @@ test("exports a GitHub Pages-ready static site", async () => {
   const assessment = await readFile(new URL("../dist/client/services/nutrition-assessment/index.html", import.meta.url), "utf8");
   const followUp = await readFile(new URL("../dist/client/services/follow-up-sessions/index.html", import.meta.url), "utf8");
   const analytics = await readFile(new URL("../dist/client/analytics/index.html", import.meta.url), "utf8");
+  const favicon = await readFile(new URL("../dist/client/favicon.svg", import.meta.url), "utf8");
 
+  for (const page of [index, testimonials, consultation, assessment, followUp]) {
+    assert.match(page, /<link\b(?=[^>]*\brel="icon")(?=[^>]*\bhref="https:\/\/www\.amyjaffenutrition\.com\/favicon\.svg\?v=20261125")[^>]*>/i);
+  }
+  assert.equal((favicon.match(/<circle\b/g) ?? []).length, 5);
+  assert.match(favicon, /fill="#b51675"/);
+  assert.match(favicon, /fill="#287e4d"/);
   assert.match(index, /<title>Amy Jaffe Nutrition \| Intuitive Eating Dietitian<\/title>/i);
   assert.match(index, /href="assets\//);
   assert.match(index, /src="video\/nutritioncounselingflorida\.mp4\?v=20260802"/);

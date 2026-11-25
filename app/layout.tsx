@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     },
   },
   verification: { google: "ICtjOUbHVHPZLTb70ac7b9JWeTnHWktjZ-N6nXPPjBI" },
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: { url: "/favicon.svg?v=20261125", type: "image/svg+xml", sizes: "any" } },
   openGraph: {
     title: "Amy Jaffe Nutrition",
     description: "A healthier relationship with food.",
