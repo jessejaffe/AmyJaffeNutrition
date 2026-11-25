@@ -8,18 +8,24 @@ import os
 import smtplib
 import ssl
 import time
-from datetime import datetime, timedelta
+from collections import Counter
+from datetime import datetime, timedelta, timezone
 from email.headerregistry import Address
 from email.message import EmailMessage
+from math import floor
+from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+from uuid import UUID
 from zoneinfo import ZoneInfo
 
 
 DEFAULT_ANALYTICS_URL = "http://127.0.0.1:43127/analytics/api?days=7&refresh=1"
 DEFAULT_DASHBOARD_URL = "https://www.amyjaffenutrition.com/analytics/"
 DEFAULT_TIME_ZONE = "America/New_York"
+TEST_FORM_EVENTS_PATH = Path("/etc/amy-jaffe-weekly-test-events.json")
+FORM_EVENT_FIELDS = {"form_started": "started", "form_submitted": "submitted"}
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 
@@ -65,6 +71,68 @@ def integer(value: Any) -> int:
 
 def percent(value: Any) -> str:
     return f"{number(value):.1f}%"
+
+
+def read_test_form_events(path: Path) -> list[dict[str, str]]:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return []
+
+
+def with_test_form_events_excluded(
+    data: dict[str, Any], events: list[dict[str, str]], now: datetime,
+) -> dict[str, Any]:
+    """Apply exclusions for confirmed test events in this report's time window."""
+    if not events:
+        return data
+
+    generated_at = data.get("generated_at")
+    end = datetime.fromisoformat(generated_at.replace("Z", "+00:00")) if generated_at else now
+    end = end.astimezone(timezone.utc)
+    start = end - timedelta(days=max(1, integer(data.get("range_days", 7))))
+    counts = Counter()
+    seen = set()
+    for event in events:
+        timestamp = datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
+        if not start <= timestamp <= end:
+            continue
+        event_id = UUID(event["id"])
+        if event_id in seen:
+            continue
+        seen.add(event_id)
+        counts[event["form_id"], FORM_EVENT_FIELDS[event["event"]]] += 1
+    if not counts:
+        return data
+    total_starts = sum(count for (_, field), count in counts.items() if field == "started")
+    total_submissions = sum(count for (_, field), count in counts.items() if field == "submitted")
+
+    def adjusted(raw: Any, excluded: int) -> int:
+        total = integer(raw)
+        if excluded > total:
+            raise ValueError("Test form exclusions exceed the recorded analytics count")
+        return total - excluded
+
+    def rate(numerator: int, denominator: int) -> float:
+        return floor(numerator / denominator * 1000 + 0.5) / 10 if denominator else 0
+
+    forms = []
+    for form in data["forms"]:
+        form_id = form["id"]
+        removed_starts = counts.pop((form_id, "started"), 0)
+        removed_submissions = counts.pop((form_id, "submitted"), 0)
+        started = adjusted(form["started"], removed_starts)
+        submitted = adjusted(form["submitted"], removed_submissions)
+        forms.append({**form, "started": started, "submitted": submitted,
+                      "completion_rate": rate(submitted, started)})
+    if counts:
+        raise ValueError("Test form exclusions contain a form missing from the analytics data")
+
+    summary = data["summary"].copy()
+    summary["form_starts"] = adjusted(summary["form_starts"], total_starts)
+    summary["form_submissions"] = adjusted(summary["form_submissions"], total_submissions)
+    summary["inquiry_rate"] = rate(summary["form_submissions"], integer(summary["visitors"]))
+    return {**data, "summary": summary, "forms": forms}
 
 
 def duration(value: Any) -> str:
@@ -225,6 +293,7 @@ def main() -> None:
 
     now = datetime.now(ZoneInfo(time_zone))
     data = fetch_analytics(analytics_url)
+    data = with_test_form_events_excluded(data, read_test_form_events(TEST_FORM_EVENTS_PATH), now)
     subject, report = build_report(data, now, dashboard_url)
     message = build_message(username, recipient, subject, report)
     send_message(message, username, app_password)

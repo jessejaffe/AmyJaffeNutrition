@@ -20,18 +20,21 @@ class WeeklyAnalyticsEmailTests(unittest.TestCase):
             "summary": {
                 "visitors": 42,
                 "pageviews": 95,
+                "form_starts": 9,
                 "form_submissions": 3,
                 "inquiry_rate": 7.1,
                 "video_viewers": 18,
             },
             "forms": [
                 {
+                    "id": "homepage-general-inquiry",
                     "title": "General inquiry",
                     "started": 6,
                     "submitted": 2,
                     "completion_rate": 33.3,
                 },
                 {
+                    "id": "free-introductory-call",
                     "title": "Free introductory call",
                     "started": 2,
                     "submitted": 1,
@@ -88,6 +91,44 @@ class WeeklyAnalyticsEmailTests(unittest.TestCase):
 
         self.assertIn("No country data recorded.", report)
         self.assertIn("No U.S. state data recorded.", report)
+
+    def test_excludes_confirmed_test_events_only_inside_the_report_window(self):
+        self.data["generated_at"] = "2026-08-13T13:00:30Z"
+        start = {
+            "id": "48eea198-cdf9-4516-93fc-c06cca22b2db",
+            "timestamp": "2026-08-12T17:22:01Z",
+            "form_id": "homepage-general-inquiry",
+            "event": "form_started",
+        }
+        submit = {
+            **start,
+            "id": "ea70fc69-f4f0-4dbb-98b8-660100c683c5",
+            "timestamp": "2026-08-12T17:22:02Z",
+            "event": "form_submitted",
+        }
+        outside_window = {
+            **submit,
+            "id": "dc443b88-2bcc-4b6b-a8b6-5d80f3a861c4",
+            "timestamp": "2026-08-06T13:00:29Z",
+            "form_id": "free-introductory-call",
+        }
+        events = [start, submit, submit, outside_window]
+
+        cleaned = MODULE.with_test_form_events_excluded(self.data, events, self.now)
+
+        self.assertEqual(cleaned["summary"]["form_starts"], 8)
+        self.assertEqual(cleaned["summary"]["form_submissions"], 2)
+        self.assertEqual(cleaned["summary"]["inquiry_rate"], 4.8)
+        self.assertEqual(cleaned["summary"]["pageviews"], 95)
+        self.assertEqual(cleaned["forms"][0]["started"], 5)
+        self.assertEqual(cleaned["forms"][0]["submitted"], 1)
+        self.assertEqual(cleaned["forms"][0]["completion_rate"], 20)
+        self.assertEqual(cleaned["forms"][1], self.data["forms"][1])
+        self.assertEqual(self.data["summary"]["form_submissions"], 3)
+
+        _, report = MODULE.build_report(cleaned, self.now, "https://example.com/analytics/")
+        self.assertIn("Form submissions: 2", report)
+        self.assertIn("Inquiry rate: 4.8%", report)
 
     def test_builds_email_headers(self):
         message = MODULE.build_message(
