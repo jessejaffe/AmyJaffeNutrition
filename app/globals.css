@@ -192,6 +192,9 @@ h2 { color: var(--plum); font-size: clamp(48px, 5.5vw, 79px); line-height: .98; 
 .contact-form button { align-items: center; background: var(--cream); border: 0; color: var(--plum); cursor: pointer; display: flex; font-size: 14px; font-weight: 800; justify-content: space-between; letter-spacing: .1em; margin-top: 7px; padding: 20px 23px; text-align: left; text-transform: uppercase; }
 .contact-form button span { font-size: 18px; }
 .contact-form small { color: #d8c8d0; font-size: 14px; line-height: 1.55; }
+.contact-form .inquiry-status { color: var(--cream); grid-column: 1/-1; margin: 0; }
+.contact-form .inquiry-status:empty { display: none; }
+.contact-form button:disabled { cursor: wait; opacity: .75; }
 .form-honeypot { display: none; }
 
 footer { background: #8a8a88; color: white; padding: 58px 8vw 28px; }

@@ -1,0 +1,17 @@
+[Unit]
+Description=Amy Jaffe Nutrition website inquiries
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=true
+WorkingDirectory=/opt/amy-jaffe-inquiries
+EnvironmentFile=/etc/amy-jaffe-inquiries.env
+ExecStart=/usr/bin/python3 /opt/amy-jaffe-inquiries/server/inquiry_server.py
+Restart=on-failure
+RestartSec=3
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target
